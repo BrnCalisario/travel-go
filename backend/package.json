@@ -1,0 +1,26 @@
+{
+  "name": "travel-go-backend",
+  "version": "1.0.0",
+  "description": "website for hoel packages and trips",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "npx nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrnCalisario/travel-go.git"
+  },
+  "author": "BrnCalisario",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrnCalisario/travel-go/issues"
+  },
+  "homepage": "https://github.com/BrnCalisario/travel-go#readme",
+  "devDependencies": {
+    "@types/node": "^20.8.7",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
