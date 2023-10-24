@@ -8,6 +8,66 @@ datasource db {
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
-  email String @unique
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  fullName String
+  cpf      String
+  password Bytes
+}
+
+model City {
+  id       Int        @id @default(autoincrement())
+  country  String
+  state    String
+  city     String
+  Location Location[]
+}
+
+model Location {
+  id       Int     @id @default(autoincrement())
+  cep      String
+  street   String
+  Number   String
+  District String
+  city     City    @relation(fields: [cityId], references: [id])
+  cityId   Int
+  Hotel    Hotel[]
+}
+
+model Hotel {
+  id         Int      @id @default(autoincrement())
+  hotelName  String
+  location   Location @relation(fields: [locationId], references: [id])
+  locationId Int
+  Rating     Rating[]
+  Room       Room[]
+}
+
+model Rating {
+  id      Int    @id @default(autoincrement())
+  review  String
+  Rating  Float
+  hotel   Hotel  @relation(fields: [hotelId], references: [id])
+  hotelId Int
+}
+
+model RoomType {
+  id        Int    @id @default(autoincrement())
+  type      String
+  capacitty Int
+  Room      Room[]
+}
+
+model Room {
+  id         Int      @id @default(autoincrement())
+  quantity   Int
+  hotel      Hotel    @relation(fields: [hotelId], references: [id])
+  hotelId    Int
+  roomType   RoomType @relation(fields: [roomTypeId], references: [id])
+  roomTypeId Int
+}
+
+model AmenityType {
+  id      Int    @id @default(autoincrement())
+  amenity String
 }
