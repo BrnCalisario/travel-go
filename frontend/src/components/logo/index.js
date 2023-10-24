@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         height: '5rem'
     },
     logo: {
-        flex: 1,
+        display: 'flex',
         flexDirection: 'row',
         height: '2rem'
     },
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     },
 
     threeLittleBalls: {
-        flex: 1,
+        display: 'flex',
         flexDirection: 'row',
         alignContent: "space-around",
     },
