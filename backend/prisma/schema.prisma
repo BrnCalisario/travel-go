@@ -8,12 +8,11 @@ datasource db {
 }
 
 model User {
-  id          Int           @id @default(autoincrement())
-  email       String        @unique
-  fullName    String
-  cpf         String
-  password    String
-  Reservation Reservation[]
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  fullName String
+  cpf      String
+  password String
 }
 
 model City {
@@ -30,28 +29,26 @@ model Location {
   street   String
   Number   String
   District String
-  city     City    @relation(fields: [cityId], references: [id])
   cityId   Int
   Hotel    Hotel[]
+  city     City    @relation(fields: [cityId], references: [id])
 }
 
 model Hotel {
-  id            Int             @id @default(autoincrement())
-  hotelName     String
-  location      Location        @relation(fields: [locationId], references: [id])
-  locationId    Int
-  Rating        Rating[]
-  Room          Room[]
-  HotelXAmenity HotelXAmenity[]
+  id         Int      @id @default(autoincrement())
+  hotelName  String
+  locationId Int
+  location   Location @relation(fields: [locationId], references: [id])
+  Rating     Rating[]
+  Room       Room[]
 }
 
 model Rating {
-  id      Int      @id @default(autoincrement())
+  id      Int    @id @default(autoincrement())
   review  String
   Rating  Float
-  date    DateTime
-  hotel   Hotel    @relation(fields: [hotelId], references: [id])
   hotelId Int
+  hotel   Hotel  @relation(fields: [hotelId], references: [id])
 }
 
 model RoomType {
@@ -62,44 +59,15 @@ model RoomType {
 }
 
 model Room {
-  id          Int           @id @default(autoincrement())
-  quantity    Int
-  hotel       Hotel         @relation(fields: [hotelId], references: [id])
-  hotelId     Int
-  roomType    RoomType      @relation(fields: [roomTypeId], references: [id])
-  roomTypeId  Int
-  Reservation Reservation[]
+  id         Int      @id @default(autoincrement())
+  quantity   Int
+  hotelId    Int
+  roomTypeId Int
+  hotel      Hotel    @relation(fields: [hotelId], references: [id])
+  roomType   RoomType @relation(fields: [roomTypeId], references: [id])
 }
 
 model AmenityType {
-  id      Int       @id @default(autoincrement())
-  type    String
-  Amenity Amenity[]
-}
-
-model Amenity {
-  id            Int             @id @default(autoincrement())
-  amenity       String
-  amenityType   AmenityType     @relation(fields: [amenityTypeId], references: [id])
-  amenityTypeId Int
-  HotelXAmenity HotelXAmenity[]
-}
-
-model HotelXAmenity {
-  id        Int     @id @default(autoincrement())
-  amenity   Amenity @relation(fields: [amenityId], references: [id])
-  amenityId Int
-  hotel     Hotel   @relation(fields: [hotelId], references: [id])
-  hotelId   Int
-}
-
-model Reservation {
-  id            Int      @id @default(autoincrement())
-  roomsQuantity Int
-  checkIn       DateTime
-  checkOut      DateTime
-  room          Room     @relation(fields: [roomId], references: [id])
-  roomId        Int
-  user          User     @relation(fields: [userId], references: [id])
-  userId        Int
+  id      Int    @id @default(autoincrement())
+  amenity String
 }
