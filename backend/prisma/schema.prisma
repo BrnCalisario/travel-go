@@ -12,7 +12,7 @@ model User {
   email    String @unique
   fullName String
   cpf      String
-  password Bytes
+  password String
 }
 
 model City {
