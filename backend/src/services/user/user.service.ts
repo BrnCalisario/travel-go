@@ -12,8 +12,6 @@ export const getUsers = async (): Promise<UserDTO[]> => {
 	});
 };
  
-
-
 export const login = async (user : Omit<User, "id">) : Promise<number> => {
 	return db.user.create({
 		data: {

@@ -20,7 +20,7 @@ userRouter.post("/", async (req: Request, res: Response) => {
 
         const id = await UserService.login({ fullName, email, cpf, password })
 
-        return res.status(200).json({ message : "User created succesfuly", id })
+        return res.status(200).json({ message : "User created successfully", id })
     } catch (error : any) {
         return res.status(500).json(error.message)
     }
