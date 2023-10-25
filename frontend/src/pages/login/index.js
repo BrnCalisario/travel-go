@@ -1,8 +1,44 @@
 import { TouchableOpacity } from "react-native";
 import { Text, TextInput, StyleSheet, View, Button } from "react-native";
+import { useState } from 'react';
 import styles from "./styles";
+import { Crypto } from "crypto-js";
+import axios from "axios";
+
 
 export default function LoginPage(props) {
+
+    const [user, setUser] = useState();
+    const [password, setPassword] = useState();
+
+    const [isInputEmpty, setIsInputyEmpty] = useState(false);
+    const [notFound, setNotFound] = useState(false);
+
+    const handleLogin = (async () => {
+        if (!user || !password) {
+            setIsInputyEmpty(!isInputEmpty)
+            return;
+        }
+
+        const loginData = {
+            user: user,
+            password: password
+        };
+
+        const encryptData = Crypto.AES.encrypt(JSON.stringify(loginData), process.env.REACT_APP_ENCRYPT_JSON).toString();
+
+        try {
+            const res = await axios.post(process.env.REACT_APP_BACKEND_PORT + "auth/login", { data: encryptData }); // TODO: verify the backend route's name 
+            sessionStorage.setItem('token', res.data.token);
+            setNotFound(false);
+            props.navigation.navigate('home')
+
+        } catch (error) {
+            setNotFound(true);
+        }
+    });
+
+
     return (
         <View style={styles.screen}>
             <Text style={styles.textLogin}>Login</Text>
@@ -10,6 +46,7 @@ export default function LoginPage(props) {
             <View style={styles.componentLogin}>
                 <Text>Email/Name</Text>
                 <TextInput
+                    onchangeText={e => setUser(e)}
                     style={styles.input}
                 />
             </View>
@@ -17,16 +54,17 @@ export default function LoginPage(props) {
             <View style={styles.componentLogin}>
                 <Text>Password</Text>
                 <TextInput
+                    onchangeText={e => setPassword(e)}
                     style={styles.input}
                 />
                 <TouchableOpacity>
-                    <Text>Forgot password?</Text>
+                    <Text>Don't you remember your password?</Text>
                 </TouchableOpacity>
             </View>
 
             <View style={styles.button}>
                 <Button
-                    onPress={() => props.navigation.navigate('Home')}
+                    onPress={() =>handleLogin()}
                     title="Sing in"
                     color="#006EE4" />
 

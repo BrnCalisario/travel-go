@@ -13,7 +13,14 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen
           options={{
-            title: '',
+            headerTransparent: true,
+            headerShown: false
+          }}
+          name="Login" component={LoginPage}
+        />
+
+        <Stack.Screen
+          options={{
             headerTransparent: true,
             headerShown: false
           }}
@@ -21,16 +28,6 @@ export default function App() {
 
         <Stack.Screen
           options={{
-            title: '',
-            headerTransparent: true,
-            headerShown: false
-          }}
-          name="Login" component={LoginPage}
-        />
-        
-        <Stack.Screen
-          options={{
-            title: '',
             headerTransparent: true,
             headerShown: false
           }}
