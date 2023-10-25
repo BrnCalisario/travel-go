@@ -27,5 +27,14 @@ export const registerUser = async (user : Omit<User, "id">) : Promise<number> =>
 }
 
 export const getUser = async (email: string): Promise<User> => {
-	return db.user.findOne({ email: email })
+	const query : User | null = await db.user.findUnique({
+		where: {
+			email : email
+		}
+	})
+
+	if(!query)
+		throw Error('Invalid Email')
+
+	return query
 }
