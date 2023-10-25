@@ -1,22 +1,16 @@
 import LogoComp from "../logo";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { BsBookmarkHeart } from 'react-icons/bs';
+import styles from './styles';
 
 export default function NavBar() {
     return (
         <View style={styles.component}>
             <LogoComp />
-            <BsBookmarkHeart />
+            <TouchableOpacity>
+                <BsBookmarkHeart />
+            </TouchableOpacity>
+
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    component: {
-        display: 'flex',
-        flexDirection: 'row',
-
-        borderBottomColor: 'rgba(0, 0, 0, 0.2)',
-        borderBottomWidth: 1
-    },
-});
