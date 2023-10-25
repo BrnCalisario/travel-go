@@ -25,3 +25,7 @@ export const registerUser = async (user : Omit<User, "id">) : Promise<number> =>
 		},
 	}).then(res => res.id)
 }
+
+export const getUser = async (email: string): Promise<User> => {
+	return db.user.findOne({ email: email })
+}

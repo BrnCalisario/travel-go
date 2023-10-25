@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express"
 import { request } from "http"
 import { auth } from "../../middlewares/auth.middleware"
-
+import { encryptPassword, validatePassword } from "../../utils/auth.services"
 import * as UserService from "./user.service"
 
 export const userRouter = express.Router()
@@ -18,8 +18,8 @@ userRouter.get("/", auth, async (req: Request, res: Response) => {
 userRouter.post("/register", async (req: Request, res: Response) => {
     try {
         const { fullName, email, cpf, password } = req.body
-
-        const id = await UserService.registerUser({ fullName, email, cpf, password })
+        let encryptedPassword = encryptPassword(password)
+        const id = await UserService.registerUser({ fullName, email, cpf, encryptedPassword })
 
         return res.status(200).json({ message : "User created successfully", id })
     } catch (error : any) {
@@ -28,9 +28,5 @@ userRouter.post("/register", async (req: Request, res: Response) => {
 })
 
 userRouter.post("/login", async (req: Request, res: Response) => {
-
     const { email, password } = req.body
-
-    
-
 })
