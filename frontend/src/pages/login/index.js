@@ -8,27 +8,25 @@ import axios from "axios";
 
 export default function LoginPage(props) {
 
-    const [user, setUser] = useState();
+    const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
     const [isInputEmpty, setIsInputyEmpty] = useState(false);
     const [notFound, setNotFound] = useState(false);
 
     const handleLogin = (async () => {
-        if (!user || !password) {
+        if (!email || !password) {
             setIsInputyEmpty(!isInputEmpty)
             return;
         }
 
         const loginData = {
-            user: user,
+            email: email,
             password: password
         };
 
-        const encryptData = Crypto.AES.encrypt(JSON.stringify(loginData), process.env.REACT_APP_ENCRYPT_JSON).toString();
-
         try {
-            const res = await axios.post(process.env.REACT_APP_BACKEND_PORT + "auth/login", { data: encryptData }); // TODO: verify the backend route's name 
+            const res = await axios.post(process.env.REACT_APP_BACKEND_PORT + "/api/auth/", { loginData }); // TODO: verify the backend route's name 
             sessionStorage.setItem('token', res.data.token);
             setNotFound(false);
             props.navigation.navigate('home')
@@ -46,7 +44,7 @@ export default function LoginPage(props) {
             <View style={styles.componentLogin}>
                 <Text>Email/Name</Text>
                 <TextInput
-                    onchangeText={e => setUser(e)}
+                    onchangeText={e => setemail(e)}
                     style={styles.input}
                 />
             </View>
@@ -68,7 +66,7 @@ export default function LoginPage(props) {
                     title="Sing in"
                     color="#006EE4" />
 
-                <TouchableOpacity onPress={() => props.navigation.navigate('Register')}>
+                <TouchableOpacity onPress={() => handleLogin()}>
                     <Text>Create account</Text>
                 </TouchableOpacity>
             </View>
