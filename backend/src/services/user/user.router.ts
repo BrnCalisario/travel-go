@@ -1,11 +1,12 @@
 import { User } from "@prisma/client";
 import express, { Request, Response } from "express";
 import { auth } from "../../middleware/auth.middleware";
-import { encryptPassword, validatePassword } from "../auth/auth.services";
+import * as AuthService from "../auth/auth.services";
+
 import * as UserService from "./user.service";
 
 export const userRouter = express.Router();
-
+ 
 userRouter.get("/", auth, async (req: Request, res: Response) => {
 	try {
 		const users = await UserService.getUsers();
@@ -19,7 +20,7 @@ userRouter.post("/signup", async (req: Request, res: Response) => {
 	try {
 		const data = req.body as User;
 
-		let encryptedPassword = await encryptPassword(data.password);
+		let encryptedPassword = await AuthService.encryptPassword(data.password);
 
 		data.password = encryptedPassword;
 
@@ -38,15 +39,18 @@ userRouter.post("/login", async (req: Request, res: Response) => {
 
     try 
     {
-        const valid = await validatePassword(password, email)
+        const validation = await AuthService.validatePassword(password, email)
 
-        if(!valid)
+        if(!validation.isValid)
             return res.status(401).json({ message: "Bad Auth"})
 
-        return res.status(200).json({ message : 'Authenticated', token: "abcd" })
+		const token = await AuthService.generateToken(validation.userId)
+
+        return res.status(200).json({ message : 'Authenticated', token })
 
     } catch( error : any ) {
         return res.status(500).json(error.message);
     }
 
 });
+
