@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs"
-import express, { Request, Response } from "express"
-import * as UserService from "../services/user/user.service"
+
+import * as UserService from "../user/user.service"
 
 
 export const encryptPassword = async (password: string) : Promise<string> => {
@@ -11,5 +11,9 @@ export const encryptPassword = async (password: string) : Promise<string> => {
 
 export const validatePassword = async (passwordReceived: string, userEmail: string) : Promise<boolean> => {
     const user = await UserService.getUser(userEmail)
+
+    if(!user)
+        return false;
+
     return await bcrypt.compare(passwordReceived, user.password)
 } 
