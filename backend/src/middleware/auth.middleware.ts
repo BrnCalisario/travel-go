@@ -2,7 +2,10 @@ import { NextFunction, Request, Response } from "express";
 import jwt, { Secret, JwtPayload } from "jsonwebtoken";
 
 
-const SECRET_KEY : string = process.env.SECRET || 'SECRET'
+const SECRET_KEY : string | undefined = process.env.SECRET
+
+if(!SECRET_KEY)
+    throw new Error('SECRET KEY NOT PROVIDED')
 
 export interface CustomRequest extends Request {
     token : string | JwtPayload
