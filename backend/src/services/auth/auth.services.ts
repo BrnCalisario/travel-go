@@ -4,7 +4,8 @@ import * as UserService from "../user/user.service"
 
 interface ValidateResponse {
     isValid : boolean,
-    userId : number
+    userId : number,
+    isAdmin : boolean
 }
 
 const SECRET_KEY: string | undefined = process.env.JWT_SECRET
@@ -23,11 +24,11 @@ export const validatePassword = async (passwordReceived: string, userEmail: stri
     const user = await UserService.getUser(userEmail)
 
     if (!user)
-        return { isValid: false, userId : 0 };
+        return { isValid: false, userId : 0, isAdmin : false };
 
-    return  { isValid: await bcrypt.compare(passwordReceived, user.password), userId: user.id }
+    return  { isValid: await bcrypt.compare(passwordReceived, user.password), userId: user.id, isAdmin : user.isAdmin }
 }
 
-export const generateToken = async (userId: number): Promise<string> => {
-    return jwt.sign({ userId: userId }, SECRET_KEY)
+export const generateToken = async (userId: number, isAdmin : boolean): Promise<string> => {
+    return jwt.sign({ userId, isAdmin  }, SECRET_KEY)
 } 

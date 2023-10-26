@@ -1,6 +1,6 @@
 import { User } from "@prisma/client";
 import { db } from "../../config/db.server";
-import { RegisterDTO, UserDTO } from "../../models/user.model";
+import { UserDTO } from "../../models/user.model";
 
 export const getUsers = async (): Promise<UserDTO[]> => {
 	return db.user.findMany({
@@ -18,7 +18,8 @@ export const registerUser = async (user : Omit<User, "id">) : Promise<number> =>
 			fullName : user.fullName,
 			email : user.email,
 			cpf : user.cpf,
-			password : user.password
+			password : user.password,
+			isAdmin : false,
 		}, 
 		select: {
 			id: true
