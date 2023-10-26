@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center'
+    },
     componentSearch: {
         width: 400,
         marginTop: '2rem'

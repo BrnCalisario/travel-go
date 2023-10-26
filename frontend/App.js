@@ -16,15 +16,15 @@ export default function App() {
             headerTransparent: true,
             headerShown: false
           }}
-          name="Login" component={LoginPage}
-        />
+          name="Home" component={HomePage} />
 
         <Stack.Screen
           options={{
             headerTransparent: true,
             headerShown: false
           }}
-          name="Home" component={HomePage} />
+          name="Login" component={LoginPage}
+        />
 
         <Stack.Screen
           options={{

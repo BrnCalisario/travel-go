@@ -3,7 +3,9 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     screen: {
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+
+        height: '100vh'
     },
     input: {
         borderWidth: 1,
