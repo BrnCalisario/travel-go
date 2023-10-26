@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     logo: {
         display: 'flex',
         flexDirection: 'row',
-        height: '2rem'
+        height: '3rem'
     },
     firstSyllable: {
         color: '#1971c2',
@@ -26,20 +26,22 @@ const styles = StyleSheet.create({
     threeLittleBalls: {
         display: 'flex',
         flexDirection: 'row',
-        alignContent: "space-around",
     },
 
     firstBall: {
         fontSize: '80%',
         color: '#1971c2',
+        marginLeft: 8
     },
     secondBall: {
         fontSize: '80%',
-        color: '#f08c00'
+        color: '#f08c00',
+        marginLeft: 8
     },
     thirdBall: {
         fontSize: '80%',
-        color: '#e03131'
+        color: '#e03131',
+        marginLeft: 8
     },
 });
 

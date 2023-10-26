@@ -1,5 +1,6 @@
 import { Text, View, StyleSheet } from "react-native";
 import { FaCircle } from 'react-icons/fa';
+
 import styles from './styles';
 
 export default function LogoComp() {

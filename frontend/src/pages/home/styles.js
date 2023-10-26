@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     },
     componentSearch: {
         width: 400,
-        marginTop: '2rem'
+        marginTop: '2rem',
     },
     component: {
         shadowColor: "#000",
@@ -18,22 +18,27 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
 
         elevation: 5,
+        borderRadius: 10,
     },
     search: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
+        borderBottomWidth: 2,
+        borderColor: 'rgba(0, 0, 0, 0.1)',
+        padding: 8
     },
     componentOptions: {
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     componentFilter: {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
+        borderRadius: 10,
         height: 50,
 
         marginTop: '1rem',
@@ -45,7 +50,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
 
-        elevation: 5,
+        elevation: 5
     }
 });
 

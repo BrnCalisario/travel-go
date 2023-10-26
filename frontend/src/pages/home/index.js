@@ -9,71 +9,78 @@ import Card from "../../components/card";
 
 export default function HomePage() {
     return (
-        <View style={styles.container}>
+        <>
             <NavBar />
-            <View style={styles.componentSearch}>
-                <View style={styles.component}>
-                    <View style={styles.search}>
-                        <View>
-                            <BiSearch style={{
-                                fontSize: 30,
-                                color: 'gray'
+            <View style={styles.container}>
+                <View style={styles.componentSearch}>
+                    <View style={styles.component}>
+                        <View style={styles.search}>
+                            <View>
+                                <BiSearch style={{
+                                    fontSize: 30,
+                                    color: 'gray'
+                                }} />
+                            </View>
+                            <View>
+                                <Text>
+                                    To
+                                </Text>
+                                <TextInput
+                                    placeholder="Brazil"
+                                />
+                            </View>
+                        </View>
+                        <View style={styles.componentOptions}>
+                            < BsCalendarEvent style={{
+                                fontSize: 20,
+                                color: 'gray',
+                                padding: 8,
                             }} />
-                        </View>
-                        <View>
-                            <Text>
-                                To
-                            </Text>
-                            <TextInput
-                                placeholder="Brazil"
-                            />
-                        </View>
-                    </View>
-                    <View style={styles.componentOptions}>
-                        < BsCalendarEvent style={{
-                            fontSize: 20,
-                            color: 'gray'
-                        }} />
-                        <View>
-                            <Text>
-                                In/Out
-                            </Text>
-                            <TextInput
-                                placeholder="Select date"
-                            />
-                        </View>
-                        <LiaBedSolid style={{
-                            fontSize: 30,
-                            color: 'gray'
-                        }} />
-                        <View>
-                            <Text>
-                                Guest and rooms
-                            </Text>
-                            <TextInput
-                                placeholder="3 guests, 1 room"
-                            />
+                            <View style={{
+                                borderRightWidth: 2,
+                                borderColor: 'rgba(0, 0, 0, 0.1)',
+                            }}>
+                                <Text>
+                                    In/Out
+                                </Text>
+                                <TextInput
+                                    placeholder="Select date"
+                                />
+                            </View>
+                            <LiaBedSolid style={{
+                                fontSize: 30,
+                                color: 'gray',
+                                marginLeft: 8
+                            }} />
+                            <View>
+                                <Text>
+                                    Guest and rooms
+                                </Text>
+                                <TextInput
+                                    placeholder="3 guests, 1 room"
+                                />
+                            </View>
                         </View>
                     </View>
+                    <View style={styles.componentFilter}>
+                        <TouchableOpacity>
+                            <Text>
+                                Order
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Text>
+                                Filter
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-                <View style={styles.componentFilter}>
-                    <TouchableOpacity>
-                        <Text>
-                            Order
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <Text>
-                            Filter
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
 
-            <Card />
-            <Card />
-            <Card />
-        </View>
+                <Card />
+                <Card />
+                <Card />
+            </View>
+        </>
     )
 }
 

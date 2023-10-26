@@ -89,7 +89,12 @@ export default function CardComp() {
                         />
                     </View>
                 </View>
-                <View style={{ width: '95%' }}>
+                <View style={{
+                    width: '95%',
+                    backgroundColor: 'white',
+                    borderBottomLeftRadius: 10,
+                    borderBottomRightRadius: 10,
+                }}>
                     <Text>
                         Our lowets price: R$ 400
                     </Text>
