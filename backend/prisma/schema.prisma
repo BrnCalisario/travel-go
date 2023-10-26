@@ -8,11 +8,12 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
   fullName String
   cpf      String
   password String
+  isAdmin  Boolean
 }
 
 model City {

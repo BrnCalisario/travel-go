@@ -1,38 +1,46 @@
+import { User } from "@prisma/client";
+import { db } from "../src/config/db.server";
 
-import { db } from "../src/config/db.server"
+console.log("Seeding");
 
-console.log("Seeding")
+async function seed() {
+	await Promise.all(
+		getAdmins().map((user) => {
+			return db.user.create({
+				data: {
+					email: user.email,
+					password: user.password,
+					cpf: user.cpf,
+					isAdmin: user.isAdmin,
+					fullName: user.fullName,
+				},
+			});
+		})
+	);
+}
 
-// type Post = {
-//     title: string,
-//     content: string
-// }
+try
+{
+    seed();
+} catch { }
 
-// async function seed() {
-//     await Promise.all(
-//         getPosts().map((post) => {
-//             return db.post.create({
-//                 data: {
-//                     title: post.title,
-//                     content: post.content
-//                 }
-//             })
-//         })
-//     )
-// }
+type AdminUser = {
+	email: string;
+	password: string;
+	fullName: string;
+	cpf: string;
+	isAdmin: boolean;
+};
 
-// seed()
-
-
-// function getPosts() : Array<Post> {
-//     return [
-//         {
-//             title: "titulo",
-//             content: "corpo",
-//         },
-//         {
-//             title: "title",
-//             content: "cuerpo"
-//         }
-//     ]
-// }
+function getAdmins(): Array<AdminUser> {
+	return [
+		{
+			email: "admin@admin",
+			password:
+				"$2a$12$mhrOIV4cljFznHFNSqy.8.tBYBAUeeUmJN.M5HGazDRurbmtTkljO",
+			fullName: "admin",
+			cpf: "cpf",
+			isAdmin: true,
+		},
+	];
+}
