@@ -63,12 +63,24 @@ export default function HomePage() {
                         </View>
                     </View>
                     <View style={styles.componentFilter}>
-                        <TouchableOpacity>
+                        <TouchableOpacity style={{
+                            width: '50%',
+                            height: '100%',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            borderRightWidth: 2,
+                            borderColor: 'rgba(0, 0, 0, 0.1)',
+                        }}>
                             <Text>
                                 Order
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity style={{
+                            width: '50%',
+                            alignItems: 'center',
+                            height: '100%',
+                            justifyContent: 'center',
+                        }}>
                             <Text>
                                 Filter
                             </Text>
