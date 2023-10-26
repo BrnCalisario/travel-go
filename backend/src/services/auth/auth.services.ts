@@ -11,5 +11,9 @@ export const encryptPassword = async (password: string) : Promise<string> => {
 
 export const validatePassword = async (passwordReceived: string, userEmail: string) : Promise<boolean> => {
     const user = await UserService.getUser(userEmail)
+
+    if(!user)
+        return false;
+
     return await bcrypt.compare(passwordReceived, user.password)
 } 

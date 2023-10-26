@@ -45,7 +45,7 @@ userRouter.post("/login", async (req: Request, res: Response) => {
 
         return res.status(200).json({ message : 'Authenticated', token: "abcd" })
 
-    } catch(error : any ) {
+    } catch( error : any ) {
         return res.status(500).json(error.message);
     }
 
