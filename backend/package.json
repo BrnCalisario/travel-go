@@ -1,14 +1,15 @@
 {
   "name": "travel-go-backend",
   "version": "1.0.0",
-  "description": "website for hoel packages and trips",
+  "description": "website for hotel packages and trips",
   "main": "index.js",
   "prisma": {
     "seed": "node --require esbuild-register prisma/seed.ts"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "npx nodemon"
+    "start:dev": "npx nodemon",
+    "env": "cp .env.example .env"
   },
   "repository": {
     "type": "git",
