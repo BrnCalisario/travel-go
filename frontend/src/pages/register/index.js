@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Text, TextInput, StyleSheet, View, Button, TouchableOpacity } from "react-native"
 import styles from "./styles"
+import axios from 'axios';
 
 export default function RegisterPage(props) {
 
@@ -28,10 +29,10 @@ export default function RegisterPage(props) {
 
         try {
             const res = await axios.post(process.env.REACT_APP_BACKEND_PORT + "api/users/register/", registerData);
-            isCreated(true)
+            setIsCreated(true)
             props.navigation.navigate('login')
         } catch (error) {
-            isCreated(false)
+            setIsCreated(false)
         }
     })
 
@@ -79,6 +80,8 @@ export default function RegisterPage(props) {
                     style={styles.input}
                 />
             </View>
+
+            {badInput ? <Text>Empty Input</Text> : <></>}
 
             <View style={styles.button} >
                 <Button
