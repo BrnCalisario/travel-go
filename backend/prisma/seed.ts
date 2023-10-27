@@ -17,6 +17,17 @@ async function seed() {
 			});
 		})
 	);
+
+
+	await Promise.all(
+		getRoomTypes().map((room) => {
+// 			return db.room.create({
+//				data: {
+					
+// 				}
+// 			})
+		} )
+	)
 }
 
 try
@@ -43,4 +54,14 @@ function getAdmins(): Array<AdminUser> {
 			isAdmin: true,
 		},
 	];
+}
+
+
+function getRoomTypes() : Array<any> {
+	return [
+		{
+			name: "any",
+			description: "any"
+		}
+	]
 }
