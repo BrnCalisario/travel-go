@@ -2,7 +2,6 @@ import { TouchableOpacity } from "react-native";
 import { Text, TextInput, StyleSheet, View, Button } from "react-native";
 import { useState } from 'react';
 import styles from "./styles";
-import { Crypto } from "crypto-js";
 import axios from "axios";
 
 
@@ -44,7 +43,7 @@ export default function LoginPage(props) {
             <View style={styles.componentLogin}>
                 <Text>Email/Name</Text>
                 <TextInput
-                    onchangeText={e => setemail(e)}
+                    onchangeText={e => setEmail(e)}
                     style={styles.input}
                 />
             </View>
@@ -60,11 +59,15 @@ export default function LoginPage(props) {
                 </TouchableOpacity>
             </View>
 
+            {isInputEmpty ? <Text>Empty input(s)</Text> : <></>}
+
             <View style={styles.button}>
                 <Button
-                    onPress={() =>handleLogin()}
+                    onPress={() => handleLogin()}
                     title="Sing in"
                     color="#006EE4" />
+
+                {notFound ? <Text>User Not Found</Text> : <></>}
 
                 <TouchableOpacity onPress={() => handleLogin()}>
                     <Text>Create account</Text>

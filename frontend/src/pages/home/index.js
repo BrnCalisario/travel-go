@@ -31,9 +31,9 @@ export default function HomePage() {
     }, [])
 
     renderHotels = (() => {
-        return(
+        return (
             hotels.map((item, index) => {
-                <Card key={index} />
+                return (<Card key={index} hotel={item} />)
             })
         )
     })
