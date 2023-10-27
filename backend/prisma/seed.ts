@@ -1,4 +1,3 @@
-import { User } from "@prisma/client";
 import { db } from "../src/config/db.server";
 
 console.log("Seeding");
@@ -18,22 +17,26 @@ async function seed() {
 		})
 	);
 
+	await Promise.all(
+		getAmenities().map((am) => {
+			return db.amenity.create({
+				data: { amenity: am.name },
+			});
+		})
+	);
 
 	await Promise.all(
-		getRoomTypes().map((room) => {
-// 			return db.room.create({
-//				data: {
-					
-// 				}
-// 			})
-		} )
-	)
+		getRoomTypes().map((rt) => {
+			return db.roomType.create({
+				data: { type: rt.name, capacity: rt.capacity },
+			});
+		})
+	);
 }
 
-try
-{
-    seed();
-} catch { }
+try {
+	seed();
+} catch {}
 
 type AdminUser = {
 	email: string;
@@ -47,7 +50,8 @@ function getAdmins(): Array<AdminUser> {
 	return [
 		{
 			email: "admin@admin",
-			password:"$2a$12$mhrOIV4cljFznHFNSqy.8.tBYBAUeeUmJN.M5HGazDRurbmtTkljO",
+			password:
+				"$2a$12$mhrOIV4cljFznHFNSqy.8.tBYBAUeeUmJN.M5HGazDRurbmtTkljO",
 			fullName: "admin",
 			cpf: "cpf",
 			isAdmin: true,
@@ -55,12 +59,19 @@ function getAdmins(): Array<AdminUser> {
 	];
 }
 
-
-function getRoomTypes() : Array<any> {
+function getAmenities(): Array<{ name: string }> {
 	return [
-		{
-			name: "any",
-			description: "any"
-		}
-	]
+		{ name: "Free Wi-fi" },
+		{ name: "Pool" },
+		{ name: "Air conditioning" },
+	];
+}
+
+function getRoomTypes(): Array<{ name: string, capacity : number }> {
+	return [
+		{ name: "Big VIP", capacity : 8 },
+		{ name: "VIP", capacity : 4 },
+		{ name: "Big Normal", capacity : 6 },
+		{ name: "Normal", capacity : 4 },
+	];
 }

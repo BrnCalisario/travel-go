@@ -36,12 +36,13 @@ model Location {
 }
 
 model Hotel {
-  id         Int      @id @default(autoincrement())
-  hotelName  String
-  locationId Int
-  location   Location @relation(fields: [locationId], references: [id])
-  Rating     Rating[]
-  Room       Room[]
+  id             Int              @id @default(autoincrement())
+  hotelName      String
+  locationId     Int
+  location       Location         @relation(fields: [locationId], references: [id])
+  HotelAmenities HotelAmenities[]
+  Rating         Rating[]
+  Room           Room[]
 }
 
 model Rating {
@@ -53,22 +54,30 @@ model Rating {
 }
 
 model RoomType {
-  id        Int    @id @default(autoincrement())
-  type      String
-  capacitty Int
-  Room      Room[]
+  id       Int    @id @default(autoincrement())
+  type     String
+  capacity Int
+  Room     Room[]
 }
 
 model Room {
   id         Int      @id @default(autoincrement())
-  quantity   Int
   hotelId    Int
   roomTypeId Int
   hotel      Hotel    @relation(fields: [hotelId], references: [id])
   roomType   RoomType @relation(fields: [roomTypeId], references: [id])
 }
 
-model AmenityType {
-  id      Int    @id @default(autoincrement())
-  amenity String
+model Amenity {
+  id             Int              @id @default(autoincrement())
+  amenity        String
+  HotelAmenities HotelAmenities[]
+}
+
+model HotelAmenities {
+  id        Int     @id @default(autoincrement())
+  amenityId Int
+  hotelId   Int
+  amenity   Amenity @relation(fields: [amenityId], references: [id])
+  hotel     Hotel   @relation(fields: [hotelId], references: [id])
 }
