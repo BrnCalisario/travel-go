@@ -10,3 +10,9 @@ export interface RegisterDTO {
     password : string,
     cpf : string
 }
+
+export interface ValidateResponse {
+    isValid : boolean,
+    userId : number,
+    isAdmin : boolean
+}

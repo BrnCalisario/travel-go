@@ -3,7 +3,6 @@ import { TextInput, StyleSheet, View, Button } from "react-native";
 import CustomTextLOS from "../../components/CustomTextLOS";
 import { useState } from 'react';
 import styles from "./styles";
-import { Crypto } from "crypto-js";
 import axios from "axios";
 
 
@@ -45,7 +44,7 @@ export default function LoginPage(props) {
             <View style={styles.componentLogin}>
                 <CustomTextLOS>Email/Name</CustomTextLOS>
                 <TextInput
-                    onchangeText={e => setemail(e)}
+                    onchangeText={e => setEmail(e)}
                     style={styles.input}
                 />
             </View>
@@ -61,11 +60,19 @@ export default function LoginPage(props) {
                 </TouchableOpacity>
             </View>
 
+            {isInputEmpty ? <Text>Empty input(s)</Text> : <></>}
+
             <View style={styles.button}>
                 <Button
+<<<<<<< HEAD
                     onPress={() => props.navigation.navigate('home')}
+=======
+                    onPress={() => handleLogin()}
+>>>>>>> 11f1a3b924f638c80a902a357924e15f6fb75f60
                     title="Sing in"
                     color="#006EE4" />
+
+                {notFound ? <Text>User Not Found</Text> : <></>}
 
                 <TouchableOpacity onPress={() => handleLogin()}>
                     <CustomTextLOS>Create account</CustomTextLOS>

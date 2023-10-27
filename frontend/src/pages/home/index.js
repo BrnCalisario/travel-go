@@ -6,8 +6,38 @@ import CustomTextLOS from "../../components/CustomTextLOS";
 import NavBar from "../../components/navbar";
 import styles from "./styles";
 import Card from "../../components/card";
+import { useCallback, useEffect, useState } from "react";
+
 
 export default function HomePage() {
+
+
+    const [hotels, setHotels] = useState([]);
+
+
+    handleGetHotels = useCallback(async () => {
+        try {
+            const response = await axios.get(process.env.REACT_APP_BACKEND_PORT + 'hotels');
+            setHotels(response.data);
+            console.log(response.data);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    });
+
+    useEffect = (() => {
+        handleGetHotels();
+    }, [])
+
+    renderHotels = (() => {
+        return (
+            hotels.map((item, index) => {
+                return (<Card key={index} hotel={item} />)
+            })
+        )
+    })
+
     return (
         <>
             <NavBar />
@@ -87,10 +117,7 @@ export default function HomePage() {
                         </TouchableOpacity>
                     </View>
                 </View>
-
-                <Card />
-                <Card />
-                <Card />
+                {renderHotels}
             </View>
         </>
     )
