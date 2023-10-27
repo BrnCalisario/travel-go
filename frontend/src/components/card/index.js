@@ -1,7 +1,8 @@
 import styles from "./styles";
-import { View, Image, Text, Button } from "react-native";
+import { View, Image, Button } from "react-native";
 import { AiFillStar } from 'react-icons/ai';
 import { ImLocation } from 'react-icons/im';
+import CustomTextLOS from "../CustomTextLOS";
 
 export default function CardComp() {
     return (
@@ -24,16 +25,16 @@ export default function CardComp() {
                     <AiFillStar style={{
                         color: '#D9D9D9'
                     }} />
-                    <Text style={{
+                    <CustomTextLOS style={{
                         color: '#D9D9D9',
                         marginLeft: '4vw'
                     }}>
                         Hotel
-                    </Text>
+                    </CustomTextLOS>
                 </View>
-                <Text style={{ width: '95%' }}>
+                <CustomTextLOS style={{ width: '95%' }}>
                     Hotel Name
-                </Text>
+                </CustomTextLOS>
                 <View style={{
                     display: 'flex',
                     flexDirection: 'row',
@@ -44,45 +45,45 @@ export default function CardComp() {
                         display: 'flex',
                         flexDirection: 'row'
                     }}>
-                        <Text style={{
+                        <CustomTextLOS style={{
                             marginRight: '2vw'
                         }}>
                             9.1 - Excelent
-                        </Text>
-                        <Text style={{
+                        </CustomTextLOS>
+                        <CustomTextLOS style={{
                             color: '#D9D9D9',
                         }}>
                             (1983 avaliations)
-                        </Text>
+                        </CustomTextLOS>
                     </View>
                     <View style={{
                         display: 'flex',
                         flexDirection: 'row'
                     }}>
                         <ImLocation />
-                        <Text style={{
+                        <CustomTextLOS style={{
                             color: '#D9D9D9',
                         }}>
                             São José do Rio Preto
-                        </Text>
+                        </CustomTextLOS>
                     </View>
                 </View>
                 <View style={styles.greenCard}>
                     <View style={styles.priceText}>
-                        <Text style={{ marginBottom: 16 }}>
+                        <CustomTextLOS style={{ marginBottom: 16 }}>
                             Hyatt Hotels
-                        </Text>
-                        <Text style={{ color: '#005f00' }}>
+                        </CustomTextLOS>
+                        <CustomTextLOS style={{ color: '#005f00' }}>
                             R$ 348,00
-                        </Text>
+                        </CustomTextLOS>
                     </View>
                     <View>
-                        <Text style={{
+                        <CustomTextLOS style={{
                             marginBottom: 16,
                             color: '#005f00'
                         }}>
                             Include Breakfast
-                        </Text>
+                        </CustomTextLOS>
                         <Button
                             color='#028000'
                             title="See offer"
@@ -95,9 +96,9 @@ export default function CardComp() {
                     borderBottomLeftRadius: 10,
                     borderBottomRightRadius: 10,
                 }}>
-                    <Text>
+                    <CustomTextLOS>
                         Our lowets price: R$ 400
-                    </Text>
+                    </CustomTextLOS>
                 </View>
             </View>
         </>

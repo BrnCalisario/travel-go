@@ -1,10 +1,11 @@
 import { useState } from "react"
-import { Text, TextInput, StyleSheet, View, Button, TouchableOpacity } from "react-native"
+import { TextInput, StyleSheet, View, Button, TouchableOpacity } from "react-native"
+import CustomTextLOS from "../../components/CustomTextLOS";
 import styles from "./styles"
 
 export default function RegisterPage(props) {
 
-    const [email, setEmail] = useState();
+    const [email, setEmail] = useState(); 
     const [fullName, setFullName] = useState();
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
@@ -38,10 +39,10 @@ export default function RegisterPage(props) {
 
     return (
         <View style={styles.screen}>
-            <Text style={styles.textRegister}>Register</Text>
+            <CustomTextLOS style={styles.textRegister}>Register</CustomTextLOS>
 
             <View style={styles.componentRegister}>
-                <Text>Email</Text>
+                <CustomTextLOS>Email</CustomTextLOS>
                 <TextInput
                     onChangeText={e => setEmail(e)}
                     style={styles.input}
@@ -49,7 +50,7 @@ export default function RegisterPage(props) {
             </View>
 
             <View style={styles.componentRegister}>
-                <Text>Full Name</Text>
+                <CustomTextLOS>Full Name</CustomTextLOS>
                 <TextInput
                     onChangeText={e => setFullName(e)}
                     style={styles.input}
@@ -57,7 +58,7 @@ export default function RegisterPage(props) {
             </View>
 
             <View style={styles.componentRegister}>
-                <Text>CPF</Text>
+                <CustomTextLOS>CPF</CustomTextLOS>
                 <TextInput
                     onChangeText={e => setCPF(e)}
                     style={styles.input}
@@ -65,7 +66,7 @@ export default function RegisterPage(props) {
             </View>
 
             <View style={styles.componentRegister}>
-                <Text>Password</Text>
+                <CustomTextLOS>Password</CustomTextLOS>
                 <TextInput
                     onChangeText={e => setPassword(e)}
                     style={styles.input}
@@ -73,7 +74,7 @@ export default function RegisterPage(props) {
             </View>
 
             <View style={styles.componentRegister}>
-                <Text>Confirmed the password</Text>
+                <CustomTextLOS>Confirmed the password</CustomTextLOS>
                 <TextInput
                     onChangeText={e => setConfirmPassword(e)}
                     style={styles.input}

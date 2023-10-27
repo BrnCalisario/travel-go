@@ -1,5 +1,6 @@
 import { Text, View, StyleSheet } from "react-native";
 import { FaCircle } from 'react-icons/fa';
+import CustomTextLOS from "../CustomTextLOS";
 
 import styles from './styles';
 
@@ -7,15 +8,15 @@ export default function LogoComp() {
     return (
         <View style={styles.component}>
             <View style={styles.logo}>
-                <Text style={styles.firstSyllable}>
+                <CustomTextLOS style={styles.firstSyllable}>
                     Tra
-                </Text>
-                <Text style={styles.secondSyllable}>
+                </CustomTextLOS>
+                <CustomTextLOS style={styles.secondSyllable}>
                     vel
-                </Text>
-                <Text style={styles.thirdSyllable}>
+                </CustomTextLOS>
+                <CustomTextLOS style={styles.thirdSyllable}>
                     go
-                </Text>
+                </CustomTextLOS>
             </View>
             <View style={styles.threeLittleBalls}>
                 <FaCircle style={styles.firstBall} />

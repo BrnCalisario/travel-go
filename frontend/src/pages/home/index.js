@@ -1,8 +1,8 @@
-import { Text, View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import { BiSearch } from 'react-icons/bi';
 import { BsCalendarEvent } from "react-icons/bs";
 import { LiaBedSolid } from 'react-icons/lia';
-import LogoComp from "../../components/logo";
+import CustomTextLOS from "../../components/CustomTextLOS";
 import NavBar from "../../components/navbar";
 import styles from "./styles";
 import Card from "../../components/card";
@@ -22,9 +22,9 @@ export default function HomePage() {
                                 }} />
                             </View>
                             <View>
-                                <Text>
+                                <CustomTextLOS>
                                     To
-                                </Text>
+                                </CustomTextLOS>
                                 <TextInput
                                     placeholder="Brazil"
                                 />
@@ -40,9 +40,9 @@ export default function HomePage() {
                                 borderRightWidth: 2,
                                 borderColor: 'rgba(0, 0, 0, 0.1)',
                             }}>
-                                <Text>
+                                <CustomTextLOS>
                                     In/Out
-                                </Text>
+                                </CustomTextLOS>
                                 <TextInput
                                     placeholder="Select date"
                                 />
@@ -53,9 +53,9 @@ export default function HomePage() {
                                 marginLeft: 8
                             }} />
                             <View>
-                                <Text>
+                                <CustomTextLOS>
                                     Guest and rooms
-                                </Text>
+                                </CustomTextLOS>
                                 <TextInput
                                     placeholder="3 guests, 1 room"
                                 />
@@ -71,9 +71,9 @@ export default function HomePage() {
                             borderRightWidth: 2,
                             borderColor: 'rgba(0, 0, 0, 0.1)',
                         }}>
-                            <Text>
+                            <CustomTextLOS>
                                 Order
-                            </Text>
+                            </CustomTextLOS>
                         </TouchableOpacity>
                         <TouchableOpacity style={{
                             width: '50%',
@@ -81,9 +81,9 @@ export default function HomePage() {
                             height: '100%',
                             justifyContent: 'center',
                         }}>
-                            <Text>
+                            <CustomTextLOS>
                                 Filter
-                            </Text>
+                            </CustomTextLOS>
                         </TouchableOpacity>
                     </View>
                 </View>

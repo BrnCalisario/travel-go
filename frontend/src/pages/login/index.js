@@ -1,5 +1,6 @@
 import { TouchableOpacity } from "react-native";
-import { Text, TextInput, StyleSheet, View, Button } from "react-native";
+import { TextInput, StyleSheet, View, Button } from "react-native";
+import CustomTextLOS from "../../components/CustomTextLOS";
 import { useState } from 'react';
 import styles from "./styles";
 import { Crypto } from "crypto-js";
@@ -39,10 +40,10 @@ export default function LoginPage(props) {
 
     return (
         <View style={styles.screen}>
-            <Text style={styles.textLogin}>Login</Text>
+            <CustomTextLOS style={styles.textLogin}>Login</CustomTextLOS>
 
             <View style={styles.componentLogin}>
-                <Text>Email/Name</Text>
+                <CustomTextLOS>Email/Name</CustomTextLOS>
                 <TextInput
                     onchangeText={e => setemail(e)}
                     style={styles.input}
@@ -50,24 +51,24 @@ export default function LoginPage(props) {
             </View>
 
             <View style={styles.componentLogin}>
-                <Text>Password</Text>
+                <CustomTextLOS>Password</CustomTextLOS>
                 <TextInput
                     onchangeText={e => setPassword(e)}
                     style={styles.input}
                 />
                 <TouchableOpacity>
-                    <Text>Don't you remember your password?</Text>
+                    <CustomTextLOS>Don't you remember your password?</CustomTextLOS>
                 </TouchableOpacity>
             </View>
 
             <View style={styles.button}>
                 <Button
-                    onPress={() =>handleLogin()}
+                    onPress={() => props.navigation.navigate('home')}
                     title="Sing in"
                     color="#006EE4" />
 
                 <TouchableOpacity onPress={() => handleLogin()}>
-                    <Text>Create account</Text>
+                    <CustomTextLOS>Create account</CustomTextLOS>
                 </TouchableOpacity>
             </View>
         </View>
