@@ -3,7 +3,7 @@ import { View, Image, Text, Button } from "react-native";
 import { AiFillStar } from 'react-icons/ai';
 import { ImLocation } from 'react-icons/im';
 
-export default function CardComp() {
+export default function CardComp({ hotel }) {
     return (
         <>
             <View style={styles.card}>
@@ -14,7 +14,7 @@ export default function CardComp() {
                         borderTopLeftRadius: 10,
                         borderTopRightRadius: 10,
                     }}
-                    source={require("/assets/viagem.png")}
+                    source={require("/assets/viagem.png")} // TODO: put hotel's img
                 />
                 <View style={styles.stars}>
                     <AiFillStar />
@@ -32,7 +32,7 @@ export default function CardComp() {
                     </Text>
                 </View>
                 <Text style={{ width: '95%' }}>
-                    Hotel Name
+                    {hotel.name}
                 </Text>
                 <View style={{
                     display: 'flex',
@@ -47,12 +47,12 @@ export default function CardComp() {
                         <Text style={{
                             marginRight: '2vw'
                         }}>
-                            9.1 - Excelent
+                            {hotel.score}
                         </Text>
                         <Text style={{
                             color: '#D9D9D9',
                         }}>
-                            (1983 avaliations)
+                            ({hotel.avaliations})
                         </Text>
                     </View>
                     <View style={{
@@ -63,17 +63,17 @@ export default function CardComp() {
                         <Text style={{
                             color: '#D9D9D9',
                         }}>
-                            São José do Rio Preto
+                            {hotel.location}
                         </Text>
                     </View>
                 </View>
                 <View style={styles.greenCard}>
                     <View style={styles.priceText}>
                         <Text style={{ marginBottom: 16 }}>
-                            Hyatt Hotels
+                            {hotel.company}
                         </Text>
                         <Text style={{ color: '#005f00' }}>
-                            R$ 348,00
+                            {hotel.price}
                         </Text>
                     </View>
                     <View>
@@ -81,7 +81,7 @@ export default function CardComp() {
                             marginBottom: 16,
                             color: '#005f00'
                         }}>
-                            Include Breakfast
+                            {hotel.includes}
                         </Text>
                         <Button
                             color='#028000'
@@ -96,7 +96,7 @@ export default function CardComp() {
                     borderBottomRightRadius: 10,
                 }}>
                     <Text>
-                        Our lowets price: R$ 400
+                        {hotel.lowestPrice}
                     </Text>
                 </View>
             </View>
