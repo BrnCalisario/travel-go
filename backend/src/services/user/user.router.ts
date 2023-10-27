@@ -44,7 +44,7 @@ userRouter.post("/login", async (req: Request, res: Response) => {
         if(!validation.isValid)
             return res.status(401).json({ message: "Bad Auth"})
 
-		const token = await AuthService.generateToken(validation.userId)
+		const token = await AuthService.generateToken(validation.userId, validation.isAdmin)
 
         return res.status(200).json({ message : 'Authenticated', token })
 

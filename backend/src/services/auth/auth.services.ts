@@ -1,12 +1,7 @@
 import bcrypt from "bcryptjs"
 import jwt, { Secret, JwtPayload } from "jsonwebtoken";
+import { ValidateResponse } from "../../models/user.model";
 import * as UserService from "../user/user.service"
-
-interface ValidateResponse {
-    isValid : boolean,
-    userId : number,
-    isAdmin : boolean
-}
 
 const SECRET_KEY: string | undefined = process.env.JWT_SECRET
 
