@@ -1,13 +1,13 @@
 import { User } from "@prisma/client";
 import express, { Request, Response } from "express";
-import { auth } from "../../middleware/auth.middleware";
+import { auth, authAdmin } from "../../middleware/auth.middleware";
 import * as AuthService from "../auth/auth.services";
 
 import * as UserService from "./user.service";
 
 export const userRouter = express.Router();
  
-userRouter.get("/", auth, async (req: Request, res: Response) => {
+userRouter.get("/", authAdmin, async (req: Request, res: Response) => {
 	try {
 		const users = await UserService.getUsers();
 		return res.status(200).json(users);

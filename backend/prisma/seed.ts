@@ -47,8 +47,7 @@ function getAdmins(): Array<AdminUser> {
 	return [
 		{
 			email: "admin@admin",
-			password:
-				"$2a$12$mhrOIV4cljFznHFNSqy.8.tBYBAUeeUmJN.M5HGazDRurbmtTkljO",
+			password:"$2a$12$mhrOIV4cljFznHFNSqy.8.tBYBAUeeUmJN.M5HGazDRurbmtTkljO",
 			fullName: "admin",
 			cpf: "cpf",
 			isAdmin: true,

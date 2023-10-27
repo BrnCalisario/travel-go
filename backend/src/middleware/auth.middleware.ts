@@ -32,19 +32,23 @@ export const auth = async (req : Request, res : Response, next : NextFunction) =
 
 export const authAdmin = async (req : Request, res : Response, next : NextFunction) => {
     try {
-        const token = req.header('Authorization')?.replace('Bearer', '')
+        const token = req.header('Authorization')?.replace('Bearer ', '')
         
         if(!token)
-        throw new Error()
+            throw new Error()
         
         const decoded = jwt.verify(token, SECRET_KEY) as ValidateResponse
         
         if(!decoded.isAdmin)
-        return res.status(401).send("Not Authorized")
-        
+        {
+            return res.status(401).send("Not Authorized")
+        }
         
         (req as CustomRequest).token = decoded
-    } catch {
+
+        next()
+    } catch (error: any) {
+        console.log(error)
         res.status(401).send("Bad Auth")
     }
 }
