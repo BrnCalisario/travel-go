@@ -1,9 +1,11 @@
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import { dataURItoBlob } from '../../config/utils';
 import * as ImagePicker from 'expo-image-picker';
 import axios from "axios";
-import { TextInput } from "react-native-gesture-handler";
+import { TextInput, View, Button, Image } from "react-native";
 import CustomTextLOS from "../../components/CustomTextLOS";
+import { useCallback } from "react";
+import styles from './styles';
 
 
 export default function registerHotel() {
@@ -19,8 +21,7 @@ export default function registerHotel() {
     const [hotelImage, setHotelImage] = useState();
 
 
-
-    const handleRegisterHotel = (async () => {
+    const handleRegisterHotel = useCallback(async () => {
 
         const formData = new FormData();
 
@@ -65,6 +66,11 @@ export default function registerHotel() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Button title="Pick an image from camera roll" onPress={pickImage} />
+
+            {hotelImage && <Image source={{ uri: hotelImage.uri }} style={{ width: 200, height: 200 }} />}
+
+
+
 
             <View style={styles.componentRegister}>
                 <CustomTextLOS>Name</CustomTextLOS>
@@ -129,7 +135,6 @@ export default function registerHotel() {
                 />
             </View>
 
-            {image && <Image source={{ uri: image.uri }} style={{ width: 200, height: 200 }} />}
             <Button title="send" onPress={handleRegisterHotel} />
         </View>
     );
