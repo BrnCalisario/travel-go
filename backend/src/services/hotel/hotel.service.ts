@@ -10,3 +10,20 @@ export const getHotels = async (): Promise<HotelDTO[]> => {
         }
     },)
 }
+
+export const createHotel = async ( hotel : HotelDTO ) : Promise<number> => {
+    return db.hotel.create({
+        data : {
+            hotelName: hotel.hotelName,
+            image: hotel.image,
+            imageKey : hotel.imageKey,
+            cep: '',
+            number: '',
+            state: '',
+            city: ''
+        },
+        select: {
+            id: true
+        }
+    }).then(res => res.id)
+}

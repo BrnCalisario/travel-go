@@ -1,4 +1,6 @@
 export interface HotelDTO
 {
-    hotelName : string
+    hotelName : string,
+    image? : string,
+    imageKey? : string,
 }
