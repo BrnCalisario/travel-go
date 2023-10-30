@@ -64,11 +64,7 @@ export default function LoginPage(props) {
 
             <View style={styles.button}>
                 <Button
-<<<<<<< HEAD
-                    onPress={() => props.navigation.navigate('home')}
-=======
                     onPress={() => handleLogin()}
->>>>>>> 11f1a3b924f638c80a902a357924e15f6fb75f60
                     title="Sing in"
                     color="#006EE4" />
 
