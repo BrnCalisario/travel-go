@@ -39,8 +39,8 @@ model Location {
 model Hotel {
   id             Int              @id @default(autoincrement())
   hotelName      String
-  image          String
-  imageKey       String
+  image          String?
+  imageKey       String?
   locationId     Int
   location       Location         @relation(fields: [locationId], references: [id])
   HotelAmenities HotelAmenities[]
