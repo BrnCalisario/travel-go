@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { dataURItoBlob } from '../../config/utils';
 import * as ImagePicker from 'expo-image-picker';
 import axios from "axios";
@@ -7,7 +7,7 @@ import CustomTextLOS from "../../components/CustomTextLOS";
 import { useCallback } from "react";
 import styles from './styles';
 import useCep from '../../hooks/useCep'
-
+import amenitiesDropDown from '../../components/amenitiesDropDown'
 
 export default function registerHotel() {
 
@@ -17,7 +17,6 @@ export default function registerHotel() {
 
     const [hotelCep, setHotelCep] = useState();
     const { rua, cidade, estado, handleRequest } = useCep(hotelCep);
-
 
     const handleRegisterHotel = useCallback(async () => {
 
@@ -40,7 +39,6 @@ export default function registerHotel() {
         }
 
     })
-
 
     const pickImage = async () => {
 
@@ -105,6 +103,8 @@ export default function registerHotel() {
                     style={styles.input}
                 />
             </View>
+
+            {amenitiesDropDown}
 
             <Button title="send" onPress={handleRegisterHotel} />
         </View>
