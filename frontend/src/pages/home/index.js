@@ -7,6 +7,7 @@ import NavBar from "../../components/navbar";
 import styles from "./styles";
 import Card from "../../components/card";
 import { useCallback, useEffect, useState } from "react";
+import Modal from '../../components/modal';
 
 
 export default function HomePage() {
@@ -15,28 +16,28 @@ export default function HomePage() {
     const [hotels, setHotels] = useState([]);
 
 
-    handleGetHotels = useCallback(async () => {
-        try {
-            const response = await axios.get(process.env.REACT_APP_BACKEND_PORT + 'hotels');
-            setHotels(response.data);
-            console.log(response.data);
-        }
-        catch (error) {
-            console.log(error);
-        }
-    });
+    // handleGetHotels = useCallback(async () => {
+    //     try {
+    //         const response = await axios.get(process.env.REACT_APP_BACKEND_PORT + 'hotels');
+    //         setHotels(response.data);
+    //         console.log(response.data);
+    //     }
+    //     catch (error) {
+    //         console.log(error);
+    //     }
+    // });
 
-    useEffect = (() => {
-        handleGetHotels();
-    }, [])
+    // useEffect = (() => {
+    //     handleGetHotels();
+    // }, [])
 
-    renderHotels = (() => {
-        return (
-            hotels.map((item, index) => {
-                return (<Card key={index} hotel={item} />)
-            })
-        )
-    })
+    // renderHotels = (() => {
+    //     return (
+    //         hotels.map((item, index) => {
+    //             return (<Card key={index} hotel={item} />)
+    //         })
+    //     )
+    // })
 
     return (
         <>
@@ -117,7 +118,8 @@ export default function HomePage() {
                         </TouchableOpacity>
                     </View>
                 </View>
-                {renderHotels}
+                {/* {renderHotels} */}
+                <Card />
             </View>
         </>
     )
