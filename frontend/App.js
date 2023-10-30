@@ -29,20 +29,19 @@ export default function App() {
             }}
             name="home" component={HomePage} />
 
+            <Stack.Screen
+              options={{
+                headerTransparent: true,
+                headerShown: false
+              }}
+              name="account" component={AccountPage} />
+
           <Stack.Screen
             options={{
               headerTransparent: true,
               headerShown: false
             }}
             name="register" component={RegisterPage} />
-
-          <Stack.Screen
-            options={{
-              headerTransparent: true,
-              headerShown: false
-            }}
-            name="account" component={AccountPage} />
-
         </Stack.Navigator>
       </NavigationContainer>
     </>
