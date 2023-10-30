@@ -8,12 +8,13 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
-  fullName String
-  cpf      String
-  password String
-  isAdmin  Boolean
+  id          Int           @id @default(autoincrement())
+  email       String        @unique
+  fullName    String
+  cpf         String
+  password    String
+  isAdmin     Boolean
+  Reservation Reservation[]
 }
 
 model City {
@@ -46,11 +47,12 @@ model Hotel {
 }
 
 model Rating {
-  id      Int    @id @default(autoincrement())
+  id      Int      @id @default(autoincrement())
   review  String
   Rating  Float
+  date    DateTime
   hotelId Int
-  hotel   Hotel  @relation(fields: [hotelId], references: [id])
+  hotel   Hotel    @relation(fields: [hotelId], references: [id])
 }
 
 model RoomType {
@@ -61,11 +63,12 @@ model RoomType {
 }
 
 model Room {
-  id         Int      @id @default(autoincrement())
-  hotelId    Int
-  roomTypeId Int
-  hotel      Hotel    @relation(fields: [hotelId], references: [id])
-  roomType   RoomType @relation(fields: [roomTypeId], references: [id])
+  id          Int           @id @default(autoincrement())
+  hotelId     Int
+  roomTypeId  Int
+  hotel       Hotel         @relation(fields: [hotelId], references: [id])
+  roomType    RoomType      @relation(fields: [roomTypeId], references: [id])
+  Reservation Reservation[]
 }
 
 model Amenity {
@@ -80,4 +83,14 @@ model HotelAmenities {
   hotelId   Int
   amenity   Amenity @relation(fields: [amenityId], references: [id])
   hotel     Hotel   @relation(fields: [hotelId], references: [id])
+}
+
+model Reservation {
+  id       Int      @id @default(autoincrement())
+  checkIn  DateTime
+  checkOut DateTime
+  roomId   Int
+  userId   Int
+  user     User     @relation(fields: [userId], references: [id])
+  room     Room     @relation(fields: [roomId], references: [id])
 }
