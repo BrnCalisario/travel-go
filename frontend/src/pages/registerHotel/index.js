@@ -70,51 +70,10 @@ export default function registerHotel() {
             {hotelImage && <Image source={{ uri: hotelImage.uri }} style={{ width: 200, height: 200 }} />}
 
 
-
-
             <View style={styles.componentRegister}>
                 <CustomTextLOS>Name</CustomTextLOS>
                 <TextInput
                     onChangeText={e => setHotelName(e)}
-                    style={styles.input}
-                />
-            </View>
-
-            <View style={styles.componentRegister}>
-                <CustomTextLOS>Location</CustomTextLOS>
-                <TextInput
-                    onChangeText={e => setHotelLocation(e)}
-                    style={styles.input}
-                />
-            </View>
-
-            <View style={styles.componentRegister}>
-                <CustomTextLOS>Price</CustomTextLOS>
-                <TextInput
-                    onChangeText={e => setHotelPrice(e)}
-                    style={styles.input}
-                />
-            </View>
-
-            <View style={styles.componentRegister}>
-                <CustomTextLOS>Score</CustomTextLOS>
-                <TextInput
-                    onChangeText={e => setHotelScore(e)}
-                    style={styles.input}
-                />
-            </View>
-            <View style={styles.componentRegister}>
-                <CustomTextLOS>Avaliations</CustomTextLOS>
-                <TextInput
-                    onChangeText={e => setHotelAvaliations(e)}
-                    style={styles.input}
-                />
-            </View>
-
-            <View style={styles.componentRegister}>
-                <CustomTextLOS>Company</CustomTextLOS>
-                <TextInput
-                    onChangeText={e => setHotelCompany(e)}
                     style={styles.input}
                 />
             </View>
@@ -129,6 +88,22 @@ export default function registerHotel() {
 
             <View style={styles.componentRegister}>
                 <CustomTextLOS>Includes</CustomTextLOS>
+                <TextInput
+                    onChangeText={e => setHotelIncludes(e)}
+                    style={styles.input}
+                />
+            </View>
+
+            <View style={styles.componentRegister}>
+                <CustomTextLOS>CEP</CustomTextLOS>
+                <TextInput
+                    onChangeText={e => setHotelIncludes(e)}
+                    style={styles.input}
+                />
+            </View>
+
+            <View style={styles.componentRegister}>
+                <CustomTextLOS>Amenity</CustomTextLOS>
                 <TextInput
                     onChangeText={e => setHotelIncludes(e)}
                     style={styles.input}

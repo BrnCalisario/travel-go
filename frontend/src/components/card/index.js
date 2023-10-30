@@ -1,8 +1,9 @@
 import styles from "./styles";
-import { View, Image, Button } from "react-native";
+import { View, Image, Button, Text } from "react-native";
 import { AiFillStar } from 'react-icons/ai';
 import { ImLocation } from 'react-icons/im';
 import CustomTextLOS from "../CustomTextLOS";
+import Modal from "../modal";
 
 export default function CardComp({ hotel }) {
     return (
@@ -33,7 +34,7 @@ export default function CardComp({ hotel }) {
                     </CustomTextLOS>
                 </View>
                 <Text style={{ width: '95%' }}>
-                    {hotel.name}
+                    hotel.name
                 </Text>
                 <View style={{
                     display: 'flex',
@@ -48,12 +49,12 @@ export default function CardComp({ hotel }) {
                         <CustomTextLOS style={{
                             marginRight: '2vw'
                         }}>
-                            {hotel.score}
+                            hotel.score
                         </CustomTextLOS>
                         <Text style={{
                             color: '#D9D9D9',
                         }}>
-                            ({hotel.avaliations})
+                            hotel.avaliations
                         </Text>
                     </View>
                     <View style={{
@@ -64,17 +65,17 @@ export default function CardComp({ hotel }) {
                         <CustomTextLOS style={{
                             color: '#D9D9D9',
                         }}>
-                            {hotel.location}
+                            hotel.location
                         </CustomTextLOS>
                     </View>
                 </View>
                 <View style={styles.greenCard}>
                     <View style={styles.priceText}>
                         <Text style={{ marginBottom: 16 }}>
-                            {hotel.company}
+                            hotel.company
                         </Text>
                         <Text style={{ color: '#005f00' }}>
-                            {hotel.price}
+                            hotel.price
                         </Text>
                     </View>
                     <View>
@@ -82,12 +83,13 @@ export default function CardComp({ hotel }) {
                             marginBottom: 16,
                             color: '#005f00'
                         }}>
-                            {hotel.includes}
+                            hotel.includes
                         </CustomTextLOS>
-                        <Button
+                        {/* <Button
                             color='#028000'
                             title="See offer"
-                        />
+                        /> */}
+                        <Modal />
                     </View>
                 </View>
                 <View style={{
@@ -97,7 +99,7 @@ export default function CardComp({ hotel }) {
                     borderBottomRightRadius: 10,
                 }}>
                     <Text>
-                        {hotel.lowestPrice}
+                        hotel.lowestPrice
                     </Text>
                 </View>
             </View>
