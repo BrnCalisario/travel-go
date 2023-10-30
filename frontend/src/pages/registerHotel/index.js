@@ -6,19 +6,17 @@ import { TextInput, View, Button, Image } from "react-native";
 import CustomTextLOS from "../../components/CustomTextLOS";
 import { useCallback } from "react";
 import styles from './styles';
+import useCep from '../../hooks/useCep'
 
 
 export default function registerHotel() {
 
     const [hotelName, setHotelName] = useState();
-    const [hotelLocation, setHotelLocation] = useState();
-    const [hotelPrice, setHotelPrice] = useState();
-    const [hotelScore, setHotelScore] = useState();
-    const [hotelAvaliations, setHotelAvaliations] = useState();
-    const [hotelCompany, setHotelCompany] = useState();
-    const [hotelIncludes, setHotelIncludes] = useState();
-    const [hotelLowestPrice, setHotelLowestPrice] = useState();
+    const [hotelNumber, setHotelNumber] = useState();
     const [hotelImage, setHotelImage] = useState();
+
+    const [hotelCep, setHotelCep] = useState();
+    const { rua, cidade, estado, handleRequest } = useCep(hotelCep);
 
 
     const handleRegisterHotel = useCallback(async () => {
@@ -26,13 +24,9 @@ export default function registerHotel() {
         const formData = new FormData();
 
         formData.append('Name', hotelName);
-        formData.append('Location', hotelLocation);
-        formData.append('Price', hotelPrice);
-        formData.append("Score", hotelScore);
-        formData.append("Avaliations", hotelAvaliations);
-        formData.append("Company", hotelCompany);
-        formData.append("Includes", hotelIncludes);
-        formData.append("LowestPrice", hotelLowestPrice);
+        formData.append('CEP', hotelCep);
+        formData.append('State', estado);
+        formData.append('City', cidade);
         formData.append("Image", dataURItoBlob(hotelImage.uri));
 
         try {
@@ -69,9 +63,6 @@ export default function registerHotel() {
 
             {hotelImage && <Image source={{ uri: hotelImage.uri }} style={{ width: 200, height: 200 }} />}
 
-
-
-
             <View style={styles.componentRegister}>
                 <CustomTextLOS>Name</CustomTextLOS>
                 <TextInput
@@ -81,56 +72,36 @@ export default function registerHotel() {
             </View>
 
             <View style={styles.componentRegister}>
-                <CustomTextLOS>Location</CustomTextLOS>
+                <CustomTextLOS>CEP</CustomTextLOS>
                 <TextInput
-                    onChangeText={e => setHotelLocation(e)}
+                    onChangeText={e => setHotelCep(e)}
+                    onBlur={() => handleRequest()}
                     style={styles.input}
                 />
             </View>
 
             <View style={styles.componentRegister}>
-                <CustomTextLOS>Price</CustomTextLOS>
+                <CustomTextLOS>City</CustomTextLOS>
                 <TextInput
-                    onChangeText={e => setHotelPrice(e)}
+                    value={cidade}
+                    editable={false}
+                    style={styles.input}
+                />
+            </View>
+            
+            <View style={styles.componentRegister}>
+                <CustomTextLOS>State</CustomTextLOS>
+                <TextInput
+                    value={estado}
+                    editable={false}
                     style={styles.input}
                 />
             </View>
 
             <View style={styles.componentRegister}>
-                <CustomTextLOS>Score</CustomTextLOS>
+                <CustomTextLOS>Number</CustomTextLOS>
                 <TextInput
-                    onChangeText={e => setHotelScore(e)}
-                    style={styles.input}
-                />
-            </View>
-            <View style={styles.componentRegister}>
-                <CustomTextLOS>Avaliations</CustomTextLOS>
-                <TextInput
-                    onChangeText={e => setHotelAvaliations(e)}
-                    style={styles.input}
-                />
-            </View>
-
-            <View style={styles.componentRegister}>
-                <CustomTextLOS>Company</CustomTextLOS>
-                <TextInput
-                    onChangeText={e => setHotelCompany(e)}
-                    style={styles.input}
-                />
-            </View>
-
-            <View style={styles.componentRegister}>
-                <CustomTextLOS>LowestPrice</CustomTextLOS>
-                <TextInput
-                    onChangeText={e => setHotelLowestPrice(e)}
-                    style={styles.input}
-                />
-            </View>
-
-            <View style={styles.componentRegister}>
-                <CustomTextLOS>Includes</CustomTextLOS>
-                <TextInput
-                    onChangeText={e => setHotelIncludes(e)}
+                    onChangeText={e => setHotelNumber(e)}
                     style={styles.input}
                 />
             </View>
