@@ -17,32 +17,15 @@ model User {
   Reservation Reservation[]
 }
 
-model City {
-  id       Int        @id @default(autoincrement())
-  country  String
-  state    String
-  city     String
-  Location Location[]
-}
-
-model Location {
-  id       Int     @id @default(autoincrement())
-  cep      String
-  street   String
-  Number   String
-  District String
-  cityId   Int
-  Hotel    Hotel[]
-  city     City    @relation(fields: [cityId], references: [id])
-}
-
 model Hotel {
   id             Int              @id @default(autoincrement())
   hotelName      String
+  cep            String
+  Number         String
+  state          String
+  city           String
   image          String
   imageKey       String
-  locationId     Int
-  location       Location         @relation(fields: [locationId], references: [id])
   HotelAmenities HotelAmenities[]
   Rating         Rating[]
   Room           Room[]
