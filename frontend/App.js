@@ -6,14 +6,22 @@ import RegisterPage from './src/pages/register';
 import HomePage from './src/pages/home';
 import AccountPage from './src/pages/account';
 import GlobalStyles from './assets/fonts';
+import registerHotel from './src/pages/registerHotel';
 
 export default function App() {
   const Stack = createStackNavigator();
   return (
-      <>
+    <>
       <GlobalStyles />
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen
+            options={{
+              headerTransparent: true,
+              headerShown: false
+            }}
+            name="registerHotel" component={registerHotel} />
+
           <Stack.Screen
             options={{
               headerTransparent: true,
@@ -29,12 +37,12 @@ export default function App() {
             }}
             name="home" component={HomePage} />
 
-            <Stack.Screen
-              options={{
-                headerTransparent: true,
-                headerShown: false
-              }}
-              name="account" component={AccountPage} />
+          <Stack.Screen
+            options={{
+              headerTransparent: true,
+              headerShown: false
+            }}
+            name="account" component={AccountPage} />
 
           <Stack.Screen
             options={{

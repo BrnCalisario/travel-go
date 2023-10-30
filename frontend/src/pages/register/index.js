@@ -37,7 +37,6 @@ export default function RegisterPage(props) {
         }
     })
 
-
     return (
         <View style={styles.screen}>
             <CustomTextLOS style={styles.textRegister}>Register</CustomTextLOS>
