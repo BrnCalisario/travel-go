@@ -4,6 +4,7 @@ import { AiFillStar } from 'react-icons/ai';
 import { ImLocation } from 'react-icons/im';
 import CustomTextLOS from "../CustomTextLOS";
 import Modal from "../modal";
+import Dropdown from '../dropdown';
 
 export default function CardComp({ hotel }) {
     return (
@@ -102,6 +103,7 @@ export default function CardComp({ hotel }) {
                         hotel.lowestPrice
                     </Text>
                 </View>
+                {/* <Dropdown /> */}
             </View>
         </>
     )

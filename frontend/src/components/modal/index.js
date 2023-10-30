@@ -19,7 +19,7 @@ const App = () => {
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <CustomTextLOS style={styles.modalText}>
-                            <Dropdown />
+                            {/* <Dropdown /> */}
                         </CustomTextLOS>
                         <Pressable
                             style={[styles.button, styles.buttonClose]}

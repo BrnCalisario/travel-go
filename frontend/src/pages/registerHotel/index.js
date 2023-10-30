@@ -63,10 +63,6 @@ export default function registerHotel() {
 
             {hotelImage && <Image source={{ uri: hotelImage.uri }} style={{ width: 200, height: 200 }} />}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 9dc7a48d0a9321aa7224b90399342b35d81b73d1
             <View style={styles.componentRegister}>
                 <CustomTextLOS>Name</CustomTextLOS>
                 <TextInput
@@ -76,26 +72,15 @@ export default function registerHotel() {
             </View>
 
             <View style={styles.componentRegister}>
-<<<<<<< HEAD
-                <CustomTextLOS>LowestPrice</CustomTextLOS>
-                <TextInput
-                    onChangeText={e => setHotelLowestPrice(e)}
-=======
                 <CustomTextLOS>CEP</CustomTextLOS>
                 <TextInput
                     onChangeText={e => setHotelCep(e)}
                     onBlur={() => handleRequest()}
->>>>>>> 9dc7a48d0a9321aa7224b90399342b35d81b73d1
                     style={styles.input}
                 />
             </View>
 
             <View style={styles.componentRegister}>
-<<<<<<< HEAD
-                <CustomTextLOS>Includes</CustomTextLOS>
-                <TextInput
-                    onChangeText={e => setHotelIncludes(e)}
-=======
                 <CustomTextLOS>City</CustomTextLOS>
                 <TextInput
                     value={cidade}
@@ -117,7 +102,6 @@ export default function registerHotel() {
                 <CustomTextLOS>Number</CustomTextLOS>
                 <TextInput
                     onChangeText={e => setHotelNumber(e)}
->>>>>>> 9dc7a48d0a9321aa7224b90399342b35d81b73d1
                     style={styles.input}
                 />
             </View>
