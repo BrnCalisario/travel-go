@@ -1,8 +1,11 @@
 export interface HotelDTO
 {
     hotelName : string,
-    image? : string,
-    imageKey? : string,
+    cep : string,
+    number : string,
+    state : string,
+    city : string,
+    amenities : number[]
 }
 
 export interface AmenityDTO
