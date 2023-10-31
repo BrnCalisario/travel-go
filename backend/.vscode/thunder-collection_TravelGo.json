@@ -1,49 +1,56 @@
 {
     "client": "Thunder Client",
     "collectionName": "TravelGo",
-    "dateExported": "2023-10-31T17:34:41.746Z",
+    "dateExported": "2023-10-31T19:20:34.572Z",
     "version": "1.1",
     "folders": [
         {
-            "_id": "f349f806-7cbe-4804-92b2-5855747b0519",
+            "_id": "7ba9c472-afd0-4995-910d-5b705eba2099",
             "name": "User",
             "containerId": "",
-            "created": "2023-10-31T17:02:26.109Z",
+            "created": "2023-10-31T17:38:53.563Z",
             "sortNum": 10000
         },
         {
-            "_id": "38b156a3-7fd9-40cb-b84f-6fafce7bd16c",
+            "_id": "be02c8b1-5e43-4c4e-a06a-ddd326772008",
             "name": "Hotel",
             "containerId": "",
-            "created": "2023-10-31T17:07:52.683Z",
+            "created": "2023-10-31T17:38:53.564Z",
             "sortNum": 20000
+        },
+        {
+            "_id": "7f1eda92-0849-4d01-baef-1fa97663783d",
+            "name": "Reservation",
+            "containerId": "",
+            "created": "2023-10-31T18:13:14.435Z",
+            "sortNum": 30000
         }
     ],
     "requests": [
         {
-            "_id": "2547fc8c-f2e8-4b0b-9e35-952ea66cb5f5",
-            "colId": "6701d147-0693-48b2-949f-5b7d95eed739",
+            "_id": "35599e3f-5b3b-456e-8eff-12b52c6907c1",
+            "colId": "b05d748e-7f08-4dd9-bd4e-98511ff77162",
             "containerId": "",
             "name": "Hello World",
             "url": "http://localhost:3030",
             "method": "GET",
             "sortNum": 10000,
-            "created": "2023-10-31T17:02:19.032Z",
-            "modified": "2023-10-31T17:02:19.032Z",
+            "created": "2023-10-31T17:38:53.563Z",
+            "modified": "2023-10-31T17:38:53.563Z",
             "headers": [],
             "params": [],
             "tests": []
         },
         {
-            "_id": "ab508902-6042-45a9-b536-dd3428bef4a7",
-            "colId": "6701d147-0693-48b2-949f-5b7d95eed739",
-            "containerId": "f349f806-7cbe-4804-92b2-5855747b0519",
+            "_id": "193a9552-85c7-4a54-970a-6e7d6636487b",
+            "colId": "b05d748e-7f08-4dd9-bd4e-98511ff77162",
+            "containerId": "7ba9c472-afd0-4995-910d-5b705eba2099",
             "name": "Sign Up",
             "url": "/user/signup",
             "method": "POST",
             "sortNum": 20000,
-            "created": "2023-10-31T17:02:32.547Z",
-            "modified": "2023-10-31T17:11:14.252Z",
+            "created": "2023-10-31T17:38:53.564Z",
+            "modified": "2023-10-31T17:38:53.564Z",
             "headers": [],
             "params": [],
             "body": {
@@ -54,15 +61,15 @@
             "tests": []
         },
         {
-            "_id": "a06aba32-e4e4-4f6c-90b9-8caf3006e4e3",
-            "colId": "6701d147-0693-48b2-949f-5b7d95eed739",
-            "containerId": "f349f806-7cbe-4804-92b2-5855747b0519",
+            "_id": "159b9f58-9b53-4275-84c8-bd353c553aec",
+            "colId": "b05d748e-7f08-4dd9-bd4e-98511ff77162",
+            "containerId": "7ba9c472-afd0-4995-910d-5b705eba2099",
             "name": "Login",
             "url": "/user/login",
             "method": "POST",
             "sortNum": 30000,
-            "created": "2023-10-31T17:06:44.020Z",
-            "modified": "2023-10-31T17:11:13.284Z",
+            "created": "2023-10-31T17:38:53.565Z",
+            "modified": "2023-10-31T17:38:53.565Z",
             "headers": [],
             "params": [],
             "body": {
@@ -73,17 +80,36 @@
             "tests": []
         },
         {
-            "_id": "7d098953-0d80-416b-908f-7f4d432b2ed6",
-            "colId": "6701d147-0693-48b2-949f-5b7d95eed739",
-            "containerId": "38b156a3-7fd9-40cb-b84f-6fafce7bd16c",
+            "_id": "32bb8c38-9248-4e38-a208-d4793fa285a2",
+            "colId": "b05d748e-7f08-4dd9-bd4e-98511ff77162",
+            "containerId": "be02c8b1-5e43-4c4e-a06a-ddd326772008",
             "name": "GetAmenities",
             "url": "/hotel/amenities",
             "method": "GET",
             "sortNum": 40000,
-            "created": "2023-10-31T17:07:57.052Z",
-            "modified": "2023-10-31T17:09:52.541Z",
+            "created": "2023-10-31T17:38:53.566Z",
+            "modified": "2023-10-31T17:38:53.566Z",
             "headers": [],
             "params": [],
+            "tests": []
+        },
+        {
+            "_id": "17259484-fbbb-443a-be9c-73a31366b6ef",
+            "colId": "b05d748e-7f08-4dd9-bd4e-98511ff77162",
+            "containerId": "7f1eda92-0849-4d01-baef-1fa97663783d",
+            "name": "CreateReservation",
+            "url": "/reservation/create",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-10-31T18:13:35.810Z",
+            "modified": "2023-10-31T19:11:25.459Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"checkIn\": \"2023-04-28T15:00:00\",\n  \"checkOut\": \"2023-04-30T15:00:00\",\n  \"userId\": 7,\n  \"hotelId\": 3\n}",
+                "form": []
+            },
             "tests": []
         }
     ],

@@ -4,6 +4,7 @@ import cors from "cors"
 
 import { userRouter } from "./services/user/user.router"
 import { hotelRouter } from './services/hotel/hotel.router'
+import { reservationRouter } from './services/reservation/reservation.router'
 
 
 const PORT = process.env.PORT || 3000
@@ -14,6 +15,7 @@ app.use(express.json())
 
 app.use("/api/user", userRouter)
 app.use("/api/hotel", hotelRouter)
+app.use("/api/reservation", reservationRouter)
 
 app.get("/", (req : Request, res : Response) => {
     res.json({ message: 'Hello World' })
