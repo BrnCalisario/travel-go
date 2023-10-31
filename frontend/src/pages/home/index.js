@@ -27,7 +27,7 @@ export default function HomePage() {
     //     }
     // });
 
-    // useEffect = (() => {
+    // useEffect(() => {
     //     handleGetHotels();
     // }, [])
 
