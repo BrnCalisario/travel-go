@@ -46,6 +46,7 @@ userRouter.post("/login", async (req: Request, res: Response) => {
 
 		const token = await AuthService.generateToken(validation.userId, validation.isAdmin)
 
+
         return res.status(200).json({ message : 'Authenticated', token })
 
     } catch( error : any ) {

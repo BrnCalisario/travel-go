@@ -1,6 +1,6 @@
 import { Hotel } from "@prisma/client"
 import express, { Request, Response} from "express"
-import { auth } from "../../middleware/auth.middleware"
+import { auth, authAdmin } from "../../middleware/auth.middleware"
 import { HotelDTO } from "../../models/hotel.model"
 import * as HotelService from "./hotel.service"
 // import upload from "./upload.service"
@@ -16,7 +16,7 @@ hotelRouter.get("/", async (req: Request, res: Response) => {
     }
 })
 
-hotelRouter.post("/create", async (req: Request, res : Response) => {
+hotelRouter.post("/create", authAdmin, async (req: Request, res : Response) => {
 
     const data = req.body as HotelDTO
 
