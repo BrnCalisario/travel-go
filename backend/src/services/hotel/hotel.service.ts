@@ -3,7 +3,7 @@ import { db } from "../../config/db.server"
 import { AmenityDTO, HotelDTO } from "../../models/hotel.model"
 
 
-export const getHotels = async (): Promise<HotelDTO[]> => {
+export const getHotels = async (): Promise<any[]> => {
     return db.hotel.findMany({
         select: {
             hotelName: true,
@@ -21,18 +21,30 @@ export const getRoomAmenities = async () : Promise<AmenityDTO[]> => {
 }
 
 export const createHotel = async ( hotel : HotelDTO ) : Promise<number> => {
-    return db.hotel.create({
+    var id : number = await db.hotel.create({
         data : {
             hotelName: hotel.hotelName,
-            image: hotel.image,
-            imageKey : hotel.imageKey,
-            cep: '',
-            number: '',
-            state: '',
-            city: ''
+            cep: hotel.cep,
+            number: hotel.number,
+            state: hotel.state,
+            city: hotel.city
         },
         select: {
             id: true
         }
     }).then(res => res.id)
+
+
+    // await Promise.all(
+    //     hotel.amenities.map(am => {
+    //         db.hotelAmenities.create({
+    //             data : { 
+    //                 amenityId : am,
+    //                 hotelId : id
+    //             }
+    //         })
+    //     })
+    // )
+
+    return id
 }

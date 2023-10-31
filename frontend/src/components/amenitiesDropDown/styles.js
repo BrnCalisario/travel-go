@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 
-
 const styles = StyleSheet.create({
     container: { padding: 16 },
     dropdown: {
@@ -24,9 +23,11 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     icon: {
+        marginTop: 10,
         marginRight: 5,
     },
     selectedStyle: {
+        padding: 10,
         borderRadius: 12,
     },
 });

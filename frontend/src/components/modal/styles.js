@@ -41,6 +41,16 @@ const styles = StyleSheet.create({
     modalText: {
         marginBottom: 15,
         textAlign: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+
+        height: '10vh'
+    },
+    input: {
+        borderWidth: 1,
+        padding: 10,
+
+        width: '48vw'
     },
 });
 
