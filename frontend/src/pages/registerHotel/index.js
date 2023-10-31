@@ -7,7 +7,7 @@ import CustomTextLOS from "../../components/CustomTextLOS";
 import { useCallback } from "react";
 import styles from './styles';
 import useCep from '../../hooks/useCep'
-import amenitiesDropDown from '../../components/amenitiesDropDown'
+import AmenitiesDropDown from '../../components/AmenitiesDropDown'
 
 export default function registerHotel() {
 
@@ -26,6 +26,7 @@ export default function registerHotel() {
         formData.append('CEP', hotelCep);
         formData.append('State', estado);
         formData.append('City', cidade);
+        formData.append('Number', hotelNumber);
         formData.append("Image", dataURItoBlob(hotelImage.uri));
 
         try {
@@ -79,15 +80,6 @@ export default function registerHotel() {
             </View>
 
             <View style={styles.componentRegister}>
-                <CustomTextLOS>City</CustomTextLOS>
-                <TextInput
-                    value={cidade}
-                    editable={false}
-                    style={styles.input}
-                />
-            </View>
-            
-            <View style={styles.componentRegister}>
                 <CustomTextLOS>State</CustomTextLOS>
                 <TextInput
                     value={estado}
@@ -97,6 +89,16 @@ export default function registerHotel() {
             </View>
 
             <View style={styles.componentRegister}>
+                <CustomTextLOS>City</CustomTextLOS>
+                <TextInput
+                    value={cidade}
+                    editable={false}
+                    style={styles.input}
+                />
+            </View>
+
+
+            <View style={styles.componentRegister}>
                 <CustomTextLOS>Number</CustomTextLOS>
                 <TextInput
                     onChangeText={e => setHotelNumber(e)}
@@ -104,7 +106,9 @@ export default function registerHotel() {
                 />
             </View>
 
-            {amenitiesDropDown}
+            <View>
+                <AmenitiesDropDown />
+            </View>
 
             <Button title="send" onPress={handleRegisterHotel} />
         </View>
