@@ -8,17 +8,11 @@ import axios from "axios";
 
 export default function LoginPage(props) {
 
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-
-    const [isInputEmpty, setIsInputyEmpty] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [notFound, setNotFound] = useState(false);
 
     const handleLogin = (async () => {
-        if (!email || !password) {
-            setIsInputyEmpty(!isInputEmpty)
-            return;
-        }
 
         const loginData = {
             email: email,
@@ -26,11 +20,15 @@ export default function LoginPage(props) {
         };
 
         try {
-            const res = await axios.post(process.env.REACT_APP_BACKEND_PORT + "/api/auth/", { loginData }); // TODO: verify the backend route's name 
+            console.log(loginData);
+            const res = await axios.post("http://localhost:3030/api/user/login/", loginData ); // TODO: verify the backend route's name 
+            if (!res.data.token) {
+                setNotFound(true);
+                return;
+            }
             sessionStorage.setItem('token', res.data.token);
             setNotFound(false);
             props.navigation.navigate('home')
-
         } catch (error) {
             setNotFound(true);
         }
@@ -40,27 +38,31 @@ export default function LoginPage(props) {
     return (
         <View style={styles.screen}>
             <CustomTextLOS style={styles.textLogin}>Login</CustomTextLOS>
-
+            <View>
+                <TouchableOpacity onPress={() => props.navigation.navigate('registerHotel')}>
+                    <CustomTextLOS>admin access</CustomTextLOS>
+                </TouchableOpacity>
+            </View>
             <View style={styles.componentLogin}>
-                <CustomTextLOS>Email/Name</CustomTextLOS>
+                <CustomTextLOS>Email</CustomTextLOS>
                 <TextInput
-                    onchangeText={e => setEmail(e)}
+                    onChangeText={e => setEmail(e)}
                     style={styles.input}
+                    value={email}
                 />
             </View>
 
             <View style={styles.componentLogin}>
                 <CustomTextLOS>Password</CustomTextLOS>
                 <TextInput
-                    onchangeText={e => setPassword(e)}
+                    onChangeText={e => setPassword(e)}
+                    value={password}
                     style={styles.input}
                 />
-                <TouchableOpacity>
+                {/* <TouchableOpacity>
                     <CustomTextLOS>Don't you remember your password?</CustomTextLOS>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
-
-            {isInputEmpty ? <Text>Empty input(s)</Text> : <></>}
 
             <View style={styles.button}>
                 <Button
@@ -68,9 +70,9 @@ export default function LoginPage(props) {
                     title="Sing in"
                     color="#006EE4" />
 
-                {notFound ? <Text>User Not Found</Text> : <></>}
+                {notFound ? <CustomTextLOS>User Not Found</CustomTextLOS> : <></>}
 
-                <TouchableOpacity onPress={() => handleLogin()}>
+                <TouchableOpacity onPress={() => props.navigation.navigate('register')}>
                     <CustomTextLOS>Create account</CustomTextLOS>
                 </TouchableOpacity>
             </View>

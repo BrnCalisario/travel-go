@@ -23,26 +23,20 @@ export default function registerHotel() {
 
     const handleRegisterHotel = useCallback(async () => {
 
-        const formData = new FormData();
-
-        formData.append('Name', hotelName);
-        formData.append('CEP', hotelCep);
-        formData.append('State', estado);
-        formData.append('City', cidade);
-        formData.append('Number', hotelNumber);
-        // formData.append("Image", dataURItoBlob(hotelImage.uri));
-        formData.append("Amenities", hotelAmenities);
-
+        const formData = {
+            'hotelName': hotelName,
+            'cep': hotelCep,
+            'state': estado,
+            'city': cidade,
+            'number': hotelNumber,
+            "amenities": hotelAmenities
+        }
         try {
-            const response = await axios.post("http://localhost:3030/api/adm/registerHotel", formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
+            const response = await axios.post("http://localhost:3030/api/hotel/create", formData);
+            console.log(response);
         } catch (error) {
             console.log(error);
         }
-
     })
 
     const pickImage = async () => {
