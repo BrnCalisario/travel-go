@@ -21,7 +21,7 @@ export default function LoginPage(props) {
 
         try {
             console.log(loginData);
-            const res = await axios.post("http://localhost:3030/api/user/login/", loginData ); // TODO: verify the backend route's name 
+            const res = await axios.post("http://localhost:3030/api/user/login/", loginData); // TODO: verify the backend route's name 
             if (!res.data.token) {
                 setNotFound(true);
                 return;
@@ -64,13 +64,13 @@ export default function LoginPage(props) {
                 </TouchableOpacity> */}
             </View>
 
+            {notFound ? <CustomTextLOS style={{color: 'red'}}>User Not Found</CustomTextLOS> : <></>}
+
             <View style={styles.button}>
                 <Button
                     onPress={() => handleLogin()}
                     title="Sing in"
                     color="#006EE4" />
-
-                {notFound ? <CustomTextLOS>User Not Found</CustomTextLOS> : <></>}
 
                 <TouchableOpacity onPress={() => props.navigation.navigate('register')}>
                     <CustomTextLOS>Create account</CustomTextLOS>

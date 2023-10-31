@@ -42,7 +42,7 @@ export default function HomePage() {
         <>
             <NavBar />
             <View style={styles.container}>
-                <View style={styles.componentSearch}>
+                {/* <View style={styles.componentSearch}>
                     <View style={styles.component}>
                         <View style={styles.search}>
                             <View>
@@ -116,7 +116,7 @@ export default function HomePage() {
                             </CustomTextLOS>
                         </TouchableOpacity>
                     </View>
-                </View>
+                </View> */}
                 {renderHotels()}
             </View>
         </>

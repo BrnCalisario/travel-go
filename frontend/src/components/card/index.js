@@ -47,18 +47,17 @@ export default function CardComp({ hotel }) {
                         display: 'flex',
                         flexDirection: 'row'
                     }}>
-                        <CustomTextLOS style={{
+                        {/* <CustomTextLOS style={{
                             marginRight: '2vw'
                         }}>
                             {hotel.state}
-                        </CustomTextLOS>
+                        </CustomTextLOS> */}
                         <Text style={{
                             color: '#D9D9D9',
                         }}>
-                            {hotel.price}
                         </Text>
                     </View>
-                    <View style={{
+                    {/* <View style={{
                         display: 'flex',
                         flexDirection: 'row'
                     }}>
@@ -68,16 +67,20 @@ export default function CardComp({ hotel }) {
                         }}>
                             {hotel.state}
                         </CustomTextLOS>
-                    </View>
+                    </View> */}
                 </View>
                 <View style={styles.greenCard}>
                     <View style={styles.priceText}>
                         <Text style={{ marginBottom: 16 }}>
-                            {hotel.state} - 
-                            { hotel.number}
+                            <ImLocation />
+                            {hotel.state} - { }
+                            {hotel.number}
+                        </Text>
+                        <Text>
+                            {hotel.city}
                         </Text>
                         <Text style={{ color: '#005f00' }}>
-                            {hotel.price}
+                            U$: {hotel.price},00
                         </Text>
                     </View>
                     <View>
@@ -86,7 +89,7 @@ export default function CardComp({ hotel }) {
                             color: '#005f00'
                         }}>
                             {hotel.amenities}
-                            
+
                         </CustomTextLOS>
                         {/* <Button
                             color='#028000'
@@ -101,8 +104,8 @@ export default function CardComp({ hotel }) {
                     borderBottomLeftRadius: 10,
                     borderBottomRightRadius: 10,
                 }}>
-                    <Text>
-                        {hotel.city}
+                    <Text style={{color: 'white'}}>
+                        a
                     </Text>
                 </View>
                 {/* <Dropdown /> */}
