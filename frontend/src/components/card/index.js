@@ -50,12 +50,12 @@ export default function CardComp({ hotel }) {
                         <CustomTextLOS style={{
                             marginRight: '2vw'
                         }}>
-                            hotel.score
+                            {hotel.state}
                         </CustomTextLOS>
                         <Text style={{
                             color: '#D9D9D9',
                         }}>
-                            hotel.avaliations
+                            {hotel.price}
                         </Text>
                     </View>
                     <View style={{
@@ -73,11 +73,11 @@ export default function CardComp({ hotel }) {
                 <View style={styles.greenCard}>
                     <View style={styles.priceText}>
                         <Text style={{ marginBottom: 16 }}>
-                            {hotel.state}
-
+                            {hotel.state} - 
+                            { hotel.number}
                         </Text>
                         <Text style={{ color: '#005f00' }}>
-                            {hotel.number}
+                            {hotel.price}
                         </Text>
                     </View>
                     <View>
@@ -86,6 +86,7 @@ export default function CardComp({ hotel }) {
                             color: '#005f00'
                         }}>
                             {hotel.amenities}
+                            
                         </CustomTextLOS>
                         {/* <Button
                             color='#028000'
@@ -101,7 +102,7 @@ export default function CardComp({ hotel }) {
                     borderBottomRightRadius: 10,
                 }}>
                     <Text>
-                        hotel.lowestPrice
+                        {hotel.city}
                     </Text>
                 </View>
                 {/* <Dropdown /> */}

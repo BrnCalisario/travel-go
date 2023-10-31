@@ -9,7 +9,8 @@ export const getHotels = async (): Promise<any[]> => {
             hotelName: true,
             state : true,
             city: true,
-            number : true
+            number : true,
+            price : true
         }
     },)
 }

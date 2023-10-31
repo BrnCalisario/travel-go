@@ -5,6 +5,7 @@ export interface HotelDTO
     number : string,
     state : string,
     city : string,
+    price: number,
     amenities : number[]
 }
 

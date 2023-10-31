@@ -18,13 +18,6 @@ export default function App() {
       <AmenitiesProvider>
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen
-              options={{
-                headerTransparent: true,
-                headerShown: false
-              }}
-              name="login" component={LoginPage}
-            />
 
             <Stack.Screen
               options={{
@@ -32,6 +25,13 @@ export default function App() {
                 headerShown: false
               }}
               name="home" component={HomePage} />
+            <Stack.Screen
+              options={{
+                headerTransparent: true,
+                headerShown: false
+              }}
+              name="login" component={LoginPage}
+            />
             <Stack.Screen
               options={{
                 headerTransparent: true,
