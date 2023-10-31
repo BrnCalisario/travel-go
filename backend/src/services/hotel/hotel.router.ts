@@ -17,19 +17,26 @@ hotelRouter.get("/", async (req: Request, res: Response) => {
 })
 
 hotelRouter.post("/create", async (req: Request, res : Response) => {
+    try 
+    {
+        const data = req.body as HotelDTO
+    
+        if(!data.hotelName || !data.cep)
+            throw new Error()
+    
+        const result = await HotelService.createHotel(data)
+    
+        return res.status(200).json({ id : result })
 
-    const data = req.body as HotelDTO
-
-    if(!data.hotelName || !data.cep)
-        throw new Error()
-
-    const result = await HotelService.createHotel(data)
-
-    return res.status(200).json({ id : result })
+    } catch (error : any) {
+        
+        console.log("yea " +error)
+        return res.status(500).json(error.message)
+    }
 
 })
 
-hotelRouter.get("/amenities", auth, async (req: Request, res : Response) => {
+hotelRouter.get("/amenities", async (req: Request, res : Response) => {
     try {
         const amenities = await HotelService.getRoomAmenities()
         return res.status(200).json(amenities)

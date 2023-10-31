@@ -21,7 +21,7 @@ export const getRoomAmenities = async () : Promise<AmenityDTO[]> => {
 }
 
 export const createHotel = async ( hotel : HotelDTO ) : Promise<number> => {
-    const id : number = await db.hotel.create({
+    var id : number = await db.hotel.create({
         data : {
             hotelName: hotel.hotelName,
             cep: hotel.cep,
@@ -35,16 +35,16 @@ export const createHotel = async ( hotel : HotelDTO ) : Promise<number> => {
     }).then(res => res.id)
 
 
-    await Promise.all(
-        hotel.amenities.map(am => {
-            db.hotelAmenities.create({
-                data : { 
-                    amenityId : am,
-                    hotelId : id
-                }
-            })
-        })
-    )
+    // await Promise.all(
+    //     hotel.amenities.map(am => {
+    //         db.hotelAmenities.create({
+    //             data : { 
+    //                 amenityId : am,
+    //                 hotelId : id
+    //             }
+    //         })
+    //     })
+    // )
 
     return id
 }
