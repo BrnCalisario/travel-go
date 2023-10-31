@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { dataURItoBlob } from '../../config/utils';
 import * as ImagePicker from 'expo-image-picker';
 import axios from "axios";
@@ -8,6 +8,7 @@ import { useCallback } from "react";
 import styles from './styles';
 import useCep from '../../hooks/useCep'
 import AmenitiesDropDown from '../../components/AmenitiesDropDown'
+import { AmenitiesContext } from "../../context/AmenitiesContext";
 
 export default function registerHotel() {
 
@@ -17,6 +18,8 @@ export default function registerHotel() {
 
     const [hotelCep, setHotelCep] = useState();
     const { rua, cidade, estado, handleRequest } = useCep(hotelCep);
+    const { hotelAmenities } = useContext(AmenitiesContext);
+
 
     const handleRegisterHotel = useCallback(async () => {
 
@@ -27,10 +30,11 @@ export default function registerHotel() {
         formData.append('State', estado);
         formData.append('City', cidade);
         formData.append('Number', hotelNumber);
-        formData.append("Image", dataURItoBlob(hotelImage.uri));
+        // formData.append("Image", dataURItoBlob(hotelImage.uri));
+        formData.append("Amenities", hotelAmenities);
 
         try {
-            const response = await axios.post(process.env.REACT_APP_BACKEND_PORT + "/api/adm/registerHotel", formData, {
+            const response = await axios.post("http://localhost:3030/api/adm/registerHotel", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -58,9 +62,9 @@ export default function registerHotel() {
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Button title="Pick an image from camera roll" onPress={pickImage} />
+            {/* <Button title="Pick an image from camera roll" onPress={pickImage} />
 
-            {hotelImage && <Image source={{ uri: hotelImage.uri }} style={{ width: 200, height: 200 }} />}
+            {hotelImage && <Image source={{ uri: hotelImage.uri }} style={{ width: 200, height: 200 }} />} */}
 
             <View style={styles.componentRegister}>
                 <CustomTextLOS>Name</CustomTextLOS>
