@@ -7,6 +7,9 @@ export const getHotels = async (): Promise<any[]> => {
     return db.hotel.findMany({
         select: {
             hotelName: true,
+            state : true,
+            city: true,
+            number : true
         }
     },)
 }
