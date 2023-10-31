@@ -1,6 +1,6 @@
 import { Hotel } from "@prisma/client"
 import { db } from "../../config/db.server"
-import { HotelDTO } from "../../models/hotel.model"
+import { AmenityDTO, HotelDTO } from "../../models/hotel.model"
 
 
 export const getHotels = async (): Promise<HotelDTO[]> => {
@@ -9,6 +9,15 @@ export const getHotels = async (): Promise<HotelDTO[]> => {
             hotelName: true,
         }
     },)
+}
+
+export const getRoomAmenities = async () : Promise<AmenityDTO[]> => {
+    return db.amenity.findMany({
+        select: {
+            id: true,
+            amenity: true
+        }
+    })
 }
 
 export const createHotel = async ( hotel : HotelDTO ) : Promise<number> => {

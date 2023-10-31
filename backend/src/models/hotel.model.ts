@@ -4,3 +4,10 @@ export interface HotelDTO
     image? : string,
     imageKey? : string,
 }
+
+export interface AmenityDTO
+{
+    id: number
+    amenity : string,
+
+}
