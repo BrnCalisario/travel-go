@@ -7,6 +7,9 @@ export const getHotels = async (): Promise<any[]> => {
     return db.hotel.findMany({
         select: {
             hotelName: true,
+            state : true,
+            city: true,
+            number : true
         }
     },)
 }
@@ -35,16 +38,16 @@ export const createHotel = async ( hotel : HotelDTO ) : Promise<number> => {
     }).then(res => res.id)
 
 
-    // await Promise.all(
-    //     hotel.amenities.map(am => {
-    //         db.hotelAmenities.create({
-    //             data : { 
-    //                 amenityId : am,
-    //                 hotelId : id
-    //             }
-    //         })
-    //     })
-    // )
+    await Promise.all(
+        hotel.amenities.map(am => {
+            db.hotelAmenities.create({
+                data : { 
+                    amenityId : am,
+                    hotelId : id
+                }
+            })
+        })
+    )
 
     return id
 }
