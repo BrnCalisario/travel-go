@@ -1,21 +1,28 @@
 
 import { Text, View, StyleSheet } from "react-native";
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useContext } from "react";
 import { MultiSelect } from 'react-native-element-dropdown';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import styles from "./styles";
+import axios from 'axios';
+import { AmenitiesContext } from "../../context/AmenitiesContext";
+
 
 export default function AmenitiesDropDown() {
     const [selected, setSelected] = useState([]);
-    const [hotelAmenities, setHotelAmenities] = useState([]);
+    const { hotelAmenities, setHotelAmenities } = useContext(AmenitiesContext);
 
     useEffect(() => {
-        handleGetAmenities;
+        handleGetAmenities();
     }, []);
 
     const handleGetAmenities = useCallback(async () => {
         try {
-            const response = await axios.get(REACT_APP_BACKEND_PORT + "/api/hotels/amenities");
-            setHotelAmenities([...hotelAmenities, response.data]);
+            const response = await axios.get("http://localhost:3030/api/hotel/amenities");
+
+            setHotelAmenities(response.data.map((item) => {
+                return { label: item.amenity, value: item.id }
+            }))
         } catch (error) {
             console.log(error);
         }
@@ -25,6 +32,14 @@ export default function AmenitiesDropDown() {
         <View style={styles.container}>
             <Text>Amenities</Text>
             <MultiSelect
+                renderLeftIcon={() => (
+                    <AntDesign
+                        style={styles.icon}
+                        color="black"
+                        name="Safety"
+                        size={40}
+                    />
+                )}
                 style={styles.dropdown}
                 placeholderStyle={styles.placeholderStyle}
                 selectedTextStyle={styles.selectedTextStyle}
@@ -33,51 +48,13 @@ export default function AmenitiesDropDown() {
                 data={hotelAmenities}
                 labelField="label"
                 valueField="value"
-                placeholder="Select"
+                placeholder="Select the amenities"
                 value={selected}
                 onChange={item => {
                     setSelected(item);
                 }}
-                renderLeftIcon={() => (
-                    <AntDesign
-                        style={styles.icon}
-                        color="black"
-                        name="Safety"
-                        size={20}
-                    />
-                )}
                 selectedStyle={styles.selectedStyle}
             />
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: { padding: 16 },
-    dropdown: {
-        height: 50,
-        backgroundColor: 'transparent',
-        borderBottomColor: 'gray',
-        borderBottomWidth: 0.5,
-    },
-    placeholderStyle: {
-        fontSize: 16,
-    },
-    selectedTextStyle: {
-        fontSize: 14,
-    },
-    iconStyle: {
-        width: 20,
-        height: 20,
-    },
-    inputSearchStyle: {
-        height: 40,
-        fontSize: 16,
-    },
-    icon: {
-        marginRight: 5,
-    },
-    selectedStyle: {
-        borderRadius: 12,
-    },
-});
