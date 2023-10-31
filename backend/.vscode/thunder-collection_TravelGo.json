@@ -1,0 +1,102 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "TravelGo",
+    "dateExported": "2023-10-31T17:34:41.746Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "f349f806-7cbe-4804-92b2-5855747b0519",
+            "name": "User",
+            "containerId": "",
+            "created": "2023-10-31T17:02:26.109Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "38b156a3-7fd9-40cb-b84f-6fafce7bd16c",
+            "name": "Hotel",
+            "containerId": "",
+            "created": "2023-10-31T17:07:52.683Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "2547fc8c-f2e8-4b0b-9e35-952ea66cb5f5",
+            "colId": "6701d147-0693-48b2-949f-5b7d95eed739",
+            "containerId": "",
+            "name": "Hello World",
+            "url": "http://localhost:3030",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-10-31T17:02:19.032Z",
+            "modified": "2023-10-31T17:02:19.032Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ab508902-6042-45a9-b536-dd3428bef4a7",
+            "colId": "6701d147-0693-48b2-949f-5b7d95eed739",
+            "containerId": "f349f806-7cbe-4804-92b2-5855747b0519",
+            "name": "Sign Up",
+            "url": "/user/signup",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-10-31T17:02:32.547Z",
+            "modified": "2023-10-31T17:11:14.252Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"string\",\n  \"fullName\": \"string\",\n  \"cpf\": \"string\",\n  \"password\": \"string\",\n  \"isAdmin\": \"boolean\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a06aba32-e4e4-4f6c-90b9-8caf3006e4e3",
+            "colId": "6701d147-0693-48b2-949f-5b7d95eed739",
+            "containerId": "f349f806-7cbe-4804-92b2-5855747b0519",
+            "name": "Login",
+            "url": "/user/login",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-10-31T17:06:44.020Z",
+            "modified": "2023-10-31T17:11:13.284Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"string\",\n  \"password\":\"string\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "7d098953-0d80-416b-908f-7f4d432b2ed6",
+            "colId": "6701d147-0693-48b2-949f-5b7d95eed739",
+            "containerId": "38b156a3-7fd9-40cb-b84f-6fafce7bd16c",
+            "name": "GetAmenities",
+            "url": "/hotel/amenities",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-10-31T17:07:57.052Z",
+            "modified": "2023-10-31T17:09:52.541Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "headers": [
+            {
+                "name": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTg3NzIwMzl9.BskRm_rmR_KtBnIyP-S6o1arah7r7qEoCgYEGjjm48Q"
+            }
+        ],
+        "tests": [],
+        "options": {
+            "baseUrl": "http://localhost:3030/api"
+        }
+    }
+}
