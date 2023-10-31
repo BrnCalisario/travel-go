@@ -6,20 +6,14 @@ import axios from 'axios';
 
 export default function RegisterPage(props) {
 
-    const [email, setEmail] = useState(); 
+    const [email, setEmail] = useState();
     const [fullName, setFullName] = useState();
     const [password, setPassword] = useState();
-    const [confirmPassword, setConfirmPassword] = useState();
     const [CPF, setCPF] = useState();
 
-    const [badInput, setBadInput] = useState(false);
-    const [isCreated, setIsCreated] = useState(false);
-
     const handleRegister = (async () => {
-        if (!email || !fullName || !password || !CPF || !confirmPassword || password != confirmPassword) {
-            setBadInput(true);
+        if (!email || !fullName || !password || !CPF) 
             return;
-        }
 
         const registerData = {
             fullName: fullName,
@@ -29,11 +23,11 @@ export default function RegisterPage(props) {
         }
 
         try {
-            const res = await axios.post(process.env.REACT_APP_BACKEND_PORT + "api/users/register/", registerData);
-            setIsCreated(true)
+            const res = await axios.post("http://localhost:3030/api/user/signup/", registerData);
             props.navigation.navigate('login')
+            console.log(res);
         } catch (error) {
-            setIsCreated(false)
+            console.log(error);
         }
     })
 
@@ -72,16 +66,6 @@ export default function RegisterPage(props) {
                     style={styles.input}
                 />
             </View>
-
-            <View style={styles.componentRegister}>
-                <CustomTextLOS>Confirmed the password</CustomTextLOS>
-                <TextInput
-                    onChangeText={e => setConfirmPassword(e)}
-                    style={styles.input}
-                />
-            </View>
-
-            {badInput ? <Text>Empty Input</Text> : <></>}
 
             <View style={styles.button} >
                 <Button

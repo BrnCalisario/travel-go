@@ -8,19 +8,18 @@ import styles from "./styles";
 import Card from "../../components/card";
 import { useCallback, useEffect, useState } from "react";
 import Modal from '../../components/modal';
+import axios from "axios";
 
 
 export default function HomePage() {
 
-
     const [hotels, setHotels] = useState([]);
-
 
     const handleGetHotels = useCallback(async () => {
         try {
-            const response = await axios.get('http://localhost:api/hotel');
+            const response = await axios.get('http://localhost:3030/api/hotel');
             setHotels(response.data);
-            console.log(response.data);
+            console.log("oi " + response.data);
         }
         catch (error) {
             console.log(error);
@@ -118,8 +117,7 @@ export default function HomePage() {
                         </TouchableOpacity>
                     </View>
                 </View>
-                
-                <Card />
+                {renderHotels()}
             </View>
         </>
     )

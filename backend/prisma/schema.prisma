@@ -26,9 +26,10 @@ model Hotel {
   city           String
   number         String
   state          String
+  price          Decimal          @default(200)
   HotelAmenities HotelAmenities[]
   Rating         Rating[]
-  Room           Room[]
+  Reservation    Reservation[]
 }
 
 model Rating {
@@ -38,22 +39,6 @@ model Rating {
   hotelId Int
   date    DateTime
   hotel   Hotel    @relation(fields: [hotelId], references: [id])
-}
-
-model RoomType {
-  id       Int    @id @default(autoincrement())
-  type     String
-  capacity Int
-  Room     Room[]
-}
-
-model Room {
-  id          Int           @id @default(autoincrement())
-  hotelId     Int
-  roomTypeId  Int
-  Reservation Reservation[]
-  hotel       Hotel         @relation(fields: [hotelId], references: [id])
-  roomType    RoomType      @relation(fields: [roomTypeId], references: [id])
 }
 
 model Amenity {
@@ -74,8 +59,8 @@ model Reservation {
   id       Int      @id @default(autoincrement())
   checkIn  DateTime
   checkOut DateTime
-  roomId   Int
   userId   Int
-  room     Room     @relation(fields: [roomId], references: [id])
+  hotelId  Int
+  hotel    Hotel    @relation(fields: [hotelId], references: [id])
   user     User     @relation(fields: [userId], references: [id])
 }

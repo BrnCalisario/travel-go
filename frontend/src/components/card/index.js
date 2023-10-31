@@ -35,7 +35,7 @@ export default function CardComp({ hotel }) {
                     </CustomTextLOS>
                 </View>
                 <Text style={{ width: '95%' }}>
-                    hotel.name
+                    {hotel.hotelName}
                 </Text>
                 <View style={{
                     display: 'flex',
@@ -66,17 +66,18 @@ export default function CardComp({ hotel }) {
                         <CustomTextLOS style={{
                             color: '#D9D9D9',
                         }}>
-                            hotel.location
+                            {hotel.state}
                         </CustomTextLOS>
                     </View>
                 </View>
                 <View style={styles.greenCard}>
                     <View style={styles.priceText}>
                         <Text style={{ marginBottom: 16 }}>
-                            hotel.company
+                            {hotel.state}
+
                         </Text>
                         <Text style={{ color: '#005f00' }}>
-                            hotel.price
+                            {hotel.number}
                         </Text>
                     </View>
                     <View>
@@ -84,7 +85,7 @@ export default function CardComp({ hotel }) {
                             marginBottom: 16,
                             color: '#005f00'
                         }}>
-                            hotel.includes
+                            {hotel.amenities}
                         </CustomTextLOS>
                         {/* <Button
                             color='#028000'
