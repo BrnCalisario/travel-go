@@ -15,7 +15,7 @@ export const getHotels = async (): Promise<any[]> => {
     },)
 }
 
-export const getRoomAmenities = async () : Promise<AmenityDTO[]> => {
+export const getHotelAmenities = async () : Promise<AmenityDTO[]> => {
     return db.amenity.findMany({
         select: {
             id: true,

@@ -38,7 +38,7 @@ hotelRouter.post("/create", async (req: Request, res : Response) => {
 
 hotelRouter.get("/amenities", async (req: Request, res : Response) => {
     try {
-        const amenities = await HotelService.getRoomAmenities()
+        const amenities = await HotelService.getHotelAmenities()
         return res.status(200).json(amenities)
     } catch (error : any) {
         return res.status(500).json(error.message)
