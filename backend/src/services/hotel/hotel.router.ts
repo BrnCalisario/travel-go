@@ -1,6 +1,7 @@
 import { Hotel } from "@prisma/client"
 import express, { Request, Response} from "express"
 import { auth } from "../../middleware/auth.middleware"
+import { HotelDTO } from "../../models/hotel.model"
 import * as HotelService from "./hotel.service"
 // import upload from "./upload.service"
 
@@ -16,9 +17,16 @@ hotelRouter.get("/", async (req: Request, res: Response) => {
 })
 
 hotelRouter.post("/create", async (req: Request, res : Response) => {
-    // try {
-        
-    // }
+
+    const data = req.body as HotelDTO
+
+    if(!data.hotelName || !data.cep)
+        throw new Error()
+
+    const result = await HotelService.createHotel(data)
+
+    return res.status(200).json({ id : result })
+
 })
 
 hotelRouter.get("/amenities", auth, async (req: Request, res : Response) => {
