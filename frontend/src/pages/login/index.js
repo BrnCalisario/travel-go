@@ -58,6 +58,7 @@ export default function LoginPage(props) {
                     onChangeText={e => setPassword(e)}
                     value={password}
                     style={styles.input}
+                    secureTextEntry={true}
                 />
                 {/* <TouchableOpacity>
                     <CustomTextLOS>Don't you remember your password?</CustomTextLOS>

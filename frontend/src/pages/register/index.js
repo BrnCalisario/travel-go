@@ -64,6 +64,7 @@ export default function RegisterPage(props) {
                 <TextInput
                     onChangeText={e => setPassword(e)}
                     style={styles.input}
+                    secureTextEntry={true}
                 />
             </View>
 
