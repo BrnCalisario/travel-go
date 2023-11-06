@@ -10,7 +10,7 @@ import useCep from '../../hooks/useCep'
 import AmenitiesDropDown from '../../components/AmenitiesDropDown'
 import { AmenitiesContext } from "../../context/AmenitiesContext";
 
-export default function registerHotel() {
+export default function registerHotel(props) {
 
     const [hotelName, setHotelName] = useState();
     const [hotelNumber, setHotelNumber] = useState();
@@ -34,6 +34,7 @@ export default function registerHotel() {
         try {
             const response = await axios.post("http://localhost:3030/api/hotel/create", formData);
             console.log(response);
+            props.navigation.navigate('login')
         } catch (error) {
             console.log(error);
         }
