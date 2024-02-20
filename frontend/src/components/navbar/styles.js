@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         height: 62,
+        zIndex: 1,
 
         borderBottomColor: 'rgba(0, 0, 0, 0.2)',
         borderBottomWidth: 1

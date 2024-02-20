@@ -4,8 +4,14 @@ import { AiOutlineHeart, AiOutlineUser } from 'react-icons/ai';
 import { FiMenu } from 'react-icons/fi';
 import styles from './styles';
 import CustomTextLOS from "../CustomTextLOS";
+import MenuHamburguer from "../menuHamburger";
+import { useState } from "react";
 
 export default function NavBar(props) {
+    var bool = false;
+
+    const [showMenu, setShowMenu] = useState(bool);
+
     return (
         <View style={styles.component}>
             <LogoComp />
@@ -16,16 +22,17 @@ export default function NavBar(props) {
                     }} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => props.navigation.navigate('account')}>
-                <AiOutlineUser 
+                <AiOutlineUser
                     style={{
                         fontSize: 30
                     }} />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setShowMenu(!showMenu)}>
                 <FiMenu
                     style={{
                         fontSize: 30
                     }} />
+                <MenuHamburguer bool={showMenu}/>
             </TouchableOpacity>
         </View>
     );

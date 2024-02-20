@@ -7,6 +7,7 @@ import HomePage from './src/pages/home';
 import AccountPage from './src/pages/account';
 import GlobalStyles from './assets/fonts';
 import registerHotel from './src/pages/registerHotel';
+import MenuHamburguer from './src/components/menuHamburger';
 
 import { AmenitiesProvider } from './src/context/AmenitiesContext';
 
@@ -23,15 +24,15 @@ export default function App() {
                 headerTransparent: true,
                 headerShown: false
               }}
-              name="login" component={LoginPage}
-            />
-
+              name="home" component={HomePage} />
             <Stack.Screen
               options={{
                 headerTransparent: true,
                 headerShown: false
               }}
-              name="home" component={HomePage} />
+              name="login" component={LoginPage}
+            />
+
             <Stack.Screen
               options={{
                 headerTransparent: true,
