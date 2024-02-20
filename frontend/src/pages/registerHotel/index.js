@@ -8,7 +8,7 @@ import { useCallback } from "react";
 import styles from './styles';
 import useCep from '../../hooks/useCep'
 import AmenitiesDropDown from '../../components/AmenitiesDropDown'
-import { AmenitiesContext } from "../../context/AmenitiesContext";
+import { useSelector } from "react-redux";
 
 export default function registerHotel(props) {
 
@@ -18,7 +18,7 @@ export default function registerHotel(props) {
 
     const [hotelCep, setHotelCep] = useState();
     const { rua, cidade, estado, handleRequest } = useCep(hotelCep);
-    const { hotelAmenities } = useContext(AmenitiesContext);
+    const hotelAmenities = useSelector((state) => state.amenities.value); 
 
 
     const handleRegisterHotel = useCallback(async () => {

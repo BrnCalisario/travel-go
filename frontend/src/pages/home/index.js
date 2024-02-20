@@ -19,7 +19,6 @@ export default function HomePage() {
         try {
             const response = await axios.get('http://localhost:3030/api/hotel');
             setHotels(response.data);
-            console.log("oi " + response.data);
         }
         catch (error) {
             console.log(error);
