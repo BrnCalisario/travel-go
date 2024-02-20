@@ -7,15 +7,15 @@ import HomePage from './src/pages/home';
 import AccountPage from './src/pages/account';
 import GlobalStyles from './assets/fonts';
 import registerHotel from './src/pages/registerHotel';
-
-import { AmenitiesProvider } from './src/context/AmenitiesContext';
+import Store from './src/store/Store';
+import { Provider } from 'react-redux';
 
 export default function App() {
   const Stack = createStackNavigator();
   return (
     <>
-      <GlobalStyles />
-      <AmenitiesProvider>
+      <Provider store={Store}>
+        <GlobalStyles />
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen
@@ -56,7 +56,7 @@ export default function App() {
               name="register" component={RegisterPage} />
           </Stack.Navigator>
         </NavigationContainer>
-      </AmenitiesProvider>
+      </Provider>
     </>
   );
 }
