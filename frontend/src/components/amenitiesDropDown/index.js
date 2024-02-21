@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 export default function AmenitiesDropDown() {
     const [selected, setSelected] = useState([]);
+    
     const hotelAmenities = useSelector((state) => state.amenities.value);
 
     const dispatch = useDispatch();

@@ -1,11 +1,12 @@
 import LogoComp from "../logo";
-import { Text, View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import { AiOutlineHeart, AiOutlineUser } from 'react-icons/ai';
 import { MdOutlineNotificationsNone, MdOutlineNotificationsActive } from 'react-icons/md';
 import { FiMenu } from 'react-icons/fi';
 import styles from './styles';
 import MenuHamburguer from "../menuHamburger";
 import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux'
 
 export default function NavBar(props) {
 
@@ -13,7 +14,9 @@ export default function NavBar(props) {
 
     const [showMenu, setShowMenu] = useState(defaultBool);
 
-    const [notification, setNotification] = useState(defaultBool); // Use Redux
+    const notification = useSelector((state) => state.notifications.value);
+
+    console.log("TTT:", notification);
 
     let notificationAtive = <MdOutlineNotificationsActive
         style={{

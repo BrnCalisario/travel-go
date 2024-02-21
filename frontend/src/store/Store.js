@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import AmenitiesSlice from "./AmenitiesSlice";
+import NotificationsSlice from "./NotificationsSlice";
 
-export default configureStore ({
+export default configureStore({
     reducer: {
-        amenities: AmenitiesSlice
+        amenities: AmenitiesSlice,
+        notifications: NotificationsSlice
     }
 });
