@@ -28,7 +28,7 @@ export default function NavBar(props) {
         return () => {
             socket.off("OFF")
         }
-    }, [])
+    }, [notification])
 
     let notificationAtive = <MdOutlineNotificationsActive
         style={{
