@@ -13,5 +13,4 @@ export const amenitiesSlice = createSlice({
 })
 
 export const {setAmenities} = amenitiesSlice.actions;
-
 export default amenitiesSlice.reducer;

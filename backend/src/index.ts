@@ -9,6 +9,7 @@ import { reservationRouter } from './routers/reservation.router'
 const PORT = process.env.PORT || 3000
 
 const app = express()
+
 app.use(cors())
 app.use(express.json())
 
@@ -17,4 +18,4 @@ app.use("/api/hotel", hotelRouter)
 app.use("/api/reservation", reservationRouter)
 
 
-app.listen(PORT, () => console.log('Server running at port http://localhost:' + PORT))
+app.listen(PORT, () => console.log('Server running at port http://localhost:' + PORT));

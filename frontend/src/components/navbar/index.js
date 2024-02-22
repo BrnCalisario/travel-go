@@ -7,16 +7,28 @@ import styles from './styles';
 import MenuHamburguer from "../menuHamburger";
 import { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
+import io from 'socket.io-client';
+import { useEffect } from "react";
+import { toggleValue } from "../../store/NotificationsSlice";
 
 export default function NavBar(props) {
 
     var defaultBool = false;
-
     const [showMenu, setShowMenu] = useState(defaultBool);
-
     const notification = useSelector((state) => state.notifications.value);
+    const dispatch = useDispatch();
 
-    console.log("TTT:", notification);
+    const socket = io("http://localhost:3030"); // put notification's route
+
+    useEffect(() => {
+        socket.on('Notification', (data) => {
+            dispatch(()=> toggleValue());
+        });
+
+        return () => {
+            socket.off("OFF")
+        }
+    }, [notification])
 
     let notificationAtive = <MdOutlineNotificationsActive
         style={{
