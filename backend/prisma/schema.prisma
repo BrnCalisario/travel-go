@@ -15,19 +15,13 @@ model User {
   password    String
   isAdmin     Boolean
   Reservation Reservation[]
-  Packages    Packages[]
-}
-
-model Image {
-  id       Int     @id @default(autoincrement())
-  imageBin Bytes
-  Hotel    Hotel[]
 }
 
 model Hotel {
   id             Int              @id @default(autoincrement())
   hotelName      String
-  image          Image            @relation(fields: [imageId], references: [id])
+  image          String?
+  imageKey       String?
   cep            String
   city           String
   number         String
@@ -36,7 +30,6 @@ model Hotel {
   HotelAmenities HotelAmenities[]
   Rating         Rating[]
   Reservation    Reservation[]
-  imageId        Int
 }
 
 model Rating {
@@ -63,32 +56,11 @@ model HotelAmenities {
 }
 
 model Reservation {
-  id       Int        @id @default(autoincrement())
+  id       Int      @id @default(autoincrement())
   checkIn  DateTime
   checkOut DateTime
   userId   Int
   hotelId  Int
-  hotel    Hotel      @relation(fields: [hotelId], references: [id])
-  user     User       @relation(fields: [userId], references: [id])
-  Packages Packages[]
-}
-
-model Ticket {
-  id       Int        @id @default(autoincrement())
-  depart   DateTime
-  return   DateTime
-  from     String
-  to       String
-  means    String
-  Packages Packages[]
-}
-
-model Packages {
-  id            Int         @id @default(autoincrement())
-  reservation   Reservation @relation(fields: [reservationId], references: [id])
-  reservationId Int
-  ticket        Ticket      @relation(fields: [ticketId], references: [id])
-  ticketId      Int
-  user          User        @relation(fields: [userId], references: [id])
-  userId        Int
+  hotel    Hotel    @relation(fields: [hotelId], references: [id])
+  user     User     @relation(fields: [userId], references: [id])
 }

@@ -2,13 +2,14 @@ import { useEffect, useState, useContext } from "react";
 import { dataURItoBlob } from '../../config/utils';
 import * as ImagePicker from 'expo-image-picker';
 import axios from "axios";
-import { TextInput, View, Button, Image } from "react-native";
+import { TextInput, View, Button, Image, Text } from "react-native";
 import CustomTextLOS from "../../components/CustomTextLOS";
 import { useCallback } from "react";
 import styles from './styles';
 import useCep from '../../hooks/useCep'
 import AmenitiesDropDown from '../../components/AmenitiesDropDown'
 import { useSelector } from "react-redux";
+import Dropdown from "../../components/dropdown";
 
 export default function registerHotel(props) {
 
@@ -18,11 +19,11 @@ export default function registerHotel(props) {
 
     const [hotelCep, setHotelCep] = useState();
     const { rua, cidade, estado, handleRequest } = useCep(hotelCep);
-    const hotelAmenities = useSelector((state) => state.amenities.value); 
+    const hotelAmenities = useSelector((state) => state.amenities.value);
 
+    const [showRegisterPackage, setShow] = useState(false);
 
     const handleRegisterHotel = useCallback(async () => {
-
         const formData = {
             'hotelName': hotelName,
             'cep': hotelCep,
@@ -103,6 +104,34 @@ export default function registerHotel(props) {
                     onChangeText={e => setHotelNumber(e)}
                     style={styles.input}
                 />
+            </View>
+
+            <View>
+                <Button title="Criar Pacote" onPress={() => setShow(!showRegisterPackage)} />
+                <Text>aa{showRegisterPackage}</Text>
+                <View>
+                    <View style={styles.componentRegister}>
+                        <CustomTextLOS>Data de embarque</CustomTextLOS>
+                        <TextInput
+                            value={estado}
+                            editable={false}
+                            style={styles.input}
+                        />
+                    </View>
+                    <View style={styles.componentRegister}>
+                        <CustomTextLOS>Data de desembarque</CustomTextLOS>
+                        <TextInput
+                            value={estado}
+                            editable={false}
+                            style={styles.input}
+                        />
+                    </View>
+                    <View style={styles.componentRegister}>
+                        <Dropdown />
+                    </View>
+
+                    <Button title="Criar pacote" onPress={() => console.log("tsete")} />
+                </View>
             </View>
 
             <View>
