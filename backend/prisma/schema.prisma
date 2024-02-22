@@ -25,34 +25,7 @@ model Hotel {
   cep            String
   city           String
   number         String
-  state          String
-  price          Decimal          @default(200)
-  HotelAmenities HotelAmenities[]
-  Rating         Rating[]
   Reservation    Reservation[]
-}
-
-model Rating {
-  id      Int      @id @default(autoincrement())
-  review  String
-  Rating  Float
-  hotelId Int
-  date    DateTime
-  hotel   Hotel    @relation(fields: [hotelId], references: [id])
-}
-
-model Amenity {
-  id             Int              @id @default(autoincrement())
-  amenity        String
-  HotelAmenities HotelAmenities[]
-}
-
-model HotelAmenities {
-  id        Int     @id @default(autoincrement())
-  amenityId Int
-  hotelId   Int
-  amenity   Amenity @relation(fields: [amenityId], references: [id])
-  hotel     Hotel   @relation(fields: [hotelId], references: [id])
 }
 
 model Reservation {
@@ -61,6 +34,33 @@ model Reservation {
   checkOut DateTime
   userId   Int
   hotelId  Int
+<<<<<<< HEAD
   hotel    Hotel    @relation(fields: [hotelId], references: [id])
   user     User     @relation(fields: [userId], references: [id])
 }
+=======
+  hotel    Hotel      @relation(fields: [hotelId], references: [id])
+  user     User       @relation(fields: [userId], references: [id])
+  Packages Packages[]
+}
+
+model Ticket {
+  id       Int        @id @default(autoincrement())
+  depart   DateTime
+  return   DateTime
+  from     String
+  to       String
+  means    String
+  Packages Packages[]
+}
+
+model Packages {
+  id            Int         @id @default(autoincrement())
+  reservation   Reservation @relation(fields: [reservationId], references: [id])
+  reservationId Int
+  ticket        Ticket      @relation(fields: [ticketId], references: [id])
+  ticketId      Int
+  user          User        @relation(fields: [userId], references: [id])
+  userId        Int
+}
+>>>>>>> aa86a810411500fd8e259b2e2d5b269ddd709200

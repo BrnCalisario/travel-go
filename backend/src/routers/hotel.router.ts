@@ -1,9 +1,7 @@
-import { Hotel } from "@prisma/client"
 import express, { Request, Response} from "express"
-import { auth, authAdmin } from "../../middleware/auth.middleware"
-import { HotelDTO } from "../../models/hotel.model"
-import * as HotelService from "./hotel.service"
-// import upload from "./upload.service"
+import { auth, authAdmin } from "../middleware/auth.middleware"
+import { HotelDTO } from "../models/hotel.model"
+import * as HotelService from "../services/hotel/hotel.service"
 
 export const hotelRouter = express.Router()
 
@@ -29,8 +27,6 @@ hotelRouter.post("/create", async (req: Request, res : Response) => {
         return res.status(200).json({ id : result })
 
     } catch (error : any) {
-        
-        console.log("yea " +error)
         return res.status(500).json(error.message)
     }
 

@@ -13,5 +13,4 @@ export const notificationsSlice = createSlice({
 })
 
 export const { toggleValue } = notificationsSlice.actions;
-
 export default notificationsSlice.reducer;
