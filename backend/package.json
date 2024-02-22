@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx nodemon",
-    "env": "cp .env.example .env"
+    "env": "cp .env.example .env",
+    "setup" : "npm ci && npx prisma generate && npx prisma db pull"
   },
   "repository": {
     "type": "git",
