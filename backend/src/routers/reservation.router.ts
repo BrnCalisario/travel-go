@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express"
-import { auth } from "../../middleware/auth.middleware"
-import * as ReservationService from "./reservation.service"
-import { ReservationDTO } from "../../models/reservation.model";
+import { auth } from "../middleware/auth.middleware"
+import * as ReservationService from "../services/reservation/reservation.service"
+import { ReservationDTO } from "../models/reservation.model";
 
 export const reservationRouter = express.Router()
 

@@ -1,8 +1,8 @@
 import { User } from "@prisma/client";
 import express, { Request, Response } from "express";
-import { auth, authAdmin } from "../../middleware/auth.middleware";
-import * as AuthService from "../auth/auth.services";
-import * as UserService from "./user.service";
+import { auth, authAdmin } from "../middleware/auth.middleware";
+import * as AuthService from "../services/auth/auth.service";
+import * as UserService from "../services/user/user.service";
 
 export const userRouter = express.Router();
  
