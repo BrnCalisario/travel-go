@@ -97,7 +97,6 @@ export default function registerHotel(props) {
                 />
             </View>
 
-
             <View style={styles.componentRegister}>
                 <CustomTextLOS>Number</CustomTextLOS>
                 <TextInput
@@ -106,31 +105,33 @@ export default function registerHotel(props) {
                 />
             </View>
 
-            <View>
+            <View style={showRegisterPackage ? styles.buttonDisable : styles.buttonAble}>
                 <Button title="Criar Pacote" onPress={() => setShow(!showRegisterPackage)} />
-                <Text>aa{showRegisterPackage}</Text>
-                <View>
-                    <View style={styles.componentRegister}>
-                        <CustomTextLOS>Data de embarque</CustomTextLOS>
-                        <TextInput
-                            value={estado}
-                            editable={false}
-                            style={styles.input}
-                        />
-                    </View>
-                    <View style={styles.componentRegister}>
-                        <CustomTextLOS>Data de desembarque</CustomTextLOS>
-                        <TextInput
-                            value={estado}
-                            editable={false}
-                            style={styles.input}
-                        />
-                    </View>
-                    <View style={styles.componentRegister}>
+            </View>
+            <View style={showRegisterPackage ? styles.containerPackageOpen : styles.containerPackageCLose}>
+                <Button title="Cancelar" style={styles.componentRegister} onPress={() => setShow(!showRegisterPackage)} />
+
+                <View style={styles.componentRegister}>
+                    <CustomTextLOS>Data de embarque</CustomTextLOS>
+                    <TextInput
+                        value={estado}
+                        editable={false}
+                        style={styles.input}
+                    />
+                </View>
+                <View style={styles.componentRegister}>
+                    <CustomTextLOS>Data de desembarque</CustomTextLOS>
+                    <TextInput
+                        value={estado}
+                        editable={false}
+                        style={styles.input}
+                    />
+
+                    <View>
                         <Dropdown />
                     </View>
 
-                    <Button title="Criar pacote" onPress={() => console.log("tsete")} />
+                    <Button title="Salvar Pacote" onPress={() => console.log("tsete")} />
                 </View>
             </View>
 

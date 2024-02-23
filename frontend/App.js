@@ -9,6 +9,7 @@ import GlobalStyles from './assets/fonts';
 import registerHotel from './src/pages/registerHotel';
 import Store from './src/store/Store';
 import { Provider } from 'react-redux';
+import Payment from './src/pages/payment';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -21,9 +22,10 @@ export default function App() {
             <Stack.Screen
               options={{
                 headerTransparent: true,
-                headerShown: true
+                headerShown: false
               }}
-              name="registerHotel" component={registerHotel} />
+              name="payment" component={Payment}
+            />
             <Stack.Screen
               options={{
                 headerTransparent: true,
@@ -31,6 +33,12 @@ export default function App() {
               }}
               name="login" component={LoginPage}
             />
+            <Stack.Screen
+              options={{
+                headerTransparent: true,
+                headerShown: false
+              }}
+              name="registerHotel" component={registerHotel} />
             <Stack.Screen
               options={{
                 headerTransparent: true,

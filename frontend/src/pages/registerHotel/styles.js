@@ -24,6 +24,17 @@ const styles = StyleSheet.create({
     button: {
         width: '48vw',
         marginTop: '16rem',
+    },
+    containerPackageOpen: {
+
+    },
+    containerPackageCLose: {
+        display: 'none',
+    },
+    buttonDisable: {
+        display: "none"
+    },
+    buttonAble: {
     }
 });
 

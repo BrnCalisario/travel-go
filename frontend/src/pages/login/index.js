@@ -1,5 +1,5 @@
 import { TouchableOpacity } from "react-native";
-import { TextInput, StyleSheet, View, Button } from "react-native";
+import { TextInput, View, Button } from "react-native";
 import CustomTextLOS from "../../components/CustomTextLOS";
 import { useState } from 'react';
 import styles from "./styles";

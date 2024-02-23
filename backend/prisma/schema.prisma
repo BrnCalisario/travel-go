@@ -14,34 +14,63 @@ model User {
   cpf         String
   password    String
   isAdmin     Boolean
+  Packages    Packages[]
   Reservation Reservation[]
+}
+
+model Image {
+  id       Int     @id @default(autoincrement())
+  imageBin Bytes
+  Hotel    Hotel[]
 }
 
 model Hotel {
   id             Int              @id @default(autoincrement())
   hotelName      String
-  image          String?
-  imageKey       String?
   cep            String
   city           String
   number         String
+  imageId        Int?
+  price          Decimal          @default(200)
+  state          String
+  image          Image?           @relation(fields: [imageId], references: [id])
+  HotelAmenities HotelAmenities[]
+  Rating         Rating[]
   Reservation    Reservation[]
 }
 
+model Rating {
+  id      Int      @id @default(autoincrement())
+  review  String
+  Rating  Float
+  hotelId Int
+  date    DateTime
+  hotel   Hotel    @relation(fields: [hotelId], references: [id])
+}
+
+model Amenity {
+  id             Int              @id @default(autoincrement())
+  amenity        String
+  HotelAmenities HotelAmenities[]
+}
+
+model HotelAmenities {
+  id        Int     @id @default(autoincrement())
+  amenityId Int
+  hotelId   Int
+  amenity   Amenity @relation(fields: [amenityId], references: [id])
+  hotel     Hotel   @relation(fields: [hotelId], references: [id])
+}
+
 model Reservation {
-  id       Int      @id @default(autoincrement())
+  id       Int        @id @default(autoincrement())
   checkIn  DateTime
   checkOut DateTime
   userId   Int
   hotelId  Int
-<<<<<<< HEAD
-  hotel    Hotel    @relation(fields: [hotelId], references: [id])
-  user     User     @relation(fields: [userId], references: [id])
-}
-=======
+  Packages Packages[]
   hotel    Hotel      @relation(fields: [hotelId], references: [id])
   user     User       @relation(fields: [userId], references: [id])
-  Packages Packages[]
 }
 
 model Ticket {
@@ -56,11 +85,10 @@ model Ticket {
 
 model Packages {
   id            Int         @id @default(autoincrement())
-  reservation   Reservation @relation(fields: [reservationId], references: [id])
   reservationId Int
-  ticket        Ticket      @relation(fields: [ticketId], references: [id])
   ticketId      Int
-  user          User        @relation(fields: [userId], references: [id])
   userId        Int
+  reservation   Reservation @relation(fields: [reservationId], references: [id])
+  ticket        Ticket      @relation(fields: [ticketId], references: [id])
+  user          User        @relation(fields: [userId], references: [id])
 }
->>>>>>> aa86a810411500fd8e259b2e2d5b269ddd709200
