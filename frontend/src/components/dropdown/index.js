@@ -20,11 +20,11 @@ export default function DropdownComponent() {
     return null;
   };
 
-  const [hotels, setHotels] = useState([]);
+  const [hotels, setHotels] = useState({});
 
   const handleGetHotels = useCallback(async () => {
     try {
-      const response = await axios.get('http://localhost:3030/api/hotel');
+      const response = await axios.get('http://localhost:3030/api/hotel/');
       setHotels(response.data);
     }
     catch (error) {
@@ -36,7 +36,11 @@ export default function DropdownComponent() {
     handleGetHotels();
   }, [])
 
-  const data = [hotels]
+  console.log(hotels[0])
+
+  const data = hotels;
+
+  console.log(hotels)
 
   console.log(data)
 
@@ -52,7 +56,7 @@ export default function DropdownComponent() {
         data={data}
         search
         maxHeight={300}
-        labelField="label"
+        labelField="labelll"
         valueField="value"
         placeholder={!isFocus ? 'Select item' : '...'}
         searchPlaceholder="Search..."

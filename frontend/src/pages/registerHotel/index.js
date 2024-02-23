@@ -6,8 +6,8 @@ import { TextInput, View, Button, Image, Text } from "react-native";
 import CustomTextLOS from "../../components/CustomTextLOS";
 import { useCallback } from "react";
 import styles from './styles';
-import useCep from '../../hooks/useCep'
-import AmenitiesDropDown from '../../components/AmenitiesDropDown'
+import useCep from '../../hooks/useCep';
+import AmenitiesDropDown from '../../components/AmenitiesDropDown';
 import { useSelector } from "react-redux";
 import Dropdown from "../../components/dropdown";
 
@@ -114,16 +114,12 @@ export default function registerHotel(props) {
                 <View style={styles.componentRegister}>
                     <CustomTextLOS>Data de embarque</CustomTextLOS>
                     <TextInput
-                        value={estado}
-                        editable={false}
                         style={styles.input}
                     />
                 </View>
                 <View style={styles.componentRegister}>
                     <CustomTextLOS>Data de desembarque</CustomTextLOS>
                     <TextInput
-                        value={estado}
-                        editable={false}
                         style={styles.input}
                     />
 
