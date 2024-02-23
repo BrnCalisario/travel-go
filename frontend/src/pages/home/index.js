@@ -1,13 +1,8 @@
 import { View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
-import { BiSearch } from 'react-icons/bi';
-import { BsCalendarEvent } from "react-icons/bs";
-import { LiaBedSolid } from 'react-icons/lia';
-import CustomTextLOS from "../../components/CustomTextLOS";
 import NavBar from "../../components/navbar";
 import styles from "./styles";
 import Card from "../../components/card";
 import { useCallback, useEffect, useState } from "react";
-import Modal from '../../components/modal';
 import axios from "axios";
 
 

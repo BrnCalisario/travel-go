@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import styles from './styles';
+import axios
+ from 'axios';
 
 export default function DropdownComponent() {
   const [value, setValue] = useState(null);
@@ -24,6 +26,7 @@ export default function DropdownComponent() {
   const handleGetHotels = useCallback(async () => {
     try {
       const response = await axios.get('http://localhost:3030/api/hotel');
+      console.log(response.data);
       setHotels(response.data);
     }
     catch (error) {
@@ -35,8 +38,6 @@ export default function DropdownComponent() {
     handleGetHotels();
   }, [])
 
-  const data = [hotels]
-
   return (
     <View style={styles.container}>
       {renderLabel()}
@@ -46,7 +47,7 @@ export default function DropdownComponent() {
         selectedTextStyle={styles.selectedTextStyle}
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
-        data={data}
+        data={hotels}
         search
         maxHeight={300}
         labelField="label"
