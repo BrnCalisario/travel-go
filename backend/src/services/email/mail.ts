@@ -1,5 +1,5 @@
 import * as nodemailer from "nodemailer";
-import config from '../../config/configs';
+import configs from "../../config/configs";
 
 class Mail {
 
@@ -10,21 +10,20 @@ class Mail {
 
 
     sendMail() {
-
+        console.log(configs)
         let mailOptions = {
-            from: "portalband@band.com.br",
+            from: "nodemailerandre@gmail.com",
             to: this.to,
             subject: this.subject,
             html: this.message
         };
 
         const transporter = nodemailer.createTransport({
-            host: config.host,
-            port: config.port,
+            host: configs.host,
             secure: false,
             auth: {
-                user: config.user,
-                pass: config.password
+                user: configs.user,
+                pass: configs.password
             },
             tls: { rejectUnauthorized: false }
         });
@@ -34,8 +33,11 @@ class Mail {
 
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
+                console.log(error)
                 return error;
             } else {
+                console.log(info)
+                console.log("mandei")
                 return "E-mail enviado com sucesso!";
             }
         });
