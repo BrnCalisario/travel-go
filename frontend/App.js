@@ -21,7 +21,7 @@ export default function App() {
             <Stack.Screen
               options={{
                 headerTransparent: true,
-                headerShown: true
+                headerShown: false
               }}
               name="registerHotel" component={registerHotel} />
             <Stack.Screen

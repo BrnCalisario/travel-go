@@ -97,7 +97,6 @@ export default function registerHotel(props) {
                 />
             </View>
 
-
             <View style={styles.componentRegister}>
                 <CustomTextLOS>Number</CustomTextLOS>
                 <TextInput
