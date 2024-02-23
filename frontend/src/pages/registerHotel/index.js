@@ -110,6 +110,7 @@ export default function registerHotel(props) {
                 <Button title="Criar Pacote" onPress={() => setShow(!showRegisterPackage)} />
             </View>
             <View style={showRegisterPackage ? styles.containerPackageOpen : styles.containerPackageCLose}>
+                <Button title="Cancelar" style={styles.componentRegister} onPress={() => setShow(!showRegisterPackage)} />
 
                 <View style={styles.componentRegister}>
                     <CustomTextLOS>Data de embarque</CustomTextLOS>
