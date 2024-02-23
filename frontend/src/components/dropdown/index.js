@@ -3,8 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import styles from './styles';
-import axios
- from 'axios';
+import axios from "axios";
 
 export default function DropdownComponent() {
   const [value, setValue] = useState(null);
