@@ -24,7 +24,8 @@ export default function DropdownComponent() {
 
   const handleGetHotels = useCallback(async () => {
     try {
-      const response = await axios.get('http://localhost:3030/api/hotel/');
+      const response = await axios.get('http://localhost:3030/api/hotel');
+      console.log(response.data);
       setHotels(response.data);
     }
     catch (error) {
@@ -53,7 +54,7 @@ export default function DropdownComponent() {
         selectedTextStyle={styles.selectedTextStyle}
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
-        data={data}
+        data={hotels}
         search
         maxHeight={300}
         labelField="labelll"
