@@ -40,12 +40,12 @@ export default function Payment(props) {
             </View>
 
             <View style={style.buttonSection}>
-                <TouchableOpacity style={style.paymentMethodButton} onPress={() => payBoleto()}>Boleto</TouchableOpacity>
-                <TouchableOpacity style={style.paymentMethodButton} onPress={() => payPix()}>PIX</TouchableOpacity>
+                <TouchableOpacity style={style.paymentMethodButton} onPress={() => payBoleto()}><Text style={style.paymentButtonText}>Boleto</Text></TouchableOpacity>
+                <TouchableOpacity style={style.paymentMethodButton} onPress={() => payPix()}><Text style={style.paymentButtonText}>PIX</Text></TouchableOpacity>
                 <TouchableOpacity 
                     disabled={!(pix || boleto)} 
                     style={pix || boleto ? style.payButton : style.payButtonDisabled}
-                    onPress={() => props.navigation.navigate('home')}>Pagar</TouchableOpacity>
+                    onPress={() => props.navigation.navigate('home')}><Text style={style.paymentButtonText}>Pagar</Text></TouchableOpacity>
             </View>
 
         </View>

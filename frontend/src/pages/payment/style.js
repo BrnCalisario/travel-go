@@ -58,9 +58,6 @@ const styles = StyleSheet.create({
     paymentIcon: {
         fontSize: '200px'
     },
-    paymentMethodText: {
-        fontSize: '18px'
-    },
     payButtonDisabled: {
         width: "70%",
         padding: '7px',
@@ -70,6 +67,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         opacity: '20%',
         borderRadius: '5px'
+    },
+    paymentButtonText: {
+        color: 'white',
+        fontSize: "18px"
     }
 })
 
