@@ -2,12 +2,13 @@ import 'dotenv/config'
 import express, { Router, Request, Response } from "express"
 import cors from "cors"
 import connectDB from './config/db.server'
-import UserRepository from "./services/user/user.service"
 
 import { userRouter } from "./routers/user.router"
 import { hotelRouter } from './routers/hotel.router'
 import { reservationRouter } from './routers/reservation.router'
 import { mailRouter } from './routers/mail.router'
+import { IUser } from './models/user.model'
+import UserRepository from './repository/user/user.repository'
 
 
 const userRepo = new UserRepository();
@@ -29,9 +30,11 @@ app.get("/user", async (req : Request, res : Response) =>{
 
 app.post("/user", async (req : Request, res : Response) => {
     
-    let user = req.body.user;
-    
-    res.status(200).send(user);
+    let user = req.body as IUser;
+
+    let result = await userRepo.create(user);
+
+    res.status(200).send(result);
 })
 
 app.listen(PORT, () => console.log('Server running at port http://localhost:' + PORT));
