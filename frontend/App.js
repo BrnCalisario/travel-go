@@ -24,8 +24,7 @@ export default function App() {
                 headerTransparent: true,
                 headerShown: false
               }}
-              name="payment" component={Payment}
-            />
+              name="home" component={HomePage} />
             <Stack.Screen
               options={{
                 headerTransparent: true,
@@ -44,13 +43,14 @@ export default function App() {
                 headerTransparent: true,
                 headerShown: false
               }}
-              name="account" component={AccountPage} />
+              name="payment" component={Payment}
+            />
             <Stack.Screen
               options={{
                 headerTransparent: true,
                 headerShown: false
               }}
-              name="home" component={HomePage} />
+              name="account" component={AccountPage} />
             <Stack.Screen
               options={{
                 headerTransparent: true,
