@@ -10,7 +10,6 @@ class Mail {
 
 
     sendMail() {
-        console.log(configs)
         let mailOptions = {
             from: "nodemailerandre@gmail.com",
             to: this.to,
@@ -28,16 +27,10 @@ class Mail {
             tls: { rejectUnauthorized: false }
         });
 
-
-        console.log(mailOptions);
-
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
-                console.log(error)
                 return error;
             } else {
-                console.log(info)
-                console.log("mandei")
                 return "E-mail enviado com sucesso!";
             }
         });
