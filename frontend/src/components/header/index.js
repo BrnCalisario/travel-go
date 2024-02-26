@@ -1,5 +1,5 @@
 import LogoComp from "../logo";
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import { AiOutlineHeart, AiOutlineUser } from 'react-icons/ai';
 import { MdOutlineNotificationsNone, MdOutlineNotificationsActive } from 'react-icons/md';
 import { FiMenu } from 'react-icons/fi';
@@ -16,13 +16,14 @@ export default function NavBar(props) {
     var defaultBool = false;
     const [showMenu, setShowMenu] = useState(defaultBool);
     const notification = useSelector((state) => state.notifications.value);
+    const [isActive, setActive] = useState(false);
     const dispatch = useDispatch();
 
     const socket = io("http://localhost:3030"); // put notification's route
 
     useEffect(() => {
         socket.on('Notification', (data) => {
-            dispatch(()=> toggleValue());
+            dispatch(() => toggleValue());
         });
 
         return () => {
@@ -34,7 +35,7 @@ export default function NavBar(props) {
         style={{
             fontSize: 30
         }} />;
-    
+
     let notificationNone = <MdOutlineNotificationsNone
         style={{
             fontSize: 30
@@ -43,8 +44,7 @@ export default function NavBar(props) {
     return (
         <View style={styles.component}>
             <LogoComp />
-
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setActive(!isActive)}>
                 {notification ? notificationAtive : notificationNone}
             </TouchableOpacity>
 
@@ -68,7 +68,15 @@ export default function NavBar(props) {
                         fontSize: 30
                     }} />
                 <MenuHamburguer bool={showMenu} />
-             </TouchableOpacity>
+            </TouchableOpacity>
+            <View style={isActive ? styles.componentNotificationHeader : styles.componentNotificationHeaderClosed}>
+                <Text style={styles.NotificationTitle}>
+                    Notification
+                </Text>
+                <Text style={styles.NotificationBody}>
+
+                </Text>
+            </View>
         </View>
     );
 }

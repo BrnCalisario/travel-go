@@ -10,6 +10,7 @@ import registerHotel from './src/pages/registerHotel';
 import Store from './src/store/Store';
 import { Provider } from 'react-redux';
 import Payment from './src/pages/payment';
+import historyPage from './src/pages/history';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -19,6 +20,12 @@ export default function App() {
         <GlobalStyles />
         <NavigationContainer>
           <Stack.Navigator>
+            <Stack.Screen
+              options={{
+                headerTransparent: true,
+                headerShown: false
+              }}
+              name="history" component={historyPage} />
             <Stack.Screen
               options={{
                 headerTransparent: true,

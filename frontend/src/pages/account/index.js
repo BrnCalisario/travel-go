@@ -1,5 +1,5 @@
 import { View, TextInput, Button } from "react-native";
-import NavBar from "../../components/navbar";
+import NavBar from "../../components/header";
 import CustomTextLOS from "../../components/CustomTextLOS";
 import styles from "./styles";
 

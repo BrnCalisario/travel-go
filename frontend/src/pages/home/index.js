@@ -1,5 +1,5 @@
 import { View, StyleSheet, TextInput, TouchableOpacity, Button } from "react-native";
-import NavBar from "../../components/navbar";
+import NavBar from "../../components/header";
 import styles from "./styles";
 import Card from "../../components/card";
 import { useCallback, useEffect, useState } from "react";
