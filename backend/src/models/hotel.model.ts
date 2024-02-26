@@ -13,5 +13,6 @@ export interface AmenityDTO
 {
     id: number
     amenity : string,
-
 }
+
+const hotel

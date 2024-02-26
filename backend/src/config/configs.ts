@@ -10,3 +10,13 @@ class Configs {
 }
 
 export default new Configs;
+
+declare global {
+    namespace NodeJS {
+        interface ProcessEnv {
+            [key: string] : string | undefined;
+            DATABASE_URL: string;
+            PORT : string;
+        }
+    }
+}

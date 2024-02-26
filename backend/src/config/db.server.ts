@@ -1,15 +1,15 @@
-import { PrismaClient } from "@prisma/client";
+import mongoose from "mongoose";
 
-let db : PrismaClient;
+const URL : string = process.env.DATABASE_URL;
 
-declare global {
-    var __db: PrismaClient | undefined;
+const connectDB = () => {
+    mongoose.connect(URL)
+        .then(res => {
+            console.log("DB connected!");
+        })
+        .catch(err => {
+            console.log("Error");
+        });
 }
-
-if(!global.__db) {
-    global.__db = new PrismaClient();
-}
-
-db = global.__db;
-
-export { db }; 
+ 
+export default connectDB;
