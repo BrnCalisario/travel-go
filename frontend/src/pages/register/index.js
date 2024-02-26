@@ -22,8 +22,15 @@ export default function RegisterPage(props) {
             email: email
         }
 
+        const emailData = {
+            to: email,
+            subject: "Bem Vindo",
+            message: "Bem vindo ao nosso aplicativo e boas compras",
+        }
+
         try {
             const res = await axios.post("http://localhost:3030/api/user/signup/", registerData);
+            const res2 = await axios.post("http://localhost:3030/api/email/", emailData);
             props.navigation.navigate('login')
             console.log(res);
         } catch (error) {

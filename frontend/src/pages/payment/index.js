@@ -1,4 +1,5 @@
 import { View, Button, Text } from "react-native";
+import CustomTextLOS from "../../components/CustomTextLOS";
 import style from "./style";
 import { FcMoneyTransfer } from "react-icons/fc";
 import { TouchableOpacity } from "react-native-web";
@@ -21,6 +22,8 @@ export default function Payment(props) {
         setPIX(false);
         setPay(true);
     })
+
+
 
     return (
         <View style={style.main}>

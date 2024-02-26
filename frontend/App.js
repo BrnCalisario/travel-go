@@ -24,13 +24,14 @@ export default function App() {
                 headerTransparent: true,
                 headerShown: false
               }}
-              name="home" component={HomePage} />
+              name="login" component={LoginPage}
+            />
             <Stack.Screen
               options={{
                 headerTransparent: true,
                 headerShown: false
               }}
-              name="payment" component={Payment} />
+              name="home" component={HomePage} />
             <Stack.Screen
               options={{
                 headerTransparent: true,

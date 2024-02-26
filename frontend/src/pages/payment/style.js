@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
         height: '100vh',
         color: 'gray',
         alignItems: 'center',
+        justifyContent: 'center',
         display: 'flex',
         flexDirection: 'column'
     },
