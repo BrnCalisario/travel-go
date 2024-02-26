@@ -24,6 +24,19 @@ export default function App() {
                 headerTransparent: true,
                 headerShown: false
               }}
+              name="home" component={HomePage} />
+            <Stack.Screen
+              options={{
+                headerTransparent: true,
+                headerShown: false
+              }}
+              name="login" component={LoginPage}
+            />
+            <Stack.Screen
+              options={{
+                headerTransparent: true,
+                headerShown: false
+              }}
               name="registerHotel" component={registerHotel} />
             <Stack.Screen
               options={{
@@ -37,20 +50,7 @@ export default function App() {
                 headerTransparent: true,
                 headerShown: false
               }}
-              name="login" component={LoginPage}
-            />
-            <Stack.Screen
-              options={{
-                headerTransparent: true,
-                headerShown: false
-              }}
               name="account" component={AccountPage} />
-            <Stack.Screen
-              options={{
-                headerTransparent: true,
-                headerShown: false
-              }}
-              name="home" component={HomePage} />
             <Stack.Screen
               options={{
                 headerTransparent: true,
