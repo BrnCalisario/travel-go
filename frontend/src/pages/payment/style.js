@@ -11,14 +11,13 @@ const styles = StyleSheet.create({
     },
     buttonSection: {
         display: 'flex',
-        // flexDirection: 'row',
         gap: '40px',
-        height: "30%",
+        height: "35%",
         width: "100%",
         alignItems: 'center',
         justifyContent: 'center',
     },
-    payButton: {
+    paymentMethodButton: {
         width: '30%',
         justifyContent:'center',
         alignItems: 'center',
@@ -27,12 +26,21 @@ const styles = StyleSheet.create({
         borderRadius: '10px',
         backgroundColor: 'rgb(9, 106, 58)'
     },
+    payButton: {
+        width: "70%",
+        padding: '7px',
+        color: 'white',
+        backgroundColor: "rgb(9, 172, 58)",
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: '5px'
+    },
     title: {
         fontSize: '40px',
         color: 'rgb(87, 222, 149)'
     },
     header: {
-        height: "40%",
+        height: "35%",
         width: "100%",
         alignItems: "center",
         justifyContent: "center"
@@ -51,9 +59,17 @@ const styles = StyleSheet.create({
     },
     paymentMethodText: {
         fontSize: '18px'
+    },
+    payButtonDisabled: {
+        width: "70%",
+        padding: '7px',
+        color: 'white',
+        backgroundColor: "rgb(9, 172, 58)",
+        justifyContent: 'center',
+        alignItems: 'center',
+        opacity: '20%',
+        borderRadius: '5px'
     }
-
-
 })
 
 export default styles;

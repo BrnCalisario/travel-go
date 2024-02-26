@@ -2,9 +2,25 @@ import { View, Button, Text } from "react-native";
 import style from "./style";
 import { FcMoneyTransfer } from "react-icons/fc";
 import { TouchableOpacity } from "react-native-web";
+import { useState } from "react";
 
 export default function Payment(props) {
 
+    const [pix, setPIX] = useState(false);
+    const [boleto, setBoleto] = useState(false);
+    const [pay, setPay] = useState(false);
+
+    const payPix = (() => {
+        setBoleto(false);
+        setPIX(true);
+        setPay(true);
+    })
+
+    const payBoleto = (() => {
+        setBoleto(true);
+        setPIX(false);
+        setPay(true);
+    })
 
     return (
         <View style={style.main}>
@@ -14,14 +30,19 @@ export default function Payment(props) {
             </View>
 
             <View style={style.paymentMethod}>
-                <FcMoneyTransfer style={style.paymentIcon}/>
+                <FcMoneyTransfer style={style.paymentIcon} />
                 <Text style={style.paymentMethodText}>Escolha sua forma de pagamento:</Text>
+                {pix && <Text>PIX</Text>}
+                {boleto && <Text>Boleto</Text>}
             </View>
 
-
             <View style={style.buttonSection}>
-                <TouchableOpacity style={style.payButton} title="Boleto">Boleto</TouchableOpacity>
-                <TouchableOpacity style={style.payButton} title="PIX">PIX</TouchableOpacity>
+                <TouchableOpacity style={style.paymentMethodButton} onPress={() => payBoleto()}>Boleto</TouchableOpacity>
+                <TouchableOpacity style={style.paymentMethodButton} onPress={() => payPix()}>PIX</TouchableOpacity>
+                <TouchableOpacity 
+                    disabled={!(pix || boleto)} 
+                    style={pix || boleto ? style.payButton : style.payButtonDisabled}
+                    onPress={() => props.navigation.navigate('home')}>Pagar</TouchableOpacity>
             </View>
 
         </View>
