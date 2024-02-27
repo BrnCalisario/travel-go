@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { ObjectId } from "mongoose";
 
 const { Schema, model } = mongoose;
 
@@ -9,6 +9,10 @@ export interface IUser {
     cpf : string,
     password : string, 
     isAdmin : boolean
+    // amenity : {
+    //     name : string,
+    // }
+// favorites: [{ type : ObjectId, ref: 'Hotel'}]
 }
 
 const userSchema = new Schema<IUser>({
@@ -17,6 +21,9 @@ const userSchema = new Schema<IUser>({
     cpf :  { type : String, required : true, unique : true},
     password : String,
     isAdmin : { type: Boolean, default : false }
+    // amenity : {
+    //     name : String
+    // }
 });
 
 const User = model<IUser>('User', userSchema);
