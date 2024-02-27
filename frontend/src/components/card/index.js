@@ -136,7 +136,7 @@ export default function CardComp({ hotel }) {
                             color='#028000'
                             title="See offer"
                         /> */}
-                        <Modal />
+                        <ModalComp navigation={navigation} />
                     </View>
                 </View>
                 <View style={{

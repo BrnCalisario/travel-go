@@ -9,21 +9,16 @@ export default function Payment(props) {
 
     const [pix, setPIX] = useState(false);
     const [boleto, setBoleto] = useState(false);
-    const [pay, setPay] = useState(false);
 
     const payPix = (() => {
         setBoleto(false);
         setPIX(true);
-        setPay(true);
     })
 
     const payBoleto = (() => {
         setBoleto(true);
         setPIX(false);
-        setPay(true);
     })
-
-
 
     return (
         <View style={style.main}>
