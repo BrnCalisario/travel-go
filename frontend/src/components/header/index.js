@@ -11,7 +11,7 @@ import io from 'socket.io-client';
 import { useEffect } from "react";
 import { toggleValue } from "../../store/NotificationsSlice";
 
-export default function NavBar(props) {
+export default function Header(props) {
 
     var defaultBool = false;
     const [showMenu, setShowMenu] = useState(defaultBool);
@@ -62,13 +62,6 @@ export default function NavBar(props) {
                     }} />
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => setShowMenu(!showMenu)}>
-                <FiMenu
-                    style={{
-                        fontSize: 30
-                    }} />
-                <MenuHamburguer bool={showMenu} />
-            </TouchableOpacity>
             <View style={isActive ? styles.componentNotificationHeader : styles.componentNotificationHeaderClosed}>
                 <Text style={styles.NotificationTitle}>
                     Notification

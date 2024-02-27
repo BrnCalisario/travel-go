@@ -38,7 +38,12 @@ const styles = StyleSheet.create({
         width: '96%',
         alignItems: 'center',
         padding: 18
-    }
+    },
+    heart: {
+        alignItems: "flex-end",
+        color: "black",
+        width: "70%",
+    },
 });
 
 export default styles;

@@ -1,12 +1,12 @@
 import { View, TextInput, Button } from "react-native";
-import NavBar from "../../components/header";
+import Header from "../../components/header";
 import CustomTextLOS from "../../components/CustomTextLOS";
 import styles from "./styles";
 
 export default function AccountPage() {
     return (
         <>
-            <NavBar />
+            <Header />
             <View style={styles.screen}>
                 <View style={styles.componentLogin}>
                     <CustomTextLOS>Email</CustomTextLOS>

@@ -1,5 +1,5 @@
 import { View, StyleSheet, TextInput, TouchableOpacity, Button } from "react-native";
-import NavBar from "../../components/header";
+import Header from "../../components/header";
 import styles from "./styles";
 import Card from "../../components/card";
 import { useCallback, useEffect, useState } from "react";
@@ -34,7 +34,7 @@ export default function HomePage() {
 
     return (
         <>
-            <NavBar />
+            <Header />
             <View style={styles.container}>
                 <View>
                     <TouchableOpacity style={styles.text}>

@@ -1,12 +1,40 @@
 import styles from "./styles";
 import { View, Image, Button, Text } from "react-native";
 import { AiFillStar } from 'react-icons/ai';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { ImLocation } from 'react-icons/im';
 import CustomTextLOS from "../CustomTextLOS";
 import Modal from "../modal";
 import Dropdown from '../dropdown';
+import { FaHeart, FaHeartbeat } from "react-icons/fa";
+import { useState } from "react";
+
 
 export default function CardComp({ hotel }) {
+    const [heartFill, setHeart] = useState()
+
+    const favorite = []
+    
+    const Like = (hotel) => {
+        for (let index = 0; index < favorite.length; index++) {
+            const element = favorite[index];
+
+            console.log(favorite[index])
+
+            if (element == hotel)
+            {
+                favorite.splice(index, 1)
+                setHeart(false)
+            }
+            else {
+                favorite.unshift(hotel)
+                setHeart(true)
+            }
+        }
+        console.log(favorite)
+        console.log(hotel)
+    }
+
     return (
         <>
             <View style={styles.card}>
@@ -33,6 +61,19 @@ export default function CardComp({ hotel }) {
                     }}>
                         Hotel
                     </CustomTextLOS>
+                    <View style={styles.heart} onClick={() => Like(hotel)}>
+                        <AiFillHeart 
+                            style={{
+                                width: "25px",
+                                height: "25px",
+                                color: "#be2929"
+                            }} />
+                        <AiOutlineHeart
+                            style={{
+                                width: "25px",
+                                height: "25px",
+                            }} />
+                    </View>
                 </View>
                 <Text style={{ width: '95%' }}>
                     {hotel.hotelName}
@@ -104,7 +145,7 @@ export default function CardComp({ hotel }) {
                     borderBottomLeftRadius: 10,
                     borderBottomRightRadius: 10,
                 }}>
-                    <Text style={{color: 'white'}}>
+                    <Text style={{ color: 'white' }}>
                         a
                     </Text>
                 </View>
