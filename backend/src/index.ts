@@ -30,11 +30,22 @@ app.get("/user", async (req : Request, res : Response) =>{
 
 app.post("/user", async (req : Request, res : Response) => {
     
-    let user = req.body as IUser;
+    const user = req.body as IUser;
 
-    let result = await userRepo.create(user);
+    const result = await userRepo.create(user);
 
     res.status(200).send(result);
+})
+
+app.put("/user/:id",  async (req : Request, res : Response) => {
+
+    const updated = req.body as IUser;
+
+    updated._id = req.params.id;
+
+    const result = await userRepo.update(updated);
+
+    res.status(200).send(updated);
 })
 
 app.listen(PORT, () => console.log('Server running at port http://localhost:' + PORT));
