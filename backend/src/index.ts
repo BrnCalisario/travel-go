@@ -45,7 +45,7 @@ app.put("/user/:id",  async (req : Request, res : Response) => {
 
     const result = await userRepo.update(updated);
 
-    res.status(200).send(updated);
+    res.status(200).send(result);
 })
 
 app.listen(PORT, () => console.log('Server running at port http://localhost:' + PORT));

@@ -6,7 +6,7 @@ export interface IRepository<T> {
 
 	create(item : T) : Promise<T>;
 
-	update(item : T) : Promise<T | null>;
+	update(item : T) : Promise<T>;
 
 	deleteById(id : string) : Promise<T>;
 	
@@ -16,9 +16,9 @@ export interface IRepository<T> {
 
 } 
 
-export abstract class BaseRepository<T extends { _id : string }> implements IRepository<T> {
+export abstract class BaseRepository<T extends { _id : string}> implements IRepository<T> {
 
-	_model : Model<T>;
+	protected _model : Model<T>;
 
 	constructor(model : typeof Model) {
 		this._model = model;
@@ -37,7 +37,6 @@ export abstract class BaseRepository<T extends { _id : string }> implements IRep
 	}	
 
 	async update(item: T): Promise<T> { 
-		
 		const updated = await this._model.findOneAndUpdate({ _id : new ObjectId(item._id) }, item);
 
 		if(!updated)
