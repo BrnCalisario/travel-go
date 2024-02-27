@@ -3,10 +3,9 @@ import { View, Image, Button, Text } from "react-native";
 import { AiFillStar } from 'react-icons/ai';
 import { ImLocation } from 'react-icons/im';
 import CustomTextLOS from "../CustomTextLOS";
-import Modal from "../modal";
-import Dropdown from '../dropdown';
+import ModalComp from "../modal";
 
-export default function CardComp({ hotel }) {
+export default function CardComp({ hotel, navigation }) {
     return (
         <>
             <View style={styles.card}>
@@ -95,7 +94,7 @@ export default function CardComp({ hotel }) {
                             color='#028000'
                             title="See offer"
                         /> */}
-                        <Modal />
+                        <ModalComp navigation={navigation} />
                     </View>
                 </View>
                 <View style={{

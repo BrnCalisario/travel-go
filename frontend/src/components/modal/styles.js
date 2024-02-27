@@ -43,15 +43,23 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         alignItems: 'center',
         justifyContent: 'center',
-
         height: '10vh'
     },
     input: {
         borderWidth: 1,
         padding: 10,
-
         width: '48vw'
     },
+    modalHeader: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+    },
+    closeIcon: {
+        color: 'red',
+        fontSize: '20px'
+    }
 });
 
 export default styles;

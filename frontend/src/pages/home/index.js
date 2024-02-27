@@ -1,12 +1,12 @@
 import { View, StyleSheet, TextInput, TouchableOpacity, Button } from "react-native";
 import NavBar from "../../components/header";
 import styles from "./styles";
-import Card from "../../components/card";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { Text } from "react-native-web";
+import CardComp from "../../components/card";
 
-export default function HomePage() {
+export default function HomePage({navigation}) {
 
     const [hotels, setHotels] = useState([]);
 
@@ -27,7 +27,7 @@ export default function HomePage() {
     const renderHotels = (() => {
         return (
             hotels.map((item, index) => {
-                return (<Card key={index} hotel={item} />)
+                return (<CardComp navigation={navigation} key={index} hotel={item} />)
             })
         )
     })

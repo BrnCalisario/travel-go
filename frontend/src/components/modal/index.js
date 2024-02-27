@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Alert, Modal, StyleSheet, Text, Pressable, View, TextInput } from 'react-native';
 import CustomTextLOS from '../CustomTextLOS';
 import styles from './styles';
-import Dropdown from '../dropdown';
+import { TouchableOpacity } from "react-native";
+import { IoMdClose } from "react-icons/io";
 
-const App = () => {
+export default function ModalComp(props) {
     const [modalVisible, setModalVisible] = useState(false);
     return (
         <View style={styles.centeredView}>
@@ -18,30 +19,45 @@ const App = () => {
                 }}>
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={() => setModalVisible(!modalVisible)}>
-                            <CustomTextLOS style={styles.textStyle}>Hide Modal</CustomTextLOS>
-                        </Pressable>
+
+                        <View style={styles.modalHeader}>
+                            <Pressable
+                                onPress={() => setModalVisible(!modalVisible)}>
+                                <IoMdClose style={styles.closeIcon} />
+                            </Pressable>
+                        </View>
+
                         <CustomTextLOS style={styles.modalText}>
                             <View>
                                 <CustomTextLOS>Check-in</CustomTextLOS>
                                 <TextInput
                                     style={styles.input}
-                                
                                 />
                             </View>
+
                             <View>
                                 <CustomTextLOS>Check-out</CustomTextLOS>
                                 <TextInput
                                     style={styles.input}
-                                    
                                 />
                             </View>
                         </CustomTextLOS>
+
+                        <TouchableOpacity
+                            onPress={() => {
+                                setModalVisible(!modalVisible)
+                                props.navigation.navigate('payment')
+                            }
+                            }>
+                            <Text>
+                                Buy
+                            </Text>
+                        </TouchableOpacity>
+
                     </View>
                 </View>
             </Modal>
+
             <Pressable
                 style={[styles.button, styles.buttonOpen]}
                 onPress={() => setModalVisible(true)}>
@@ -50,6 +66,3 @@ const App = () => {
         </View>
     );
 };
-
-export default App;
-
