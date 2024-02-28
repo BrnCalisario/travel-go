@@ -12,16 +12,14 @@ import { useState } from "react";
 
 export default function CardComp({ hotel, navigation }) {
     const [heartFill, setHeart] = useState()
-
-    const favorite = []
     
-    const Like = (hotel) => {
+    const favorite = [hotel]
+    
+    function Like(hotel) {
         for (let index = 0; index < favorite.length; index++) {
-            const element = favorite[index];
+            console.log("teste", index)
 
-            console.log(favorite[index])
-
-            if (element == hotel)
+            if (favorite[index] == hotel)
             {
                 favorite.splice(index, 1)
                 setHeart(false)
@@ -31,8 +29,6 @@ export default function CardComp({ hotel, navigation }) {
                 setHeart(true)
             }
         }
-        console.log(favorite)
-        console.log(hotel)
     }
 
     return (
