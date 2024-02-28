@@ -10,7 +10,7 @@ import { FaHeart, FaHeartbeat } from "react-icons/fa";
 import { useState } from "react";
 
 
-export default function CardComp({ hotel }) {
+export default function CardComp({ hotel, navigation }) {
     const [heartFill, setHeart] = useState()
 
     const favorite = []
