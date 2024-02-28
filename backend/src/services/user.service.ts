@@ -6,4 +6,18 @@ export class UserService extends BaseService<IUser> {
     constructor() {
         super(new UserRepository())
     }
+
+    create(item : IUser) : Promise<IUser> {
+
+        const hashed = this.hashPassword(item.password);
+
+        item.password = hashed;
+
+        return super.create(item);
+    }
+
+    private hashPassword(password : string) : string {
+        // TODO : Import lib and hash
+        return "#" + password;
+    }
 }
