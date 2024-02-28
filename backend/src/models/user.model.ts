@@ -1,29 +1,25 @@
 import mongoose, { ObjectId } from "mongoose";
+import { hotelSchema } from "./hotel.model";
 
 const { Schema, model } = mongoose;
 
 export interface IUser {
-    _id : string;
-    email : string,
-    fullName: string,
-    cpf : string,
-    password : string, 
-    isAdmin : boolean
-    // amenity : {
-    //     name : string,
-    // }
-// favorites: [{ type : ObjectId, ref: 'Hotel'}]
+    _id:       string;
+    email:     string,
+    fullName:  string,
+    cpf:       string,
+    password:  string,
+    isAdmin:   boolean,
+    favorites: ObjectId[]
 }
 
 const userSchema = new Schema<IUser>({
-    email : { type : String, required : true, unique : true },
-    fullName :  { type : String, required : true },
-    cpf :  { type : String, required : true, unique : true},
-    password : String,
-    isAdmin : { type: Boolean, default : false }
-    // amenity : {
-    //     name : String
-    // }
+    email:     { type: String, required: true, unique: true },
+    fullName:  { type: String, required: true },
+    cpf:       { type: String, required: true, unique: true },
+    password:  String,
+    isAdmin:   { type: Boolean, default: false },
+    favorites: [hotelSchema]
 });
 
 const User = model<IUser>('User', userSchema);
