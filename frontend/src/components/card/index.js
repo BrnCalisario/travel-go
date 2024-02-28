@@ -4,7 +4,7 @@ import { AiFillStar } from 'react-icons/ai';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { ImLocation } from 'react-icons/im';
 import CustomTextLOS from "../CustomTextLOS";
-import Modal from "../modal";
+import ModalComp from "../modal";
 import Dropdown from '../dropdown';
 import { FaHeart, FaHeartbeat } from "react-icons/fa";
 import { useState } from "react";

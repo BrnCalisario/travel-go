@@ -19,17 +19,17 @@ export default function Header(props) {
     const [isActive, setActive] = useState(false);
     const dispatch = useDispatch();
 
-    const socket = io("http://localhost:3030"); // put notification's route
+    // const socket = io("http://localhost:3030"); // put notification's route
 
-    useEffect(() => {
-        socket.on('Notification', (data) => {
-            dispatch(() => toggleValue());
-        });
+    // useEffect(() => {
+    //     socket.on('Notification', (data) => {
+    //         dispatch(() => toggleValue());
+    //     });
 
-        return () => {
-            socket.off("OFF")
-        }
-    }, [notification])
+    //     return () => {
+    //         socket.off("OFF")
+    //     }
+    // }, [notification])
 
     let notificationAtive = <MdOutlineNotificationsActive
         style={{
