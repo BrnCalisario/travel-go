@@ -38,7 +38,7 @@ export default function ModalComp(props) {
                             <View>
                                 <CustomTextLOS>Check-out</CustomTextLOS>
                                 <TextInput
-                                    style={styles.input}   
+                                    style={styles.input}
                                 />
                             </View>
                         </CustomTextLOS>

@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     paymentMethodButton: {
-        width: '30%',
+        width: '50%',
         justifyContent:'center',
         alignItems: 'center',
         color: 'white',

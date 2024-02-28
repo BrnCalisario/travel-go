@@ -6,7 +6,7 @@ import axios from "axios";
 import { Text } from "react-native-web";
 import CardComp from "../../components/card";
 
-export default function HomePage({navigation}) {
+export default function HomePage({ navigation }) {
 
     const [hotels, setHotels] = useState([]);
 
@@ -38,7 +38,7 @@ export default function HomePage({navigation}) {
             <View style={styles.container}>
                 <View>
                     <TouchableOpacity style={styles.text}>
-                        <Text>See package</Text>
+                        <Text>{hotels.length ? "See packages" : "No packages found"}</Text>
                     </TouchableOpacity>
                 </View>
                 {renderHotels()}
