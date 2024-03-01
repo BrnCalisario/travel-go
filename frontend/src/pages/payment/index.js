@@ -1,5 +1,4 @@
 import { View, Button, Text } from "react-native";
-import CustomTextLOS from "../../components/CustomTextLOS";
 import style from "./style";
 import { FcMoneyTransfer } from "react-icons/fc";
 import { TouchableOpacity } from "react-native-web";
@@ -37,10 +36,12 @@ export default function Payment(props) {
             <View style={style.buttonSection}>
                 <TouchableOpacity style={style.paymentMethodButton} onPress={() => payBoleto()}><Text style={style.paymentButtonText}>Bank Payment</Text></TouchableOpacity>
                 <TouchableOpacity style={style.paymentMethodButton} onPress={() => payPix()}><Text style={style.paymentButtonText}>PIX</Text></TouchableOpacity>
-                <TouchableOpacity 
-                    disabled={!(pix || boleto)} 
+                <TouchableOpacity
+                    disabled={!(pix || boleto)}
                     style={pix || boleto ? style.payButton : style.payButtonDisabled}
-                    onPress={() => props.navigation.navigate('home')}><Text style={style.paymentButtonText}>Pay</Text></TouchableOpacity>
+                    onPress={() => props.navigation.navigate('home')}>
+                    <Text style={style.paymentButtonText}>Pay</Text>
+                </TouchableOpacity>
             </View>
 
         </View>

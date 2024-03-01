@@ -34,7 +34,7 @@ export default function HomePage({ navigation }) {
 
     return (
         <>
-            <Header />
+            <Header navigation={navigation}/>
             <View style={styles.container}>
                 <View>
                     <TouchableOpacity style={styles.text}>

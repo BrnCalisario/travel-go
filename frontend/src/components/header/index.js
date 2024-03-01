@@ -43,7 +43,9 @@ export default function Header(props) {
 
     return (
         <View style={styles.component}>
-            <LogoComp />
+
+            <LogoComp navigation={props.navigation}/>
+
             <TouchableOpacity onPress={() => setActive(!isActive)}>
                 {notification ? notificationAtive : notificationNone}
             </TouchableOpacity>

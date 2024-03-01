@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
-        elevation: 5
+        elevation: 5,
+        gap: '30px'
     },
     button: {
         borderRadius: 2,
@@ -39,12 +40,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     modalText: {
+        display: 'flex',
+        flexDirection: 'column',
         marginBottom: 15,
         textAlign: 'center',
         alignItems: 'center',
         justifyContent: 'center',
         height: '10vh',
-        gap: '12px'
+        gap: '20px'
     },
     input: {
         borderWidth: 1,
