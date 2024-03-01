@@ -11,16 +11,14 @@ import { useState } from "react";
 
 
 export default function CardComp({ hotel, navigation }) {
-    const [heartFill, setHeart] = useState()
-    
+    const [heartFill, setHeart] = useState(false)
+
     const favorite = [hotel]
-    
+
     function Like(hotel) {
         for (let index = 0; index < favorite.length; index++) {
-            console.log("teste", index)
 
-            if (favorite[index] == hotel)
-            {
+            if (favorite[index] == hotel) {
                 favorite.splice(index, 1)
                 setHeart(false)
             }
@@ -57,18 +55,26 @@ export default function CardComp({ hotel, navigation }) {
                     }}>
                         Hotel
                     </CustomTextLOS>
-                    <View style={styles.heart} onClick={() => Like(hotel)}>
-                        <AiFillHeart 
-                            style={{
-                                width: "25px",
-                                height: "25px",
-                                color: "#be2929"
-                            }} />
+                    <View style={styles.heart} onClick={() => setHeart(!heartFill)}>
+                        <AiFillHeart
+                            style={
+                                heartFill ? {
+                                    width: "25px",
+                                    height: "25px",
+                                    color: "#be2929"
+                                } :
+                                    {
+                                        display: "none"
+                                    }} />
                         <AiOutlineHeart
-                            style={{
-                                width: "25px",
-                                height: "25px",
-                            }} />
+                            style={
+                                !heartFill ? {
+                                    width: "25px",
+                                    height: "25px",
+                                } :
+                                    {
+                                        display: "none"
+                                    }} />
                     </View>
                 </View>
                 <Text style={{ width: '95%' }}>
