@@ -55,8 +55,8 @@ export default function CardComp({ hotel, navigation }) {
                     }}>
                         Hotel
                     </CustomTextLOS>
-                    <View style={styles.heart} onClick={() => setHeart(!heartFill)}>
-                        <AiFillHeart
+                    <View style={styles.heart} >
+                        <AiFillHeart onClick={() => setHeart(!heartFill)}
                             style={
                                 heartFill ? {
                                     width: "25px",
@@ -66,7 +66,7 @@ export default function CardComp({ hotel, navigation }) {
                                     {
                                         display: "none"
                                     }} />
-                        <AiOutlineHeart
+                        <AiOutlineHeart onClick={() => setHeart(!heartFill)}
                             style={
                                 !heartFill ? {
                                     width: "25px",
