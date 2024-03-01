@@ -1,20 +1,22 @@
 import { BaseService } from "../services/base.service";
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction, Router } from "express";
 
 export abstract class BaseControler<T extends { _id: string }> {
 
     _service: BaseService<T>;
 
-    constructor(service: BaseService<T>) {
+    BASE_URL : string;
+
+    constructor(service: BaseService<T>, baseURL : string) {
         this._service = service;
+        this.BASE_URL = baseURL;
     }
 
-    public async get(_: Request, res: Response<T[]>, next: NextFunction) {
+    public async get(req: Request, res: Response<T[]>, next: NextFunction) {
         try {
-
             const result = await this._service.getAll();
-
-            return res.status(200).json(result);
+            
+            return res.status(200).send(result);
 
         } catch (err) {
             next(err);

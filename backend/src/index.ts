@@ -1,13 +1,9 @@
 import 'dotenv/config'
-import express, { Router, Request, Response } from "express"
-import cors from "cors"
+import express from "express"
+
 import connectDB from './config/db.server'
 
-import { userRouter } from "./routers/user.router"
-
-import UserRepository from './repository/user/user.repository'
-
-const userRepo = new UserRepository();
+import { setupConfigs, setupControllers } from './services/setup';
 
 const PORT = process.env.PORT;
 
@@ -15,10 +11,10 @@ const app = express()
 
 connectDB();
 
-app.use(cors())
-app.use(express.json())
+// SETUP
+setupConfigs(app)
 
-app.use(userRouter);
+setupControllers(app);
 
 
 app.listen(PORT, () => console.log('Server running at port http://localhost:' + PORT));

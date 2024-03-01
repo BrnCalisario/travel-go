@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 
-const URL : string = process.env.DATABASE_URL;
+const URL = process.env.DATABASE_URL;
+
+if(!URL)
+    throw Error("Database not provided");
 
 const connectDB = () => {
     mongoose.connect(URL)
@@ -8,7 +11,7 @@ const connectDB = () => {
             console.log("DB connected!");
         })
         .catch(err => {
-            console.log("Error");
+            console.log("Database Error");
         });
 }
  
