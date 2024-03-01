@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
-        elevation: 5,
+        elevation: 5
     },
     button: {
         borderRadius: 2,
@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '10vh'
+        height: '10vh',
+        gap: '12px'
     },
     input: {
         borderWidth: 1,
@@ -59,6 +60,17 @@ const styles = StyleSheet.create({
     closeIcon: {
         color: 'red',
         fontSize: '20px'
+    },
+    buyButton: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '50px',
+        padding: '5px',
+        borderRadius: '15px',
+        backgroundColor: 'rgb(9, 172, 58)'
+    },
+    buyText: {
+        color: 'white'
     }
 });
 

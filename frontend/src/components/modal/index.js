@@ -44,12 +44,13 @@ export default function ModalComp(props) {
                         </CustomTextLOS>
 
                         <TouchableOpacity
+                            style={styles.buyButton}
                             onPress={() => {
                                 setModalVisible(!modalVisible)
                                 props.navigation.navigate('payment')
                             }
                             }>
-                            <Text>
+                            <Text style={styles.buyText}>
                                 Buy
                             </Text>
                         </TouchableOpacity>
