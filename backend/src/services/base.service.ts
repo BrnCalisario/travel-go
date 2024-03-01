@@ -9,6 +9,8 @@ export interface IService<T> {
     delete(id : string)  : Promise<T>;
 
     getById(id : string) : Promise<T | null>;
+
+    getAll() : Promise<T[]>;
 }
 
 export abstract class BaseService<T extends { _id : string}> implements IService<T>  {
@@ -17,6 +19,10 @@ export abstract class BaseService<T extends { _id : string}> implements IService
     
     constructor(repository : BaseRepository<T>) {
         this._repository = repository;
+    }
+
+    async getAll(): Promise<T[]> {
+        return await this._repository.getAll();
     }
 
     async create(item: T): Promise<T> {
