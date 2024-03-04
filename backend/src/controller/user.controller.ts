@@ -1,28 +1,16 @@
-import { Router } from "express";
+import { inject, injectable } from "tsyringe";
 import { IUser } from "../models/user.model";
-import { UserService } from "../services/user.service";
-import { BaseControler } from "./base.controller";
+import { BaseService } from "../services/base.service";
+import { BaseController, IRoute } from "./base.controller";
 
-export class UserController extends BaseControler<IUser> {
-
-    constructor() {
-        super(new UserService(), "/api/User");
-    }
-}
-
-export function extractRouter<T extends { _id : string}>(controller : BaseControler<T>){
-
-    const router = Router();
-
-    router.get(controller.BASE_URL, controller.get);
+@injectable()
+export default class UserController extends BaseController<IUser> {
+        
+    public path: string = "/api/User";
     
-    router.get(`${controller.BASE_URL}`, controller.getById);
+    protected routes: IRoute[] = [];
 
-    router.post(controller.BASE_URL, controller.create);
-
-    router.delete(`${controller.BASE_URL}/:id`, controller.delete);
-
-    router.patch(controller.BASE_URL, controller.delete);
-
-    return router;
+    constructor(@inject("UserService") protected _service: BaseService<IUser>) {
+        super();
+     }
 }
