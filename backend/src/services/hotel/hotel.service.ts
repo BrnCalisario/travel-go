@@ -8,7 +8,8 @@ export const getHotels = async (): Promise<any[]> => {
         select: {
             hotelName: true,
             city: true,
-            number : true
+            number : true,
+            price : true,
         }
     },)
 }
@@ -29,7 +30,8 @@ export const createHotel = async ( hotel : HotelDTO ) : Promise<number> => {
             cep: hotel.cep,
             number: hotel.number,
             state: hotel.state,
-            city: hotel.city
+            city: hotel.city,
+            price: hotel.price
         },
         select: {
             id: true
