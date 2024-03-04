@@ -16,6 +16,9 @@ export default function CardComp({ hotel, navigation }) {
     const favorite = [hotel]
 
     function Like(hotel) {
+
+            console.log(hotel);
+
         for (let index = 0; index < favorite.length; index++) {
 
             if (favorite[index] == hotel) {
@@ -55,8 +58,8 @@ export default function CardComp({ hotel, navigation }) {
                     }}>
                         Hotel
                     </CustomTextLOS>
-                    <View style={styles.heart} >
-                        <AiFillHeart onClick={() => setHeart(!heartFill)}
+                    <View style={styles.heart}>
+                        <AiFillHeart onClick={() => Like(hotel)}
                             style={
                                 heartFill ? {
                                     width: "25px",
@@ -90,27 +93,12 @@ export default function CardComp({ hotel, navigation }) {
                         display: 'flex',
                         flexDirection: 'row'
                     }}>
-                        {/* <CustomTextLOS style={{
-                            marginRight: '2vw'
-                        }}>
-                            {hotel.state}
-                        </CustomTextLOS> */}
                         <Text style={{
                             color: '#D9D9D9',
                         }}>
                         </Text>
                     </View>
-                    {/* <View style={{
-                        display: 'flex',
-                        flexDirection: 'row'
-                    }}>
-                        <ImLocation />
-                        <CustomTextLOS style={{
-                            color: '#D9D9D9',
-                        }}>
-                            {hotel.state}
-                        </CustomTextLOS>
-                    </View> */}
+
                 </View>
                 <View style={styles.greenCard}>
                     <View style={styles.priceText}>

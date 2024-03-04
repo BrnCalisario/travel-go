@@ -27,6 +27,7 @@ export default function HomePage({ navigation }) {
     const renderHotels = (() => {
         return (
             hotels.map((item, index) => {
+                console.log(item);
                 return (<CardComp navigation={navigation} key={index} hotel={item} />)
             })
         )
