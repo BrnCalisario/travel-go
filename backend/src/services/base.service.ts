@@ -1,4 +1,4 @@
-import { BaseRepository } from "../repository/repository";
+import { BaseRepository, IRepository } from "../repository/repository";
 
 export interface IService<T> {
 
@@ -13,14 +13,10 @@ export interface IService<T> {
     getAll() : Promise<T[]>;
 }
 
-export abstract class BaseService<T extends { _id : string}> implements IService<T>  {
+export abstract class BaseService<T extends { _id : string}, TRepository extends IRepository<T>> implements IService<T>  {
     
-    protected _repository : BaseRepository<T>
+    protected abstract _repository : TRepository
     
-    constructor(repository : BaseRepository<T>) {
-        this._repository = repository;
-    }
-
     async getAll(): Promise<T[]> {
         return await this._repository.getAll();
     }

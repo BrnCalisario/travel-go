@@ -1,4 +1,4 @@
-import { BaseService } from "../services/base.service";
+import { BaseService, IService } from "../services/base.service";
 import { Request, Response, NextFunction, Router } from "express";
 
 export type HTTPMethods = 'GET' | 'POST' | 'PUT' | 'DELETE';
@@ -11,7 +11,7 @@ export interface IRoute {
     localMiddleware : ((req : Request, res : Response, next : NextFunction) => void)[];
 };
 
-export abstract class BaseController<T extends { _id: string }> {
+export abstract class BaseController<T extends { _id : string }, TService extends IService<T>> {
 
     public router : Router = Router();
     
@@ -19,7 +19,7 @@ export abstract class BaseController<T extends { _id: string }> {
 
     protected abstract routes : Array<IRoute>;
 
-    protected abstract _service: BaseService<T>;
+    protected abstract _service: TService;
 
     public setRoutes(): Router  {
         for(const route of this.routes.concat(this._baseRoutes)) {

@@ -1,10 +1,13 @@
+import { inject, injectable } from "tsyringe";
 import { IUser } from "../models/user.model";
 import UserRepository from "../repository/user/user.repository";
 import { BaseService } from "./base.service";
 
-export class UserService extends BaseService<IUser> {
-    constructor() {
-        super(new UserRepository())
+@injectable()
+export class UserService extends BaseService<IUser, UserRepository> {
+    
+    constructor(@inject("UserRepository") protected _repository : UserRepository) {
+        super()
     }
 
     create(item : IUser) : Promise<IUser> {

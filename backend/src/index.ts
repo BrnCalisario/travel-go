@@ -8,19 +8,8 @@ import HotelController from './controller/hotel.controller';
 import UserController from './controller/user.controller';
 import { HotelService } from './services/hotel.service';
 
-import { setupConfigs, setupControllers } from './services/setup';
+import { setupConfigs, setupControllers } from './setup';
 import { UserService } from './services/user.service';
-
-container.register("UserService", {
-    useClass : UserService
-})
-
-container.register("HotelService", {
-    useClass: HotelService
-})
-
-const userCtrl = container.resolve(UserController);
-const hotelCtrl = container.resolve(HotelController);
 
 const PORT = process.env.PORT;
 
@@ -31,7 +20,7 @@ connectDB();
 // SETUP
 setupConfigs(app)
 
-setupControllers(app, [userCtrl, hotelCtrl]);
+setupControllers(app);
 
 
 app.listen(PORT, () => console.log('Server running at port http://localhost:' + PORT));
