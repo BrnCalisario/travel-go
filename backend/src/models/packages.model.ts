@@ -19,6 +19,7 @@ export interface ITicket {
 }
 
 export interface IPackages {
+    _id:       string;
     reservation: IReservation,
     ticket: ITicket,
     user: IUser
