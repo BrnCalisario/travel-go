@@ -6,11 +6,11 @@ export const amenitiesSlice = createSlice({
         value: [],
     },
     reducers: {
-        setAmenities: (state, data) => {
-            state.value = [...value, data.value];
+        setAmenities: (state, action) => {
+            state.value = action.payload;
         }
     }
 })
 
-export const {setAmenities} = amenitiesSlice.actions;
+export const { setAmenities } = amenitiesSlice.actions;
 export default amenitiesSlice.reducer;

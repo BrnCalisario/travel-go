@@ -5,6 +5,7 @@ import { MultiSelect } from 'react-native-element-dropdown';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import styles from "./styles";
 import axios from 'axios';
+import { setAmenities } from '../../store/AmenitiesSlice';
 import { useSelector, useDispatch } from 'react-redux'
 
 export default function AmenitiesDropDown() {
@@ -22,9 +23,10 @@ export default function AmenitiesDropDown() {
         try {
             const response = await axios.get("http://localhost:3030/api/hotel/amenities");
 
-            dispatch(() => setAmenities(response.data.map((item) => {
+            dispatch(setAmenities(response.data.map((item) => {
                 return { label: item.amenity, value: item.id }
             })))
+
         } catch (error) {
             console.log(error);
         }
