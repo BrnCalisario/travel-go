@@ -8,7 +8,7 @@ class UserRepository extends BaseRepository<IUser> {
 	}
 
 	async findByName(name : string) : Promise<IUser[]> {
-		const result = await this._model.find({ fullName : name})
+		const result = await this._model.find({ fullName : name })
 
 		return result;
 	}
