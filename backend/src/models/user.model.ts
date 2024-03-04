@@ -19,7 +19,7 @@ const userSchema = new Schema<IUser>({
     cpf:       { type: String, required: true, unique: true },
     password:  String,
     isAdmin:   { type: Boolean, default: false },
-    favorites: [ hotelSchema ]
+    favorites: { type : [hotelSchema], required : false }
 });
 
 const User = model<IUser>('User', userSchema);

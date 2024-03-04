@@ -16,13 +16,7 @@ container.register<BaseService<IUser, UserRepository>>("UserService", { useClass
 container.register<BaseRepository<IHotel>>("HotelRepository", { useClass : HotelRepository });
 container.register<BaseService<IHotel, HotelRepository>>("HotelService", { useClass : HotelService });
 
-container.register("UserModel", {
-    useClass: User
-})
-
 export const userCtrl = container.resolve(UserController);
 export const hotelCtrl = container.resolve(HotelController);
-export const hotelService = container.resolve(HotelService);
-
 
 export const controllerList = [userCtrl, hotelCtrl];
