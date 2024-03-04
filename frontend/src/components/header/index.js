@@ -10,8 +10,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import io from 'socket.io-client';
 import { useEffect } from "react";
 import { toggleValue } from "../../store/NotificationsSlice";
+import UserIcon from "../userIcon";
 
-export default function Header(props) {
+export default function Header({ navigation }) {
+
+    const [use, setUse] = useState(false)
 
     var defaultBool = false;
     const [showMenu, setShowMenu] = useState(defaultBool);
@@ -44,7 +47,7 @@ export default function Header(props) {
     return (
         <View style={styles.component}>
 
-            <LogoComp navigation={props.navigation}/>
+            <LogoComp navigation={navigation}/>
 
             <TouchableOpacity onPress={() => setActive(!isActive)}>
                 {notification ? notificationAtive : notificationNone}
@@ -57,12 +60,7 @@ export default function Header(props) {
                     }} />
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => props.navigation.navigate('account')}>
-                <AiOutlineUser
-                    style={{
-                        fontSize: 30
-                    }} />
-            </TouchableOpacity>
+            <UserIcon navigation={navigation}/>
 
             <View style={isActive ? styles.componentNotificationHeader : styles.componentNotificationHeaderClosed}>
                 <Text style={styles.NotificationTitle}>

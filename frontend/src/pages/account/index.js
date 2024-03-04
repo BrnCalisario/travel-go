@@ -3,10 +3,10 @@ import Header from "../../components/header";
 import CustomTextLOS from "../../components/CustomTextLOS";
 import styles from "./styles";
 
-export default function AccountPage() {
+export default function AccountPage({navigation}) {
     return (
         <>
-            <Header />
+            <Header navigation={navigation}/>
             <View style={styles.screen}>
                 <View style={styles.componentLogin}>
                     <CustomTextLOS>Email</CustomTextLOS>
