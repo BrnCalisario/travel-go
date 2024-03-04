@@ -8,12 +8,32 @@ import ModalComp from "../modal";
 import Dropdown from '../dropdown';
 import { FaHeart, FaHeartbeat } from "react-icons/fa";
 import { useState } from "react";
-
+import axios from "axios";
+import { useCallback, useEffect } from "react";
 
 export default function CardComp({ hotel, navigation }) {
     const [heartFill, setHeart] = useState(false)
 
     const favorite = [hotel]
+
+    const handleGetFavorite = useCallback(async () => {
+        try {
+            const obj = {
+                id: sessionStorage.getItem("token")
+            }
+
+            console.log(obj)
+
+            const response = await axios.post('http://localhost:3030/api/hotel/Userfavorites', obj);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    });
+
+    useEffect(() => {
+        handleGetFavorite();
+    }, [])
 
     function Like(hotel) {
 
