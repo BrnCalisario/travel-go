@@ -1,0 +1,5 @@
+[] Filtro de favoritos
+[] Comprar reserva (algo no banco, visualmente o fluxo já funciona)
+[] Tela de notificação
+[] Style tela de usuário
+[] Style modal de See Offer'

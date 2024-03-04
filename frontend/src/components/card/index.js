@@ -21,9 +21,6 @@ export default function CardComp({ hotel, navigation }) {
             const obj = {
                 id: sessionStorage.getItem("token")
             }
-
-            console.log(obj)
-
             const response = await axios.post('http://localhost:3030/api/hotel/Userfavorites', obj);
         }
         catch (error) {
@@ -36,8 +33,6 @@ export default function CardComp({ hotel, navigation }) {
     }, [])
 
     function Like(hotel) {
-
-            console.log(hotel);
 
         for (let index = 0; index < favorite.length; index++) {
 

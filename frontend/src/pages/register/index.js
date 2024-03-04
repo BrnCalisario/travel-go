@@ -32,7 +32,6 @@ export default function RegisterPage(props) {
             const res = await axios.post("http://localhost:3030/api/user/signup/", registerData);
             const res2 = await axios.post("http://localhost:3030/api/email/", emailData);
             props.navigation.navigate('login')
-            console.log(res);
         } catch (error) {
             console.log(error);
         }
