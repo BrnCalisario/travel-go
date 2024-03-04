@@ -6,15 +6,16 @@ import { ImLocation } from 'react-icons/im';
 import CustomTextLOS from "../CustomTextLOS";
 import ModalComp from "../modal";
 import Dropdown from '../dropdown';
-import { FaHeart, FaHeartbeat } from "react-icons/fa";
+import { FaHeart, FaHeartbeat, FaObjectGroup } from "react-icons/fa";
 import { useState } from "react";
 import axios from "axios";
 import { useCallback, useEffect } from "react";
 
+const favorite = []
+
 export default function CardComp({ hotel, navigation }) {
     const [heartFill, setHeart] = useState(false)
-
-    const favorite = [hotel]
+    // const [favorite, setFavorite] = useState([])
 
     const handleGetFavorite = useCallback(async () => {
         try {
@@ -33,17 +34,13 @@ export default function CardComp({ hotel, navigation }) {
     }, [])
 
     function Like(hotel) {
-
-        for (let index = 0; index < favorite.length; index++) {
-
-            if (favorite[index] == hotel) {
-                favorite.splice(index, 1)
-                setHeart(false)
-            }
-            else {
-                favorite.unshift(hotel)
-                setHeart(true)
-            }
+        if (!heartFill) {
+            setHeart(!heartFill)
+            favorite.push(hotel)
+        }
+        else {
+            favorite = favorite.filter(item => item !== hotel);
+            setHeart(!heartFill)
         }
     }
 
@@ -84,7 +81,7 @@ export default function CardComp({ hotel, navigation }) {
                                     {
                                         display: "none"
                                     }} />
-                        <AiOutlineHeart onClick={() => setHeart(!heartFill)}
+                        <AiOutlineHeart onClick={() => Like(hotel)}
                             style={
                                 !heartFill ? {
                                     width: "25px",
