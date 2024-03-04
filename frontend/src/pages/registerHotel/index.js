@@ -16,6 +16,7 @@ export default function registerHotel(props) {
     const [hotelName, setHotelName] = useState();
     const [hotelNumber, setHotelNumber] = useState();
     const [hotelImage, setHotelImage] = useState();
+    const [hotelPrice, setHotelPrice] = useState(0);
 
     const [hotelCep, setHotelCep] = useState();
     const { rua, cidade, estado, handleRequest } = useCep(hotelCep);
@@ -30,7 +31,8 @@ export default function registerHotel(props) {
             'state': estado,
             'city': cidade,
             'number': hotelNumber,
-            "amenities": hotelAmenities
+            "amenities": hotelAmenities,
+            'price': hotelPrice
         }
         try {
             const response = await axios.post("http://localhost:3030/api/hotel/create", formData);
@@ -101,6 +103,14 @@ export default function registerHotel(props) {
                 <CustomTextLOS>Number</CustomTextLOS>
                 <TextInput
                     onChangeText={e => setHotelNumber(e)}
+                    style={styles.input}
+                />
+            </View>
+            
+            <View style={styles.componentRegister}>
+                <CustomTextLOS>Price</CustomTextLOS>
+                <TextInput
+                    onChangeText={e => setHotelPrice(e)}
                     style={styles.input}
                 />
             </View>
