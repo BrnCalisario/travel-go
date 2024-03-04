@@ -1,5 +1,5 @@
 import mongoose, { ObjectId } from "mongoose";
-import { hotelSchema } from "./hotel.model";
+import { hotelSchema, IHotel } from "./hotel.model";
 
 const { Schema, model } = mongoose;
 
@@ -10,7 +10,7 @@ export interface IUser {
     cpf:       string,
     password:  string,
     isAdmin:   boolean,
-    favorites: ObjectId[]
+    favorites: IHotel[]
 }
 
 const userSchema = new Schema<IUser>({
@@ -19,7 +19,7 @@ const userSchema = new Schema<IUser>({
     cpf:       { type: String, required: true, unique: true },
     password:  String,
     isAdmin:   { type: Boolean, default: false },
-    favorites: [hotelSchema]
+    favorites: [ hotelSchema ]
 });
 
 const User = model<IUser>('User', userSchema);
